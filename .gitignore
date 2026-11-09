@@ -29,3 +29,6 @@ next-env.d.ts
 
 # notes locales pour Claude Code (non versionnées)
 CLAUDE.md
+
+# skills et réglages Claude Code (locaux)
+.claude/
