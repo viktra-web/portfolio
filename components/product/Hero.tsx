@@ -30,7 +30,8 @@ export default function Hero() {
           <Logo className="pd-logo" />
           <span className="pd-brand-role">par Adel Djahnit</span>
         </a>
-        <a href="#contact" className="pd-btn pd-btn--primary pd-btn--sm">
+        {/* Desktop only: on mobile the hero button below is the single call to action. */}
+        <a href="#contact" className="pd-btn pd-btn--primary pd-btn--sm pd-hero-bar-cta">
           Devis gratuit
         </a>
       </div>
@@ -39,13 +40,21 @@ export default function Hero() {
         <h1 className="pd-h1" id="hero-title">{productHero.title}</h1>
         <p className="pd-hero-lead">{productHero.lead}</p>
         <div className="pd-hero-actions">
-          <a href="#contact" className="pd-btn pd-btn--primary">
-            Demander un devis gratuit
-          </a>
+          <div className="pd-hero-cta">
+            <a href="#contact" className="pd-btn pd-btn--primary">
+              Demander un devis gratuit
+            </a>
+            <p className="pd-hero-cta-note">{productHero.ctaNote}</p>
+          </div>
           <a href="#tarifs" className="pd-textlink">
             Voir les tarifs
           </a>
         </div>
+        <ul className="pd-hero-facts">
+          {productHero.facts.map((fact) => (
+            <li key={fact}>{fact}</li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -5,7 +5,15 @@ import { storyMockup } from "@/lib/services";
 
 export const productHero = {
   title: "Le site de votre commerce, fait près de chez vous.",
-  lead: "Je suis Adel, développeur web à Divonne-les-Bains. Je crée des sites et des fiches Google pour que les commerces et artisans de la région soient trouvés, puis appelés.",
+  lead: "Je suis Adel, développeur web à Divonne-les-Bains. Je crée des sites et des fiches Google pour que les commerces et artisans du Pays de Gex, de Nyon et de Genève soient trouvés, puis appelés.",
+  /** Under the main button: what happens when you tap it. */
+  ctaNote: "Premier rendez-vous de 20 minutes, gratuit.",
+  /** Price, delay and ownership, all from lib/services.ts (offers, items, guarantees). */
+  facts: [
+    "Site vitrine dès 690 €, prix fixé au devis",
+    "En ligne en 2 semaines environ",
+    "Le nom de domaine est à votre nom",
+  ],
 };
 
 export type TradeGlyph = "wheat" | "drop" | "scissors" | "plate";
@@ -146,7 +154,9 @@ export const BONEE_SHOTS: ProductImage[] = [
 
 export const aboutCopy = {
   title: "Vous parlez à celui qui fait.",
-  text: "Je suis Adel Djahnit, développeur web installé à Divonne-les-Bains. On se rencontre en personne, et vous avez un seul interlocuteur du début à la fin.",
+  text: "Je suis Adel Djahnit. On se rencontre en personne, et c'est moi qui crée votre site, du premier rendez-vous à la mise en ligne.",
+  /** Already said by the Suivi offer and the contact form: not repeated on /product. */
+  hiddenGuarantees: ["Sans engagement"],
 };
 
 /** Verbatim from the Kunagi recommendation letter (public/recommendation-letter.jpg). */
@@ -158,5 +168,7 @@ export const KUNAGI_QUOTE = {
   href: "/recommendation-letter.pdf",
 };
 
+export const workIntro = "Ce que j'ai fait, projet par projet.";
+
 export const pricingNote =
-  "Prix indicatifs. Le prix définitif est celui du devis, établi après notre rendez-vous.";
+  "Prix de départ. Le prix exact est écrit dans votre devis, après notre rendez-vous. Acompte de 40 % au lancement, solde à la livraison. L'hébergement est compris dans le suivi ; le nom de domaine se paie à part, une fois par an.";

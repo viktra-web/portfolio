@@ -10,7 +10,6 @@ import BesoinSelect, { isKnownBesoin, type BesoinOption } from "@/components/pro
 // /services chunk and change its size.
 export interface ContactFormProps {
   action: (prev: ContactState, formData: FormData) => Promise<ContactState>;
-  activiteOptions: BesoinOption[];
   besoinOptions: BesoinOption[];
   email: string;
   phoneDisplay: string;
@@ -25,8 +24,22 @@ function SubmitButton() {
   const { pending } = useFormStatus();
   return (
     <button type="submit" className="pd-btn pd-btn--primary pd-form-submit" disabled={pending}>
-      {pending ? "Envoi en cours…" : "Envoyer ma demande"}
+      {pending ? "Envoi en cours…" : "Demander mon devis gratuit"}
     </button>
+  );
+}
+
+/** Field error: a drawn icon (no Unicode symbol) and the message from the action. */
+function FieldError({ id, children }: { id: string; children: ReactNode }) {
+  return (
+    <p className="pd-form-error" id={id}>
+      <svg className="pd-form-error-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.75" />
+        <path d="M8 4.25v4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+        <circle cx="8" cy="11.5" r="1" fill="currentColor" />
+      </svg>
+      {children}
+    </p>
   );
 }
 
@@ -78,7 +91,6 @@ function useOfferLinks(besoinOptions: BesoinOption[]) {
 
 export default function ContactForm({
   action,
-  activiteOptions,
   besoinOptions,
   email: SERVICES_EMAIL,
   phoneDisplay: SERVICES_PHONE_DISPLAY,
@@ -112,10 +124,10 @@ export default function ContactForm({
         aria-live="polite"
         tabIndex={-1}
       >
-        <h3 className="pd-status-title">Merci, votre demande est bien envoyée.</h3>
+        <h3 className="pd-status-title">Merci, c&apos;est bien reçu.</h3>
         <p>
-          Je vous réponds sous 24 heures, par téléphone ou par email. Si c&apos;est urgent :{" "}
-          <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>.
+          Je vous réponds sous 24 heures, par téléphone ou par email, pour fixer un rendez-vous de
+          20 minutes, chez vous ou au téléphone. Rien à préparer.
         </p>
       </div>
     );
@@ -155,11 +167,9 @@ export default function ContactForm({
       ) : null}
 
       <form key={formKey} className="pd-form" action={formAction} noValidate>
-        <p className="pd-form-hint">Les champs marqués * sont obligatoires.</p>
-
         <div className="pd-field">
           <label className="pd-label" htmlFor="contact-nom">
-            Votre nom *
+            Votre nom
           </label>
           <input
             id="contact-nom"
@@ -175,9 +185,7 @@ export default function ContactForm({
             defaultValue={values.nom ?? ""}
           />
           {errors.nom ? (
-            <p className="pd-form-error" id="err-nom">
-              {errors.nom}
-            </p>
+            <FieldError id="err-nom">{errors.nom}</FieldError>
           ) : null}
         </div>
 
@@ -185,14 +193,12 @@ export default function ContactForm({
           className="pd-fieldset"
           aria-describedby={describedBy("hint-contact", errors.contact && "err-contact")}
         >
-          <legend className="pd-label">Comment vous joindre ? *</legend>
+          <legend className="pd-label">Comment vous joindre ?</legend>
           <p className="pd-form-hint" id="hint-contact">
             Un téléphone ou un email suffit.
           </p>
           {errors.contact ? (
-            <p className="pd-form-error" id="err-contact">
-              {errors.contact}
-            </p>
+            <FieldError id="err-contact">{errors.contact}</FieldError>
           ) : null}
 
           <div className="pd-form-row">
@@ -216,9 +222,7 @@ export default function ContactForm({
                 defaultValue={values.telephone ?? ""}
               />
               {errors.telephone ? (
-                <p className="pd-form-error" id="err-telephone">
-                  {errors.telephone}
-                </p>
+                <FieldError id="err-telephone">{errors.telephone}</FieldError>
               ) : null}
             </div>
 
@@ -241,44 +245,23 @@ export default function ContactForm({
                 defaultValue={values.email ?? ""}
               />
               {errors.email ? (
-                <p className="pd-form-error" id="err-email">
-                  {errors.email}
-                </p>
+                <FieldError id="err-email">{errors.email}</FieldError>
               ) : null}
             </div>
           </div>
         </fieldset>
 
-        <div className="pd-form-row">
-          <div className="pd-field">
-            <label className="pd-label" htmlFor="contact-activite">
-              Votre activité
-            </label>
-            <select
-              id="contact-activite"
-              className="pd-input"
-              name="activite"
-              defaultValue={values.activite ?? ""}
-            >
-              {activiteOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="pd-field">
-            <label className="pd-label" htmlFor="contact-besoin">
-              Votre besoin
-            </label>
-            <BesoinSelect options={besoinOptions} value={values.besoin} />
-          </div>
+        {/* No "activité" menu here: the message asks for it. The action accepts it empty. */}
+        <div className="pd-field">
+          <label className="pd-label" htmlFor="contact-besoin">
+            Votre besoin (facultatif)
+          </label>
+          <BesoinSelect options={besoinOptions} value={values.besoin} />
         </div>
 
         <div className="pd-field">
           <label className="pd-label" htmlFor="contact-message">
-            Votre message *
+            En quelques mots, votre activité et ce que vous cherchez
           </label>
           <textarea
             id="contact-message"
@@ -294,9 +277,7 @@ export default function ContactForm({
             defaultValue={values.message ?? ""}
           />
           {errors.message ? (
-            <p className="pd-form-error" id="err-message">
-              {errors.message}
-            </p>
+            <FieldError id="err-message">{errors.message}</FieldError>
           ) : null}
         </div>
 

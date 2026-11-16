@@ -1,8 +1,6 @@
 import ContactForm from "@/components/product/ContactForm";
-import WordMask from "@/components/product/WordMask";
 import { sendContactRequest } from "@/app/services/actions";
 import {
-  ACTIVITE_OPTIONS,
   BESOIN_OPTIONS,
   SERVICES_AREA,
   SERVICES_EMAIL,
@@ -17,10 +15,12 @@ export default function Contact() {
     <section id="contact" className="pd-section pd-contact" aria-labelledby="contact-title">
       <div className="pd-wrap">
         <div className="pd-head">
-          <WordMask id="contact-title" tabIndex={-1} text="Parlons de votre projet" />
+          {/* tabIndex: focus target of the offer links (ContactForm useOfferLinks). */}
+          <h2 className="pd-h2" id="contact-title" tabIndex={-1}>
+            Dites-moi ce que vous faites.
+          </h2>
           <p className="pd-body">
-            Dites-moi en quelques mots ce que vous faites et ce que vous cherchez. Je vous réponds
-            sous 24 heures. Le premier rendez-vous est gratuit et sans engagement.
+            Je vous réponds sous 24 heures. Le premier rendez-vous est gratuit et sans engagement.
           </p>
         </div>
         <div className="pd-contact-grid">
@@ -49,7 +49,7 @@ export default function Contact() {
                 </dd>
               </div>
               <div>
-                <dt>Zone :</dt>
+                <dt>Zone</dt>
                 <dd>{SERVICES_AREA.join(", ")}</dd>
               </div>
             </dl>
@@ -57,7 +57,6 @@ export default function Contact() {
           <div className="pd-contact-form">
             <ContactForm
               action={sendContactRequest}
-              activiteOptions={ACTIVITE_OPTIONS}
               besoinOptions={BESOIN_OPTIONS}
               email={SERVICES_EMAIL}
               phoneDisplay={SERVICES_PHONE_DISPLAY}

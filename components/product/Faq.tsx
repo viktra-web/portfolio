@@ -1,4 +1,3 @@
-import WordMask from "@/components/product/WordMask";
 import { SERVICES_PHONE_DISPLAY, SERVICES_PHONE_TEL, serviceFaq } from "@/lib/services";
 
 export default function Faq() {
@@ -6,7 +5,9 @@ export default function Faq() {
     <section id="faq" className="pd-section pd-faq" aria-labelledby="faq-title">
       <div className="pd-wrap pd-faq-grid">
         <div className="pd-faq-aside">
-          <WordMask id="faq-title" text="Questions fréquentes" />
+          <h2 className="pd-h2" id="faq-title">
+            Questions fréquentes
+          </h2>
           <p className="pd-body">
             Une autre question ? <a href="#contact">Écrivez-moi</a> ou appelez le{" "}
             <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>.
