@@ -19,6 +19,8 @@ const description =
 export const metadata: Metadata = {
   title: "Création de site internet à Divonne-les-Bains et dans le Pays de Gex | Adel Djahnit",
   description,
+  // /services?besoin=… is the same page.
+  alternates: { canonical: "/services" },
 };
 
 const jsonLd = {

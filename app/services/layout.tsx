@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Bricolage_Grotesque, Instrument_Serif, Inter_Tight } from "next/font/google";
 import "lenis/dist/lenis.css";
@@ -23,6 +24,10 @@ const body = Inter_Tight({
   variable: "--sv-font-body",
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.adeldjahnit.com"),
+};
 
 export default function ServicesLayout({ children }: { children: ReactNode }) {
   return (
