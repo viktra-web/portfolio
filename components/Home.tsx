@@ -1,5 +1,7 @@
 "use client";
 
+// Developer portfolio (FR/EN). Client component: the language is switched without a URL.
+
 import { useEffect, useState } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import type { Locale } from "@/lib/locales";
