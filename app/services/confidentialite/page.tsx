@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
-import Footer from "@/components/services/Footer";
-import Title from "@/components/services/Title";
+import Footer from "@/components/product/Footer";
+import Logo from "@/components/product/Logo";
 import { SERVICES_EMAIL } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -88,40 +88,36 @@ const blocks: { title: string; body: ReactNode }[] = [
 
 export default function PrivacyPage() {
   return (
-    <div id="sv-page" className="sv-page">
-      <div className="sv-grain" aria-hidden="true" />
-      <header id="top" className="sv-legal-head sv-theme-night">
-        <div className="sv-container sv-hero-bar">
-          <Link href="/services" className="sv-wordmark">
-            <span className="sv-wordmark-name">Adel Djahnit</span>
-            <span className="sv-wordmark-role sv-mono">Développeur web</span>
+    <div className="pd-legal-page">
+      <header id="top" className="pd-legal-head">
+        <div className="pd-wrap pd-hero-bar">
+          <Link href="/services" className="pd-brand">
+            <Logo className="pd-logo" />
+            <span className="pd-brand-role">par Adel Djahnit</span>
           </Link>
-          <div className="sv-hero-bar-actions">
-            <Link
-              href="/services#contact"
-              className="sv-btn sv-btn--primary sv-btn--sm sv-hero-bar-cta"
-            >
-              Devis gratuit <span className="sv-arrow" aria-hidden="true">→</span>
+          <div className="pd-hero-bar-actions">
+            <Link href="/services#contact" className="pd-btn pd-btn--primary pd-btn--sm">
+              Devis gratuit
             </Link>
           </div>
         </div>
-        <div className="sv-container sv-legal-intro">
-          <p className="sv-kicker sv-mono">Données personnelles</p>
-          <Title as="h1" parts={[{ em: "Confidentialité" }]} />
-          <p className="sv-lead">
+        <div className="pd-wrap pd-legal-intro">
+          <p className="pd-legal-kicker">Données personnelles</p>
+          <h1 className="pd-legal-title">Confidentialité</h1>
+          <p className="pd-legal-lead">
             Ce que deviennent les informations que vous m&apos;envoyez avec le formulaire de
             contact.
           </p>
-          <Link href="/services" className="sv-legal-back sv-mono">
-            ← Retour à la page Services
+          <Link href="/services" className="pd-textlink pd-legal-back">
+            <span aria-hidden="true">←&nbsp;</span>Retour à la page Services
           </Link>
         </div>
       </header>
 
-      <main className="sv-section sv-legal sv-theme-day">
-        <div className="sv-container sv-legal-body">
+      <main className="pd-section pd-legal">
+        <div className="pd-wrap">
           {blocks.map((block) => (
-            <section className="sv-legal-block" key={block.title}>
+            <section className="pd-legal-block" key={block.title}>
               <h2>{block.title}</h2>
               <p>{block.body}</p>
             </section>

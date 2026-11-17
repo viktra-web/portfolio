@@ -77,7 +77,7 @@ function useOfferLinks(besoinOptions: BesoinOption[]) {
       if (select instanceof HTMLSelectElement) {
         select.value = besoin;
       }
-      window.history.replaceState(window.history.state, "", `/product?besoin=${besoin}#contact`);
+      window.history.replaceState(window.history.state, "", `/services?besoin=${besoin}#contact`);
       contact.scrollIntoView({
         behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
         block: "start",

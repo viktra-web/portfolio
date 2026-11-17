@@ -55,7 +55,7 @@ export default function Pricing() {
                     </div>
                     <a
                       className={`pd-btn ${main ? "pd-btn--primary" : "pd-btn--secondary"} pd-offer-cta`}
-                      href={`/product?besoin=${offer.besoin}#contact`}
+                      href={`/services?besoin=${offer.besoin}#contact`}
                       data-besoin={offer.besoin}
                     >
                       {offer.cta}

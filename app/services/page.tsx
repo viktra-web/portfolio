@@ -1,78 +1,53 @@
 import type { Metadata } from "next";
-import Hero from "@/components/services/Hero";
-import Marquee from "@/components/services/Marquee";
-import Story from "@/components/services/Story";
-import Offers from "@/components/services/Offers";
-import Work from "@/components/services/Work";
-import Steps from "@/components/services/Steps";
-import Guarantees from "@/components/services/Guarantees";
-import Faq from "@/components/services/Faq";
-import Contact from "@/components/services/Contact";
-import Footer from "@/components/services/Footer";
-import StickyBar from "@/components/services/StickyBar";
-import MotionRoot from "@/components/services/MotionRoot";
-import { SERVICES_EMAIL } from "@/lib/services";
+import Hero from "@/components/product/Hero";
+import Story from "@/components/product/StoryLazy";
+import Pricing from "@/components/product/Pricing";
+import About from "@/components/product/About";
+import Work from "@/components/product/Work";
+import Faq from "@/components/product/Faq";
+import Contact from "@/components/product/Contact";
+import Footer from "@/components/product/Footer";
+import StickyBar from "@/components/product/StickyBar";
+import JsonLd from "@/components/product/JsonLd";
+import { storyShared, storyTrades } from "@/lib/product";
+import { SERVICES_PHONE_TEL, serviceStory } from "@/lib/services";
 
+const title = "Création de site internet à Divonne-les-Bains | Viktra";
 const description =
-  "Développeur web basé à Divonne-les-Bains. Sites vitrines, fiche Google et réservation en ligne pour les commerces, artisans et indépendants du Pays de Gex et de la région genevoise.";
+  "Sites vitrines et fiches Google pour les commerces, artisans et indépendants du Pays de Gex, de Nyon et de Genève. Prix fixe, rendez-vous chez vous.";
 
 export const metadata: Metadata = {
-  title: "Création de site internet à Divonne-les-Bains et dans le Pays de Gex | Adel Djahnit",
+  title,
   description,
   // /services?besoin=… is the same page.
   alternates: { canonical: "/services" },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "Adel Djahnit — Création de sites internet",
-  description,
-  url: "https://www.adeldjahnit.com/services",
-  telephone: "+33652338713",
-  email: SERVICES_EMAIL,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Divonne-les-Bains",
-    postalCode: "01220",
-    addressRegion: "Ain",
-    addressCountry: "FR",
+  // Link preview (WhatsApp, LinkedIn, iMessage). The image is opengraph-image.png in this folder.
+  openGraph: {
+    type: "website",
+    url: "/services",
+    siteName: "Viktra",
+    locale: "fr_FR",
+    title,
+    description,
   },
-  areaServed: [
-    "Divonne-les-Bains",
-    "Gex",
-    "Ferney-Voltaire",
-    "Saint-Genis-Pouilly",
-    "Pays de Gex",
-    "Nyon",
-    "Genève",
-  ].map((name) => ({ "@type": "Place", name })),
-  priceRange: "À partir de 150 €",
+  twitter: { card: "summary_large_image" },
 };
 
 export default function ServicesPage() {
   return (
-    <div id="sv-page" className="sv-page">
-      <div className="sv-grain" aria-hidden="true" />
-      <div className="sv-progress" aria-hidden="true" />
-      <main className="sv-main">
+    <>
+      <main className="pd-main">
         <Hero />
-        <Marquee />
-        <Story />
-        <Offers />
+        <Story chapters={serviceStory} trades={storyTrades} shared={storyShared} />
+        <Pricing />
+        <About />
         <Work />
-        <Steps />
-        <Guarantees />
         <Faq />
         <Contact />
       </main>
       <Footer />
-      <StickyBar />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <MotionRoot />
-    </div>
+      <StickyBar phoneTel={SERVICES_PHONE_TEL} />
+      <JsonLd />
+    </>
   );
 }

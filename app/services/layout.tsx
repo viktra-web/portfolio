@@ -1,27 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Bricolage_Grotesque, Instrument_Serif, Inter_Tight } from "next/font/google";
-import "lenis/dist/lenis.css";
-import "./services.css";
+import { Schibsted_Grotesk } from "next/font/google";
+import "./product.css";
 
-const display = Bricolage_Grotesque({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  variable: "--sv-font-display",
-  display: "swap",
-});
-
-const serif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: "italic",
-  variable: "--sv-font-serif",
-  display: "swap",
-});
-
-const body = Inter_Tight({
-  subsets: ["latin"],
-  variable: "--sv-font-body",
+const font = Schibsted_Grotesk({
+  subsets: ["latin", "latin-ext"],
+  weight: "variable",
+  variable: "--pd-font",
   display: "swap",
 });
 
@@ -29,8 +14,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.adeldjahnit.com"),
 };
 
+// Browser bar in the hero colour (aube), on /services and /services/confidentialite.
+export const viewport: Viewport = {
+  themeColor: "#F2CDBE",
+};
+
 export default function ServicesLayout({ children }: { children: ReactNode }) {
-  return (
-    <div className={`svc ${display.variable} ${serif.variable} ${body.variable}`}>{children}</div>
-  );
+  return <div className={`pd ${font.variable}`}>{children}</div>;
 }

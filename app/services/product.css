@@ -1,4 +1,4 @@
-/* /product — "L'affiche du matin". Every selector is scoped under .pd (or html:has(.pd)). */
+/* /services (Viktra) — "L'affiche du matin". Every selector is scoped under .pd (or html:has(.pd)). */
 
 html:has(.pd) {
   background: #f2cdbe;
@@ -2168,6 +2168,100 @@ html:has(.pd) {
   .pd .pd-footer-towns,
   .pd .pd-footer-row {
     grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Confidentialité (/services/confidentialite) ---------- */
+
+.pd .pd-legal-head {
+  padding-bottom: clamp(3.5rem, 2rem + 5vw, 6rem);
+  background: var(--pd-aube);
+}
+
+.pd .pd-legal-intro {
+  padding-top: clamp(3rem, 7vh, 6rem);
+}
+
+.pd .pd-legal-kicker {
+  margin-bottom: 1rem;
+  font-size: var(--pd-s5);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.pd .pd-legal-title {
+  font-size: clamp(2.75rem, 1.4rem + 5vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+}
+
+.pd .pd-legal-lead {
+  max-width: 40ch;
+  margin-top: 1.5rem;
+}
+
+.pd .pd-legal-back {
+  margin-top: 1.25rem;
+}
+
+.pd .pd-legal {
+  padding-top: clamp(3rem, 2rem + 3vw, 5rem);
+  background: var(--pd-jour);
+}
+
+.pd .pd-legal-block {
+  display: grid;
+  gap: 0.5rem;
+  padding-block: 1.5rem 1.75rem;
+  border-top: 1px solid rgba(19, 33, 43, 0.15);
+}
+
+.pd .pd-legal-block:last-child {
+  border-bottom: 1px solid rgba(19, 33, 43, 0.15);
+}
+
+.pd .pd-legal-block h2 {
+  font-size: var(--pd-s3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.pd .pd-legal-block p {
+  max-width: 62ch;
+}
+
+.pd .pd-legal-block a {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+/* No sticky bar on this page: the footer does not keep room for it. */
+.pd .pd-legal-page .pd-footer {
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 900px) {
+  .pd .pd-legal-block {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--pd-gutter);
+    align-items: baseline;
+  }
+
+  .pd .pd-legal-block h2 {
+    grid-column: 1 / 5;
+  }
+
+  /* Same content edge as Tarifs, Réalisations and FAQ. */
+  .pd .pd-legal-block p {
+    grid-column: 5 / 13;
+  }
+
+  .pd .pd-legal-page .pd-footer {
+    padding-bottom: 3rem;
   }
 }
 
