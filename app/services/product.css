@@ -2182,13 +2182,6 @@ html:has(.pd) {
   padding-top: clamp(3rem, 7vh, 6rem);
 }
 
-.pd .pd-legal-kicker {
-  margin-bottom: 1rem;
-  font-size: var(--pd-s5);
-  font-weight: 600;
-  line-height: 1.45;
-}
-
 .pd .pd-legal-title {
   font-size: clamp(2.75rem, 1.4rem + 5vw, 5.5rem);
   font-weight: 900;

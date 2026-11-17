@@ -22,7 +22,7 @@ const blocks: { title: string; body: ReactNode }[] = [
     body: (
       <>
         Lorsque vous utilisez le formulaire de contact : votre nom, votre téléphone, votre email,
-        votre activité, votre besoin et votre message.
+        votre besoin et votre message.
       </>
     ),
   },
@@ -102,14 +102,13 @@ export default function PrivacyPage() {
           </div>
         </div>
         <div className="pd-wrap pd-legal-intro">
-          <p className="pd-legal-kicker">Données personnelles</p>
           <h1 className="pd-legal-title">Confidentialité</h1>
           <p className="pd-legal-lead">
             Ce que deviennent les informations que vous m&apos;envoyez avec le formulaire de
             contact.
           </p>
           <Link href="/services" className="pd-textlink pd-legal-back">
-            <span aria-hidden="true">←&nbsp;</span>Retour à la page Services
+            Retour à la page Services
           </Link>
         </div>
       </header>
