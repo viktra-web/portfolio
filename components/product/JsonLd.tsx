@@ -1,7 +1,7 @@
 import { SERVICES_AREA, SERVICES_EMAIL, serviceOffers } from "@/lib/services";
 
 const SITE = "https://www.adeldjahnit.com";
-// The Viktra page will live at /services once it replaces the current one.
+// Canonical URL of the Viktra page.
 const PAGE_URL = `${SITE}/services`;
 const FOUNDER_ID = `${SITE}/#adel-djahnit`;
 
