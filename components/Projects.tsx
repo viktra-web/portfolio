@@ -34,7 +34,7 @@ export default function Projects() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {project.linkLabel} →
+                {project.linkLabel}
               </a>
             ) : (
               <span className="project-link-static">{project.linkLabel}</span>

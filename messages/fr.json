@@ -20,13 +20,13 @@
   },
   "Hero": {
     "title": "Adel Djahnit",
-    "role": "Développeur Fullstack — React, .NET, Azure",
+    "role": "Développeur Fullstack (React, .NET, Azure)",
     "pitch": "Je développe des applications métier pour la Fédération Internationale de Basketball, à Mies, près de Genève. Basé à Divonne-les-Bains, à 20 minutes de Genève, avec un permis G frontalier.",
     "ctaPrimary": "Voir mes projets",
     "ctaSecondary": "Télécharger mon CV"
   },
   "SectionTitles": {
-    "projets": "Projets phares",
+    "projets": "Projets",
     "recommandation": "Recommandation",
     "experience": "Expérience",
     "autres": "Autres projets",
@@ -39,22 +39,22 @@
       {
         "id": "fiba",
         "name": "FIBA",
-        "period": "Juin 2026 — en cours",
+        "period": "Juin 2026 – en cours",
         "role": "Développeur Fullstack",
         "context": "Auparavant, une organisation souhaitant accéder à l'API de données de la fédération devait passer par un formulaire papier, suivi de plusieurs échanges avec le staff avant l'obtention des accès.",
         "approach": "Je développe le formulaire de souscription automatisé destiné à remplacer ce processus : le candidat renseigne ses informations, le staff valide la demande, puis les accès sont créés automatiquement. Développé en C# / ASP.NET Core côté backend et en Next.js / React côté frontend, sur l'infrastructure Azure de la fédération.",
         "result": "Le formulaire est opérationnel. Il remplace un circuit qui mobilisait plusieurs personnes du staff à chaque demande.",
         "stack": ["C#", "ASP.NET Core", "Next.js", "React", "Azure SQL Server", "Azure DevOps"],
         "linkHref": null,
-        "linkLabel": "Projet interne — non public"
+        "linkLabel": "Projet interne, non public"
       },
       {
         "id": "bonee",
         "name": "Bonee",
-        "period": "2024 — en production",
+        "period": "2025 – en production",
         "role": "Développeur",
-        "context": "Application mobile de gestion de budget et d'épargne. J'ai réalisé les maquettes en collaboration avec Melvil Cherruau, qui les validait, puis développé l'application dans son intégralité.",
-        "approach": "Développée entièrement en Flutter/Dart, une technologie que j'ai apprise dans le cadre de ce projet, incluant la gestion du stockage des données, la logique de validation et l'intégration des paiements in-app via RevenueCat.",
+        "context": "Application mobile de gestion de budget et d'épargne. J'ai réalisé les maquettes en collaboration avec Melvil Cherruau, qui les validait, puis développé toute l'application.",
+        "approach": "Développée en Flutter/Dart, que j'ai appris pour ce projet. J'ai mis en place le stockage des données, la logique de validation et les paiements in-app avec RevenueCat.",
         "result": "Disponible sur l'App Store et le Play Store depuis moins de deux mois, avec une dizaine d'utilisateurs actifs à ce jour.",
         "stack": ["Flutter", "Dart", "RevenueCat", "iOS", "Android"],
         "linkHref": "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
@@ -63,38 +63,38 @@
       {
         "id": "kunagi",
         "name": "Kunagi",
-        "period": "2023 — 2025",
+        "period": "2023 – 2025",
         "role": "Développeur Fullstack (alternance)",
         "context": "L'application était déjà en production à mon arrivée (React Native / Expo, backend Laravel). Pendant deux ans, j'ai développé de nouvelles fonctionnalités et corrigé des anomalies, souvent en tant que seul développeur sur le projet.",
         "approach": "J'ai géré seul le renouvellement des certificats iOS et diagnostiqué puis contenu un incident critique sur la file de notifications, qui menaçait d'envoyer des milliers de messages en une seule fois.",
-        "result": "Ma contribution est mentionnée dans ma lettre de recommandation rédigée par la fondatrice de Kunagi (voir ci-dessous).",
+        "result": "La fondatrice de Kunagi mentionne mon travail dans sa lettre de recommandation, plus bas.",
         "stack": ["React Native", "Expo", "Laravel", "API REST", "CI/CD"],
         "linkHref": null,
-        "linkLabel": "Projet interne — non public"
+        "linkLabel": "Projet interne, non public"
       }
     ]
   },
   "Experience": {
     "items": [
       {
-        "date": "Juin 2026 — en cours",
+        "date": "Juin 2026 – en cours",
         "role": "Développeur Fullstack",
         "org": "FIBA, Mies (Suisse)"
       },
       {
-        "date": "2023 — 2025",
+        "date": "2023 – 2025",
         "role": "Développeur Fullstack",
         "org": "Kunagi"
       },
       {
-        "date": "Mai — Sept. 2022",
+        "date": "Mai – Sept. 2022",
         "role": "Développeur Web",
-        "org": "OsUp — prototype de rapprochement bancaire (Vue.js) et site vitrine"
+        "org": "OsUp, prototype de rapprochement bancaire (Vue.js) et site vitrine"
       },
       {
-        "date": "Mars — Juin 2021",
+        "date": "Mars – Juin 2021",
         "role": "Développeur Web",
-        "org": "JSL Judo — site associatif (Symfony)"
+        "org": "JSL Judo, site associatif (Symfony)"
       }
     ]
   },
@@ -102,7 +102,7 @@
     "items": [
       {
         "name": "StriveMatch",
-        "description": "Application façon « Tinder du sport » : un système de match par swipe, une carte des propositions de sessions géolocalisées par ville, la possibilité de rejoindre celles des autres membres et des échanges entre membres. Projet de master, soigné jusqu'à la mise au propre.",
+        "description": "Application façon « Tinder du sport » : un système de match par swipe, une carte des propositions de sessions géolocalisées par ville, la possibilité de rejoindre celles des autres membres et des échanges entre membres. Projet de master.",
         "href": "https://github.com/StriveMatch/strive",
         "linkLabel": "Voir le code"
       },
@@ -122,14 +122,14 @@
     },
     "diploma": {
       "label": "Diplôme",
-      "imageAlt": "Attestation de réussite — Mastère Expert Développement Web, Bordeaux Ynov Campus",
+      "imageAlt": "Attestation de réussite du Mastère Expert Développement Web, Bordeaux Ynov Campus",
       "downloadLabel": "Télécharger l'attestation (PDF)"
     }
   },
   "Languages": {
     "items": [
       { "name": "Français", "level": "Langue maternelle" },
-      { "name": "Anglais", "level": "Intermédiaire (B2) — langue de travail quotidienne à la FIBA" },
+      { "name": "Anglais", "level": "Intermédiaire (B2), langue de travail quotidienne à la FIBA" },
       { "name": "Espagnol", "level": "Notions (A2)" }
     ]
   },
@@ -137,9 +137,9 @@
     "emailLabel": "Email",
     "email": "adel.djahnit.pro@gmail.com",
     "locationLabel": "Lieu",
-    "location": "Divonne-les-Bains, France — permis G frontalier",
+    "location": "Divonne-les-Bains, France. Permis G frontalier",
     "availabilityLabel": "Disponibilité",
-    "availability": "Dès novembre 2026 — Suisse romande (Genève, Vaud)",
+    "availability": "Dès novembre 2026, en Suisse romande (Genève, Vaud)",
     "cvLabel": "Télécharger mon CV",
     "cvHref": "/cv-Adel-Djahnit.pdf",
     "linkedinLabel": "LinkedIn",

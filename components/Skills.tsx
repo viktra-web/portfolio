@@ -6,14 +6,14 @@ import { skillCategories, type SkillIcon } from "@/lib/skills";
 function SkillGlyph({ icon }: { icon: SkillIcon }) {
   if (icon.kind === "brand") {
     return (
-      <svg role="img" viewBox="0 0 24 24" width="22" height="22" fill={`#${icon.icon.hex}`}>
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
         <path d={icon.icon.path} />
       </svg>
     );
   }
 
   const { Icon } = icon;
-  return <Icon size={22} color="var(--text-muted)" />;
+  return <Icon size={20} aria-hidden="true" />;
 }
 
 export default function Skills() {
@@ -25,7 +25,7 @@ export default function Skills() {
       <div className="skills-list">
         {skillCategories.map((category) => (
           <div className="skill-row" key={category.label}>
-            <span className="skill-row-label mono">{category.label}</span>
+            <span className="skill-row-label">{category.label}</span>
             <div className="skill-row-items">
               {category.items.map((item) => (
                 <a
@@ -36,7 +36,7 @@ export default function Skills() {
                   rel="noopener noreferrer"
                 >
                   <SkillGlyph icon={item.icon} />
-                  <span className="skill-item-name mono">{item.name}</span>
+                  <span className="skill-item-name">{item.name}</span>
                 </a>
               ))}
             </div>

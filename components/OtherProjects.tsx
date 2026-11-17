@@ -22,7 +22,7 @@ export default function OtherProjects() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {project.linkLabel} →
+              {project.linkLabel}
             </a>
           </div>
         ))}

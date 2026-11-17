@@ -6,33 +6,35 @@ export default function Contact() {
   const tTitle = useTranslations("SectionTitles");
   const t = useTranslations("Contact");
   const footer = useTranslations()("Footer");
+  // Show the profile address itself: "LinkedIn" twice (label and value) said nothing.
+  const linkedin = t("linkedinHref").replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "");
 
   return (
     <section id="contact" className="section">
       <h2 className="section-title">{tTitle("contact")}</h2>
       <div className="contact-list">
         <div className="contact-item">
-          <span className="contact-label mono">{t("emailLabel")}</span>
+          <span className="contact-label">{t("emailLabel")}</span>
           <a className="contact-value" href={`mailto:${t("email")}`}>{t("email")}</a>
         </div>
         <div className="contact-item">
-          <span className="contact-label mono">{t("locationLabel")}</span>
+          <span className="contact-label">{t("locationLabel")}</span>
           <span className="contact-value">{t("location")}</span>
         </div>
         <div className="contact-item">
-          <span className="contact-label mono">{t("availabilityLabel")}</span>
+          <span className="contact-label">{t("availabilityLabel")}</span>
           <span className="contact-value">{t("availability")}</span>
         </div>
         <div className="contact-item">
-          <span className="contact-label mono">CV</span>
+          <span className="contact-label">CV</span>
           <a className="contact-value" href={t("cvHref")} download>{t("cvLabel")}</a>
         </div>
         <div className="contact-item">
-          <span className="contact-label mono">{t("linkedinLabel")}</span>
-          <a className="contact-value" href={t("linkedinHref")} target="_blank" rel="noopener noreferrer">{t("linkedinLabel")}</a>
+          <span className="contact-label">{t("linkedinLabel")}</span>
+          <a className="contact-value" href={t("linkedinHref")} target="_blank" rel="noopener noreferrer">{linkedin}</a>
         </div>
       </div>
-      <p className="footer mono">{footer}</p>
+      <p className="footer">{footer}</p>
     </section>
   );
 }

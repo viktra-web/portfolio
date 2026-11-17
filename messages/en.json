@@ -20,13 +20,13 @@
   },
   "Hero": {
     "title": "Adel Djahnit",
-    "role": "Fullstack Developer — React, .NET, Azure",
+    "role": "Fullstack Developer (React, .NET, Azure)",
     "pitch": "I build business applications for the International Basketball Federation in Mies, near Geneva. Based in Divonne-les-Bains, 20 minutes from Geneva, with a Swiss cross-border (permit G) status.",
     "ctaPrimary": "See my work",
     "ctaSecondary": "Download CV"
   },
   "SectionTitles": {
-    "projets": "Featured projects",
+    "projets": "Projects",
     "recommandation": "Recommendation",
     "experience": "Experience",
     "autres": "Other projects",
@@ -39,22 +39,22 @@
       {
         "id": "fiba",
         "name": "FIBA",
-        "period": "June 2026 — ongoing",
+        "period": "June 2026 – ongoing",
         "role": "Fullstack Developer",
         "context": "Previously, an organization requesting access to the federation's data API had to submit a paper form, followed by several rounds of correspondence with staff before access was granted.",
         "approach": "I am developing the automated subscription form intended to replace this process: the applicant submits their information, staff validates the request, and access is then provisioned automatically. Built in C# / ASP.NET Core on the backend and Next.js / React on the frontend, on the federation's Azure infrastructure.",
         "result": "The form is operational. It replaces a workflow that required several staff members for every request.",
         "stack": ["C#", "ASP.NET Core", "Next.js", "React", "Azure SQL Server", "Azure DevOps"],
         "linkHref": null,
-        "linkLabel": "Internal project — not public"
+        "linkLabel": "Internal project, not public"
       },
       {
         "id": "bonee",
         "name": "Bonee",
-        "period": "2024 — in production",
+        "period": "2025 – in production",
         "role": "Developer",
-        "context": "Mobile budgeting and savings application. I designed the mockups in collaboration with Melvil Cherruau, who reviewed and approved them, and developed the application in its entirety.",
-        "approach": "Built entirely in Flutter/Dart, a technology I learned specifically for this project, including data storage, validation logic, and in-app payment integration via RevenueCat.",
+        "context": "Mobile budgeting and savings application. I designed the mockups in collaboration with Melvil Cherruau, who reviewed and approved them, then built the whole application.",
+        "approach": "Built in Flutter/Dart, which I learned for this project. I set up the data storage, the validation logic and the in-app payments with RevenueCat.",
         "result": "Available on the App Store and Play Store for under two months, with around ten active users to date.",
         "stack": ["Flutter", "Dart", "RevenueCat", "iOS", "Android"],
         "linkHref": "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
@@ -63,38 +63,38 @@
       {
         "id": "kunagi",
         "name": "Kunagi",
-        "period": "2023 — 2025",
+        "period": "2023 – 2025",
         "role": "Fullstack Developer (work-study)",
         "context": "The application was already in production when I joined (React Native / Expo, Laravel backend). Over two years, I developed new features and fixed issues, often as the sole developer on the project.",
         "approach": "I independently handled iOS certificate renewals, and diagnosed and contained a critical incident on the notification queue that threatened to send thousands of messages at once.",
-        "result": "My contribution is mentioned in my letter of recommendation from Kunagi's founder (see below).",
+        "result": "Kunagi's founder mentions my work in her recommendation letter, further down.",
         "stack": ["React Native", "Expo", "Laravel", "REST API", "CI/CD"],
         "linkHref": null,
-        "linkLabel": "Internal project — not public"
+        "linkLabel": "Internal project, not public"
       }
     ]
   },
   "Experience": {
     "items": [
       {
-        "date": "June 2026 — ongoing",
+        "date": "June 2026 – ongoing",
         "role": "Fullstack Developer",
         "org": "FIBA, Mies (Switzerland)"
       },
       {
-        "date": "2023 — 2025",
+        "date": "2023 – 2025",
         "role": "Fullstack Developer",
         "org": "Kunagi"
       },
       {
-        "date": "May — Sept. 2022",
+        "date": "May – Sept. 2022",
         "role": "Web Developer",
-        "org": "OsUp — bank reconciliation prototype (Vue.js) and showcase website"
+        "org": "OsUp, bank reconciliation prototype (Vue.js) and showcase website"
       },
       {
-        "date": "March — June 2021",
+        "date": "March – June 2021",
         "role": "Web Developer",
-        "org": "JSL Judo — club website (Symfony)"
+        "org": "JSL Judo, club website (Symfony)"
       }
     ]
   },
@@ -102,7 +102,7 @@
     "items": [
       {
         "name": "StriveMatch",
-        "description": "A \"sports Tinder\" app: a swipe-based matching system, a map of session proposals geolocated by city, the option to join other members' sessions, and member-to-member messaging. Master's project, polished through to final delivery.",
+        "description": "A \"sports Tinder\" app: a swipe-based matching system, a map of session proposals geolocated by city, the option to join other members' sessions, and member-to-member messaging. Master's project.",
         "href": "https://github.com/StriveMatch/strive",
         "linkLabel": "View code"
       },
@@ -122,14 +122,14 @@
     },
     "diploma": {
       "label": "Diploma",
-      "imageAlt": "Certificate of completion — Master's in Web Development, Bordeaux Ynov Campus",
+      "imageAlt": "Certificate of completion, Master's in Web Development, Bordeaux Ynov Campus",
       "downloadLabel": "Download the certificate (PDF)"
     }
   },
   "Languages": {
     "items": [
       { "name": "French", "level": "Native" },
-      { "name": "English", "level": "Intermediate (B2) — daily working language at FIBA" },
+      { "name": "English", "level": "Intermediate (B2), daily working language at FIBA" },
       { "name": "Spanish", "level": "Basic (A2)" }
     ]
   },
@@ -137,9 +137,9 @@
     "emailLabel": "Email",
     "email": "adel.djahnit.pro@gmail.com",
     "locationLabel": "Location",
-    "location": "Divonne-les-Bains, France — Swiss cross-border permit (G)",
+    "location": "Divonne-les-Bains, France. Swiss cross-border permit (G)",
     "availabilityLabel": "Availability",
-    "availability": "From November 2026 — French-speaking Switzerland (Geneva, Vaud)",
+    "availability": "From November 2026, in French-speaking Switzerland (Geneva, Vaud)",
     "cvLabel": "Download CV",
     "cvHref": "/cv-Adel-Djahnit.pdf",
     "linkedinLabel": "LinkedIn",

@@ -23,7 +23,7 @@ function RecommendationCard({
 }) {
   return (
     <div className="recommendation-item">
-      <p className="recommendation-label mono">{item.label}</p>
+      <p className="recommendation-label">{item.label}</p>
       <div className="recommendation-frame">
         <Image
           className="recommendation-image"
