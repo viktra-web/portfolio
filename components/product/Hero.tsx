@@ -1,4 +1,5 @@
 import { productHero } from "@/lib/product";
+import { SERVICES_PHONE_DISPLAY, SERVICES_PHONE_TEL } from "@/lib/services";
 import Logo from "./Logo";
 
 /** Jura crest (La Dôle at ~70%) and low rolling hills, drawn on a 1440×340 box. */
@@ -31,9 +32,14 @@ export default function Hero() {
           <span className="pd-brand-role">par Adel Djahnit</span>
         </a>
         {/* Desktop only: on mobile the hero button below is the single call to action. */}
-        <a href="#contact" className="pd-btn pd-btn--primary pd-btn--sm pd-hero-bar-cta">
-          Devis gratuit
-        </a>
+        <div className="pd-hero-bar-actions">
+          <a href={SERVICES_PHONE_TEL} className="pd-hero-bar-phone">
+            {SERVICES_PHONE_DISPLAY}
+          </a>
+          <a href="#contact" className="pd-btn pd-btn--primary pd-btn--sm">
+            Devis gratuit
+          </a>
+        </div>
       </div>
 
       <div className="pd-wrap pd-hero-content">
@@ -45,6 +51,10 @@ export default function Hero() {
               Demander un devis gratuit
             </a>
             <p className="pd-hero-cta-note">{productHero.ctaNote}</p>
+            {/* Mobile: a plumber with a leak calls, he does not fill a form. */}
+            <p className="pd-hero-call">
+              Ou appelez le <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>
+            </p>
           </div>
           <a href="#tarifs" className="pd-textlink">
             Voir les tarifs

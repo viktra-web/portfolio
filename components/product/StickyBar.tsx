@@ -3,15 +3,19 @@
 import { useEffect, useState } from "react";
 
 /**
- * Mobile quick actions. Hidden (transform only) while the hero button or the contact
- * section is on screen, so only one "devis" button is visible at a time.
+ * Mobile quick actions. Hidden (transform only) while the hero button, the contact
+ * section or the footer is on screen, so only one "devis" button is visible at a time.
  */
 export default function StickyBar({ phoneTel }: { phoneTel: string }) {
   // Hidden on first paint: the page opens on the hero button.
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
-    const targets = [document.querySelector(".pd-hero-actions"), document.getElementById("contact")]
+    const targets = [
+      document.querySelector(".pd-hero-actions"),
+      document.getElementById("contact"),
+      document.querySelector(".pd-footer"),
+    ]
       .filter((el): el is Element => el !== null);
     if (targets.length === 0) {
       setHidden(false);
@@ -35,7 +39,7 @@ export default function StickyBar({ phoneTel }: { phoneTel: string }) {
       aria-hidden={hidden || undefined}
     >
       <a className="pd-btn pd-btn--secondary" href={phoneTel} tabIndex={hidden ? -1 : undefined}>
-        Appeler
+        Appeler Adel
       </a>
       <a className="pd-btn pd-btn--primary" href="#contact" tabIndex={hidden ? -1 : undefined}>
         Devis gratuit

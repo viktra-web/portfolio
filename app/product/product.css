@@ -382,10 +382,60 @@ html:has(.pd) {
   text-wrap: balance;
 }
 
-/* One call to action in the first mobile screen. */
+/* Phone and quote button in the top bar on desktop; on mobile the hero button and the
+   phone line under it are the first screen's actions. */
+.pd .pd-hero-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pd .pd-hero-bar-phone {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.pd .pd-hero-call {
+  font-size: var(--pd-s4);
+  line-height: 1.45;
+}
+
+.pd .pd-hero-call a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  white-space: nowrap;
+}
+
 @media (max-width: 899px) {
-  .pd .pd-hero-bar-cta {
+  .pd .pd-hero-bar-actions {
     display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .pd .pd-hero-call {
+    display: none;
+  }
+}
+
+/* Tablet: a smaller sun leaves less empty peach between the facts and the ridge. */
+@media (min-width: 600px) and (max-width: 899px) {
+  .pd .pd-hero {
+    --pd-sun-size: 46vw;
   }
 }
 
@@ -464,9 +514,9 @@ html:has(.pd) {
   .pd .pd-h1 {
     max-width: min(var(--pd-text-max), 8.5em);
     /* "Le site de votre" is ~7.2em wide: keep it on one line, so the H1 stays at 4 lines.
-       The height cap keeps the three facts inside the first screen on a laptop; its 6.25rem
+       The height cap keeps the three facts inside the first screen on a laptop; its 5.5rem
        floor stops the title from shrinking in a short browser window. */
-    font-size: min(var(--pd-s1), calc(var(--pd-text-max) / 7.25), max(11.5vh, 6.25rem));
+    font-size: min(var(--pd-s1), calc(var(--pd-text-max) / 7.25), max(11.5vh, 5.5rem));
   }
 
   .pd .pd-hero-content {
@@ -1554,6 +1604,11 @@ html:has(.pd) {
 
 .pd .pd-quote--large blockquote p {
   max-width: 22ch;
+}
+
+/* The source of the only real testimonial must be readable, not a footnote. */
+.pd .pd-quote--large .pd-quote-by {
+  font-size: var(--pd-s4);
 }
 
 /* The quote leads; the section title steps back to a smaller size. */
