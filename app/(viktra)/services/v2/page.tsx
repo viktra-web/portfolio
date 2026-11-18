@@ -3,6 +3,7 @@ import Logo from "@/components/viktra/Logo";
 import TradeDemo from "@/components/viktra/TradeDemo";
 import WhatsAppLink from "@/components/viktra/WhatsAppLink";
 import DayStrip from "@/components/v2/DayStrip";
+import SearchCheck from "@/components/v2/SearchCheck";
 import Storefront from "@/components/v2/Storefront";
 import { KUNAGI_QUOTE, aboutCopy, productHero, storyShared, storyTrades } from "@/lib/product";
 import {
@@ -75,7 +76,14 @@ export default function V2Home() {
 
         <div className="v2-wrap v2-hero" id="contenu">
           <div className="v2-hero-text">
-            <h1 className="v2-h1">Ouvert, même quand vous êtes fermé.</h1>
+            <h1 className="v2-h1">Vos clients vous cherchent sur Google. Vous trouvent-ils&nbsp;?</h1>
+            <p className="v2-lead">
+              Faites le test, comme un client : tapez votre métier, choisissez votre ville.
+            </p>
+            <SearchCheck />
+          </div>
+          <div className="v2-hero-answer">
+            <p className="v2-answer-title">Vous n&apos;y êtes pas, ou mal&nbsp;? C&apos;est mon travail.</p>
             <p className="v2-lead">{productHero.lead}</p>
             <div className="v2-actions">
               <WhatsAppLink className="v2-btn v2-btn--red">Écrire à Adel sur WhatsApp</WhatsAppLink>
@@ -85,7 +93,6 @@ export default function V2Home() {
             </div>
             <p className="v2-note">{productHero.ctaNote}</p>
           </div>
-          <Storefront />
         </div>
       </header>
 
@@ -93,6 +100,10 @@ export default function V2Home() {
         {/* ---------- The enamel plaque: the promise, measured over a day ---------- */}
         <section className="v2-section v2-street" aria-labelledby="journee">
           <div className="v2-wrap">
+            <div className="v2-split v2-slogan">
+              <h2 className="v2-h1 v2-h1--slogan">Ouvert, même quand vous êtes fermé.</h2>
+              <Storefront />
+            </div>
             <div className="v2-plaque">
               <h2 className="v2-h2" id="journee">
                 Votre boutique ferme à 19 h. Votre site, jamais.

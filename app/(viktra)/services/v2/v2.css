@@ -10,11 +10,10 @@
   --nuit: #14294f;
   --nuit-2: #0d1d3b;
   --nuit-3: #1f3d6e;
-  --lampe: #ffc83d;
+  /* Trois couleurs seulement : nuit, blanc, rouge. */
+  --gris: #eef1f5;
   --rouge: #d7372b;
   --rouge-2: #b52a1f;
-  --ciel: #cfe7f6;
-  --aube: #ffdcc8;
   --blanc: #ffffff;
   --trait: rgba(20, 41, 79, 0.16);
   --pad: clamp(1.25rem, 5vw, 2.75rem);
@@ -28,12 +27,12 @@
 }
 
 .v2 ::selection {
-  background: var(--lampe);
-  color: var(--nuit);
+  background: var(--rouge);
+  color: var(--blanc);
 }
 
 .v2 :focus-visible {
-  outline: 3px solid var(--lampe);
+  outline: 3px solid var(--rouge);
   outline-offset: 3px;
 }
 
@@ -57,8 +56,8 @@
   top: -4rem;
   z-index: 30;
   padding: 0.6rem 1rem;
-  background: var(--lampe);
-  color: var(--nuit);
+  background: var(--nuit);
+  color: var(--blanc);
   border-radius: 0.5rem;
 }
 
@@ -340,7 +339,7 @@
 .v2-c-goods { fill: #2b4f86; }
 .v2-c-door { fill: var(--nuit-2); }
 .v2-c-door-glass { fill: #0a1830; }
-.v2-c-knob { fill: var(--lampe); }
+.v2-c-knob { fill: var(--blanc); }
 .v2-c-plate { fill: var(--blanc); }
 .v2-c-plate-text {
   fill: var(--nuit);
@@ -374,7 +373,7 @@
   height: 1.1rem;
   margin: 0 auto;
   width: 60%;
-  border: 2px solid var(--lampe);
+  border: 2px solid var(--blanc);
   border-bottom: 0;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
 }
@@ -410,8 +409,8 @@
 }
 
 .v2-sign-back {
-  background: var(--lampe);
-  color: var(--nuit);
+  background: var(--rouge);
+  color: var(--blanc);
   transform: rotateY(180deg);
 }
 
@@ -555,7 +554,7 @@
 }
 
 .v2-strip-bar--shop {
-  background: var(--lampe);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .v2-strip-bar--site {
@@ -627,7 +626,8 @@
   font-weight: 800;
   font-variation-settings: "wdth" 75;
   line-height: 1;
-  color: var(--lampe);
+  color: var(--blanc);
+  opacity: 0.5;
   margin-bottom: 0.5rem;
 }
 
@@ -646,7 +646,7 @@
 /* ---------- Morning: the demo ---------- */
 
 .v2-morning {
-  background: var(--ciel);
+  background: var(--gris);
 }
 
 .v2 .v-pill span {
@@ -721,14 +721,15 @@
 }
 
 .v2-board-main a {
-  background: var(--lampe);
+  background: var(--nuit);
+  color: var(--blanc);
   margin: 0 calc(var(--pad) * -1);
   padding: 2rem var(--pad);
   border-bottom: 0;
 }
 
 .v2-board-main .v2-board-price {
-  color: var(--nuit);
+  color: var(--blanc);
 }
 
 @media (min-width: 920px) {
@@ -752,7 +753,7 @@
 /* ---------- The counter: Adel and his work ---------- */
 
 .v2-counter {
-  background: var(--aube);
+  background: var(--gris);
 }
 
 .v2-counter .v2-split {
@@ -855,7 +856,12 @@
 /* ---------- Dawn: the call to action ---------- */
 
 .v2-dawn {
-  background: var(--lampe);
+  background: var(--nuit);
+  color: var(--blanc);
+}
+
+.v2-dawn .v2-lead {
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .v2-h1--cta {
@@ -923,5 +929,133 @@
 @media (min-width: 920px) {
   .v2-bar {
     display: none;
+  }
+}
+
+.v2-dawn + * ,
+.v2-foot {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Hero « signez ici » : the visitor checks Google himself ---------- */
+
+.v2-hero .v2-h1 {
+  font-size: clamp(2.75rem, 10.5vw, 5.5rem);
+}
+
+.v2-check {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+  max-width: 34rem;
+}
+
+.v2-check-fields {
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 560px) {
+  .v2-check-fields {
+    grid-template-columns: 1.3fr 1fr;
+  }
+}
+
+.v2-check-field {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.v2-check-field input,
+.v2-check-field select {
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--blanc);
+  border-radius: 0.75rem;
+  background: var(--blanc);
+  color: var(--nuit);
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.v2-check-field select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2314294F' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.v2-check-field input::placeholder {
+  color: rgba(20, 41, 79, 0.5);
+  font-weight: 400;
+}
+
+.v2-btn--white {
+  justify-self: start;
+  background: var(--blanc);
+  color: var(--nuit);
+  border: 0;
+  cursor: pointer;
+}
+
+.v2-btn--white:hover {
+  background: var(--gris);
+}
+
+.v2-check-query {
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.v2-check-query strong {
+  color: var(--blanc);
+}
+
+.v2-hero-answer {
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border-radius: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.v2-answer-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 6vw, 2.5rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 75;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.v2-hero-answer .v2-lead {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.v2-hero {
+  align-items: start !important;
+}
+
+/* Slogan + storefront, before the plaque. */
+.v2-slogan {
+  margin-bottom: clamp(3rem, 8vw, 5rem);
+}
+
+.v2-h1--slogan {
+  color: var(--blanc);
+}
+
+@media (min-width: 920px) {
+  .v2-hero {
+    grid-template-columns: 1.35fr 1fr !important;
+  }
+
+  .v2-hero .v2-h1 {
+    font-size: clamp(3.5rem, 5.4vw, 5rem);
   }
 }
