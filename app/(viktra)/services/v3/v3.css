@@ -2,7 +2,7 @@
  * Viktra v3 — « Fiche technique ».
  * Le sérieux vient des preuves (vraie recherche Google, mesures datées), pas des effets.
  * Identité Viktra : Schibsted Grotesk, fond jour, texte encre, soleil = seul accent.
- * Le soir (19 h – 7 h à Genève), le haut de page passe en léman : selon l'heure, jamais au défilement.
+ * La page reste claire à toute heure (mode soir retiré le 19/11/2026).
  */
 
 .v3 {
@@ -361,16 +361,6 @@
   }
 }
 
-/* Evening (set by LiveBar from the time in Geneva). Colours only: nothing moves. */
-html[data-moment="soir"] .v3-top,
-html[data-moment="soir"] .v3-hero {
-  background: var(--leman);
-  color: var(--craie);
-}
-
-html[data-moment="soir"] .v3-burger nav {
-  color: var(--encre);
-}
 
 /* ---------- The client test ---------- */
 
@@ -891,10 +881,6 @@ html[data-moment="soir"] .v3-burger nav {
   font-weight: 600;
 }
 
-html[data-moment="soir"] .v3-facts,
-html[data-moment="soir"] .v3-facts li {
-  border-color: rgba(243, 241, 236, 0.2);
-}
 
 .v3-hero-grid {
   align-items: center !important;
@@ -970,4 +956,13 @@ html[data-moment="soir"] .v3-facts li {
   .v3-done {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.v3-call {
+  margin-top: 1rem;
+  font-size: 1.0625rem;
+}
+
+.v3-call a {
+  font-weight: 700;
 }

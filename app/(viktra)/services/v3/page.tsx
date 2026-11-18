@@ -84,10 +84,10 @@ export default function V3Home() {
                 <WhatsAppLink className="v3-btn v3-btn--sun">
                   Écrire à Adel sur WhatsApp
                 </WhatsAppLink>
-                <a className="v3-btn v3-btn--line" href={SERVICES_PHONE_TEL}>
-                  {SERVICES_PHONE_DISPLAY}
-                </a>
               </div>
+              <p className="v3-call">
+                Ou appelez le <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>
+              </p>
               <ul className="v3-facts">
                 {productHero.facts.map((fact) => (
                   <li key={fact}>{fact}</li>

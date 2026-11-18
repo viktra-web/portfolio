@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-/** Hour in Geneva/Divonne, whatever the visitor's own time zone. */
+/** Hour in the Pays de Gex / Geneva, whatever the visitor's own time zone. */
 function now() {
   const parts = new Intl.DateTimeFormat("fr-FR", {
     timeZone: "Europe/Zurich",
@@ -17,7 +17,7 @@ function now() {
 
 /**
  * Live line at the top of the page: the local time, and what it means for a shop.
- * Evening (19 h – 7 h): the hero turns to its evening colours via <html data-moment>.
+ * The page itself always stays light (evening mode removed on 19/11/2026).
  * Rendered after mount only (no hydration mismatch); updated every 30 s, never on scroll.
  */
 export default function LiveBar() {
@@ -25,16 +25,11 @@ export default function LiveBar() {
 
   useEffect(() => {
     const tick = () => {
-      const t = now();
-      setTime(t);
-      document.documentElement.dataset.moment = t.hour >= 19 || t.hour < 7 ? "soir" : "jour";
+      setTime(now());
     };
     tick();
     const id = window.setInterval(tick, 30_000);
-    return () => {
-      window.clearInterval(id);
-      delete document.documentElement.dataset.moment;
-    };
+    return () => window.clearInterval(id);
   }, []);
 
   const evening = time ? time.hour >= 19 || time.hour < 7 : false;
@@ -42,7 +37,7 @@ export default function LiveBar() {
   return (
     <p className="v3-live" aria-live="off">
       <span className="v3-live-dot" aria-hidden="true" />
-      <span className="v3-live-place">Divonne-les-Bains</span>
+      <span className="v3-live-place">Pays de Gex</span>
       <span className="v3-live-time">{time ? time.label : " "}</span>
       <span className="v3-live-text">
         {time

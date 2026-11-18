@@ -28,9 +28,9 @@ Vérifié à chaque étape : `npx tsc --noEmit`, `next lint`, `next build` (avec
 - Publier la maquette Globalpronet : interdit avant le RDV client du 05/12 (et ses photos sont des photos de banque d'images).
 
 ## 3. En cours / pas tranché
-- **V3 (`/services/v3`)** : Adel trouve que ça ne va toujours pas, « il y a encore beaucoup de taff ». Doute non levé sur sa 3e capture : il n'aime pas le **numéro en bouton** à côté de WhatsApp ou le **mode soir** (fond léman après 19 h). Recommandation faite : numéro en simple lien sous WhatsApp, et retirer le mode soir.
-- Trois versions coexistent sur la branche : `/services` (multi-pages, identité Viktra), `/services/v2`, `/services/v3`. Aucune n'est choisie.
-- Code mort à nettoyer quand une version sera choisie : `components/v2/`, `components/v3/ClientTest.tsx`, `app/(viktra)/services/v2`, `v3`.
+- **V3 (`/services/v3`)** : Adel trouve que ça ne va toujours pas, « il y a encore beaucoup de taff ». Corrigé à la fin de la session (commit suivant cette passation) : numéro en simple lien sous WhatsApp (plus en bouton), **mode soir retiré** (page toujours claire), bandeau horaire « Pays de Gex » au lieu de « Divonne-les-Bains ».
+- Deux versions coexistent sur la branche : `/services` (multi-pages, identité Viktra) et `/services/v3` (accueil seulement). Aucune n'est choisie. **V2 supprimée** (rejetée), ainsi que le test Google (`ClientTest`, `SearchCheck`).
+- Meta titles SEO : celui de l'accueil `/services` contient encore « Divonne-les-Bains » (choix de l'agent SEO pour la recherche locale, pas visible sur la page). À rediscuter avec Adel au regard de la règle « pas de ville imposée ».
 
 ## 4. Prochaine étape
 1. **Repartir de ce qu'Adel veut voir, pas d'un concept** : lui demander 2-3 sites de développeurs qu'il aime (il ne l'a pas encore fait) et ce qui cloche précisément dans la v3. Utiliser `grilling` (questions avec réponse recommandée), pas de nouvelle version avant.
