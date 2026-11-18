@@ -100,6 +100,10 @@ export default function ContactForm({
   const [state, formAction] = useFormState(action, initialState);
   const [previousState, setPreviousState] = useState(state);
   const [formKey, setFormKey] = useState(0);
+  // Time the form was shown: the server ignores forms sent in under 3 seconds.
+  // Set after mount (not during render) to avoid a hydration mismatch.
+  const [renderedAt, setRenderedAt] = useState(0);
+  useEffect(() => setRenderedAt(Date.now()), []);
   const statusRef = useRef<HTMLDivElement>(null);
 
   useOfferLinks(besoinOptions);
@@ -126,7 +130,7 @@ export default function ContactForm({
       >
         <h3 className="pd-status-title">Merci, c&apos;est bien reçu.</h3>
         <p>
-          Je vous réponds sous 24 heures, par téléphone ou par email, pour fixer un rendez-vous de
+          Je vous réponds le jour même ou le lendemain, par téléphone ou par email, pour fixer un rendez-vous de
           20 minutes, chez vous ou au téléphone. Rien à préparer.
         </p>
       </div>
@@ -291,6 +295,8 @@ export default function ContactForm({
             autoComplete="off"
           />
         </div>
+
+        <input type="hidden" name="t" value={renderedAt || ""} />
 
         <SubmitButton />
 

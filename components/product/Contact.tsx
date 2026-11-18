@@ -20,7 +20,7 @@ export default function Contact() {
             Dites-moi ce que vous faites.
           </h2>
           <p className="pd-body">
-            Je vous réponds sous 24 heures. Le premier rendez-vous est gratuit et sans engagement.
+            Je vous réponds le jour même ou le lendemain. Le premier rendez-vous est gratuit et sans engagement.
           </p>
         </div>
         <div className="pd-contact-grid">

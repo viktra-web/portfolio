@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import {
   ACTIVITE_OPTIONS,
   BESOIN_OPTIONS,
@@ -10,6 +11,24 @@ import {
 
 const PHONE_PATTERN = /^\+?\d{6,15}$/;
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Best effort against bursts: per server instance, reset when the instance restarts.
+// A real limit needs the Vercel firewall (rate limiting rule on POST /services).
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
+const recentByIp = new Map<string, number[]>();
+
+function tooManyRequests(ip: string): boolean {
+  const now = Date.now();
+  const recent = (recentByIp.get(ip) ?? []).filter((time) => now - time < RATE_WINDOW_MS);
+  recent.push(now);
+  recentByIp.set(ip, recent);
+  if (recentByIp.size > 1000) recentByIp.clear();
+  return recent.length > RATE_MAX;
+}
+
+// A person needs more than a few seconds to fill the form; most bots do not.
+const MIN_FILL_MS = 3000;
 
 function readField(formData: FormData, name: string): string {
   const value = formData.get(name);
@@ -31,7 +50,12 @@ export async function sendContactRequest(
   prev: ContactState,
   formData: FormData
 ): Promise<ContactState> {
+  // Honeypot or form sent too fast: answer "success" so the bot learns nothing.
   if (readField(formData, "entreprise_site")) {
+    return { status: "success" };
+  }
+  const renderedAt = Number(readField(formData, "t"));
+  if (renderedAt && Date.now() - renderedAt < MIN_FILL_MS) {
     return { status: "success" };
   }
 
@@ -73,18 +97,29 @@ export async function sendContactRequest(
   const activiteLabel = optionLabel(ACTIVITE_OPTIONS, values.activite);
   const besoinLabel = optionLabel(BESOIN_OPTIONS, values.besoin);
 
+  // Empty lines are left out (the form no longer asks for the activity).
   const summary = [
-    `Nom : ${values.nom}`,
-    `Téléphone : ${values.telephone}`,
-    `Email : ${values.email}`,
-    `Activité : ${activiteLabel}`,
-    `Besoin : ${besoinLabel}`,
-  ].join("\n");
+    ["Nom", values.nom],
+    ["Téléphone", values.telephone],
+    ["Email", values.email],
+    ["Activité", activiteLabel],
+    ["Besoin", besoinLabel],
+  ]
+    .filter(([, value]) => value)
+    .map(([label, value]) => `${label} : ${value}`)
+    .join("\n");
+  // No line break in a mail subject.
+  const subjectName = values.nom.replace(/[\r\n]+/g, " ");
 
   const mailtoBody = `${summary}\n\n${values.message}`.slice(0, 1500);
   const mailto = `mailto:${SERVICES_EMAIL}?subject=${encodeURIComponent(
     "Demande de devis — site internet"
   )}&body=${encodeURIComponent(mailtoBody)}`;
+
+  const ip = (headers().get("x-forwarded-for") ?? "").split(",")[0].trim() || "inconnu";
+  if (tooManyRequests(ip)) {
+    return { status: "error", values, mailto };
+  }
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
@@ -103,7 +138,7 @@ export async function sendContactRequest(
         from: process.env.RESEND_FROM ?? "Formulaire site <onboarding@resend.dev>",
         to: [process.env.CONTACT_TO ?? SERVICES_EMAIL],
         ...(values.email ? { reply_to: values.email } : {}),
-        subject: `Nouvelle demande — ${values.nom}${besoinLabel ? " (" + besoinLabel + ")" : ""}`,
+        subject: `Nouvelle demande — ${subjectName}${besoinLabel ? " (" + besoinLabel + ")" : ""}`,
         text: `${summary}\n\nMessage :\n${values.message}\n\nEnvoyé depuis le formulaire /services`,
       }),
       signal: AbortSignal.timeout(10000),

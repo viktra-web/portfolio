@@ -11,7 +11,7 @@ export const productHero = {
   /** Price, delay and ownership, all from lib/services.ts (offers, items, guarantees). */
   facts: [
     "Site vitrine dès 690 €, prix fixé au devis",
-    "En ligne en 2 semaines environ",
+    "En ligne 2 semaines environ après vos textes et photos",
     "Le nom de domaine est à votre nom",
   ],
 };

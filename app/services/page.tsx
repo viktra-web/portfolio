@@ -14,7 +14,7 @@ import { SERVICES_PHONE_TEL, serviceStory } from "@/lib/services";
 
 const title = "Création de site internet à Divonne-les-Bains | Viktra";
 const description =
-  "Sites vitrines et fiches Google pour les commerces, artisans et indépendants du Pays de Gex, de Nyon et de Genève. Prix fixe, rendez-vous chez vous.";
+  "Sites vitrines et fiches Google pour les commerces, artisans et indépendants du Pays de Gex, de Nyon et de Genève. Prix fixe, premier rendez-vous gratuit.";
 
 export const metadata: Metadata = {
   title,

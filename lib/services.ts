@@ -156,7 +156,7 @@ export const serviceWork: ServiceWorkItem[] = [
     name: "Bonee",
     type: "Projet personnel — application mobile",
     description:
-      "Application de budget que j'ai conçue et développée seul, publiée sur l'App Store et le Google Play Store.",
+      "Application de budget que j'ai co-développée, publiée sur l'App Store et le Google Play Store.",
     href: "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
     linkLabel: "Voir sur l'App Store →",
   },
@@ -169,7 +169,7 @@ export const serviceSteps: ServiceStep[] = [
   },
   {
     title: "Je vous envoie un devis",
-    text: "Un prix fixe, sans surprise. Un acompte de 40 % lance le projet, le solde est payé à la livraison.",
+    text: "Un prix fixe. Un acompte de 40 % lance le projet, le solde est payé à la livraison.",
   },
   {
     title: "Je crée votre site",
