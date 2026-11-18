@@ -23,7 +23,7 @@ Vérifié à chaque étape : `npx tsc --noEmit`, `next lint`, `next build` (avec
 - Une seule page (one-page) : il veut un **vrai site multi-pages** de développeur (référence : brune-mathelie.fr).
 - V2 « vitrine de nuit » : trop illustré, trop de couleurs, « pas l'univers de l'informatique ».
 - Le test « tapez votre métier → vraie recherche Google » en haut de page, puis même plus bas : « nul ». À garder seulement comme outil de **prospection** (Adel fait la recherche et montre la capture), éventuellement dans le CRM.
-- Une ville imposée dans un titre (« … à Divonne ») : la zone est tout le Pays de Gex, Nyon et Genève.
+- **Pas de ville imposée dans un titre** (comme « … à Divonne ») : Adel n'en veut pas. La zone est tout le Pays de Gex, Nyon et Genève ; une ville n'apparaît que si c'est le visiteur qui la choisit.
 - Fausses réalisations : **Globalpronet = visibilité Google seulement** (textes réécrits), pas un site créé ; **JSL Judo : site fait, pas mis en ligne par le club**, pas de lien. Pas de fenêtres de navigateur vides ni de « [à mesurer] » affichés.
 - Publier la maquette Globalpronet : interdit avant le RDV client du 05/12 (et ses photos sont des photos de banque d'images).
 
