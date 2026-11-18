@@ -1,0 +1,73 @@
+import type { Metadata } from "next";
+import CtaBand from "@/components/viktra/CtaBand";
+import PageIntro from "@/components/viktra/PageIntro";
+import Shell from "@/components/viktra/Shell";
+import { ABOUT_PHOTO, KUNAGI_QUOTE } from "@/lib/product";
+import { serviceGuarantees } from "@/lib/services";
+import { path } from "@/lib/site";
+import { pageTexts } from "@/lib/viktra-pages";
+import { PersonJsonLd } from "@/components/viktra/seo/PageJsonLd";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
+
+const t = pageTexts.aPropos;
+
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/a-propos",
+  title: t.metaTitle,
+  description: t.metaDescription,
+});
+
+export default function AProposPage() {
+  return (
+    <Shell>
+      <PageIntro h1={t.h1} lead={t.lead} />
+      <section className="v-section" aria-label="Adel Djahnit">
+        <div className={ABOUT_PHOTO ? "v-wrap v-split" : "v-wrap v-narrow"}>
+          {ABOUT_PHOTO ? (
+            // eslint-disable-next-line @next/next/no-img-element -- static, already sized
+            <img
+              className="v-photo"
+              src={ABOUT_PHOTO.src}
+              alt={ABOUT_PHOTO.alt}
+              width={ABOUT_PHOTO.width}
+              height={ABOUT_PHOTO.height}
+            />
+          ) : null}
+          <div>
+            <figure className="v-quote v-quote--first">
+              <blockquote>
+                <p>{"« " + KUNAGI_QUOTE.text + " »"}</p>
+              </blockquote>
+              <figcaption className="v-small">
+                {KUNAGI_QUOTE.author}{" "}
+                <a href={KUNAGI_QUOTE.href} target="_blank" rel="noopener">
+                  {KUNAGI_QUOTE.linkLabel}
+                </a>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section className="v-section v-calcaire" aria-labelledby="engagements">
+        <div className="v-wrap">
+          <h2 className="v-h2" id="engagements">
+            Mes engagements
+          </h2>
+          <ul className="v-guarantees">
+            {serviceGuarantees.map((item) => (
+              <li key={item.title}>
+                <h3 className="v-h3">{item.title}</h3>
+                <p>{item.text}</p>
+              </li>
+            ))}
+          </ul>
+          <a className="v-link" href={path("/realisations")}>
+            Voir mes réalisations
+          </a>
+        </div>
+      </section>
+      <CtaBand />
+      <PersonJsonLd />
+    </Shell>
+  );
+}

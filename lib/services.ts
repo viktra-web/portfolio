@@ -77,9 +77,16 @@ export const SERVICES_MAILTO = `mailto:${SERVICES_EMAIL}?subject=${encodeURIComp
 
 export const SERVICES_PHONE_DISPLAY = "06 52 33 87 13";
 export const SERVICES_PHONE_TEL = "tel:+33652338713";
-export const SERVICES_WHATSAPP_URL: string | null =
-  "https://wa.me/33652338713?text=" +
-  encodeURIComponent("Bonjour Adel, je vous contacte depuis votre site. Mon activité : ");
+/**
+ * WhatsApp link with a pre-filled message. "depuis votre site" lets Adel count
+ * the requests that come from this page (no tracker).
+ */
+export function whatsappUrl({ offre, activite }: { offre?: string; activite?: string } = {}) {
+  const parts = ["Bonjour Adel, je vous contacte depuis votre site."];
+  if (offre) parts.push(`Je suis intéressé par : ${offre}.`);
+  parts.push(`Mon activité : ${activite ?? ""}`);
+  return "https://wa.me/33652338713?text=" + encodeURIComponent(parts.join(" "));
+}
 
 export const SERVICES_AREA = [
   "Divonne-les-Bains",
@@ -139,7 +146,7 @@ export const serviceOffers: ServiceOffer[] = [
 export const serviceWork: ServiceWorkItem[] = [
   {
     name: "Globalpronet",
-    type: "Entreprise de nettoyage — Genève",
+    type: "Entreprise de nettoyage, Genève",
     description:
       "Réécriture des textes du site pour qu'il soit mieux référencé sur Google. Le design et le site existants n'ont pas été modifiés.",
     href: "https://globalpronet.ch",
@@ -154,9 +161,9 @@ export const serviceWork: ServiceWorkItem[] = [
   },
   {
     name: "Bonee",
-    type: "Projet personnel — application mobile",
+    type: "Projet personnel, application mobile",
     description:
-      "Application de budget que j'ai conçue et développée seul, publiée sur l'App Store et le Google Play Store.",
+      "Application de budget que j'ai co-développée, publiée sur l'App Store et le Google Play Store.",
     href: "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
     linkLabel: "Voir sur l'App Store →",
   },
@@ -169,7 +176,7 @@ export const serviceSteps: ServiceStep[] = [
   },
   {
     title: "Je vous envoie un devis",
-    text: "Un prix fixe, sans surprise. Un acompte de 40 % lance le projet, le solde est payé à la livraison.",
+    text: "Un prix fixe. Un acompte de 40 % lance le projet, le solde est payé à la livraison.",
   },
   {
     title: "Je crée votre site",
@@ -184,7 +191,7 @@ export const serviceSteps: ServiceStep[] = [
 export const serviceGuarantees: ServiceGuarantee[] = [
   {
     title: "Un prix fixe",
-    text: "Le prix du devis est celui que vous payez. Pas de frais cachés.",
+    text: "Le prix du devis est celui que vous payez.",
   },
   {
     title: "Un seul interlocuteur",

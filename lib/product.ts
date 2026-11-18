@@ -1,4 +1,4 @@
-// Copy and data for the /product test page ("L'affiche du matin").
+// Copy and data for the Viktra page on /services ("L'affiche du matin").
 // Validated texts (offers, steps, FAQ, guarantees, story chapters) stay in lib/services.ts
 // and are imported by the server components; this file only holds what is new.
 import { storyMockup } from "@/lib/services";
@@ -11,7 +11,7 @@ export const productHero = {
   /** Price, delay and ownership, all from lib/services.ts (offers, items, guarantees). */
   facts: [
     "Site vitrine dès 690 €, prix fixé au devis",
-    "En ligne en 2 semaines environ",
+    "En ligne 2 semaines environ après vos textes et photos",
     "Le nom de domaine est à votre nom",
   ],
 };
@@ -155,7 +155,7 @@ export const BONEE_SHOTS: ProductImage[] = [
 export const aboutCopy = {
   title: "Vous parlez à celui qui fait.",
   text: "Je suis Adel Djahnit. On se rencontre en personne, et c'est moi qui crée votre site, du premier rendez-vous à la mise en ligne.",
-  /** Already said by the Suivi offer and the contact form: not repeated on /product. */
+  /** Already said by the Suivi offer and the contact form: not repeated on /services. */
   hiddenGuarantees: ["Sans engagement"],
 };
 
