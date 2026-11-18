@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { whatsappUrl } from "@/lib/services";
 
 /**
  * Mobile quick actions. Hidden (transform only) while the hero button, the contact
@@ -38,11 +39,17 @@ export default function StickyBar({ phoneTel }: { phoneTel: string }) {
       data-hidden={hidden || undefined}
       aria-hidden={hidden || undefined}
     >
-      <a className="pd-btn pd-btn--secondary" href={phoneTel} tabIndex={hidden ? -1 : undefined}>
-        Appeler Adel
+      <a
+        className="pd-btn pd-btn--primary"
+        href={whatsappUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={hidden ? -1 : undefined}
+      >
+        WhatsApp
       </a>
-      <a className="pd-btn pd-btn--primary" href="#contact" tabIndex={hidden ? -1 : undefined}>
-        Devis gratuit
+      <a className="pd-btn pd-btn--secondary" href={phoneTel} tabIndex={hidden ? -1 : undefined}>
+        Appeler
       </a>
     </nav>
   );

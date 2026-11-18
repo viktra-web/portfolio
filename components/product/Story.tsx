@@ -5,6 +5,7 @@ import MotionProvider from "@/components/product/MotionProvider";
 import Phone from "@/components/product/Phone";
 import WordMask from "@/components/product/WordMask";
 import type { StoryShared, StoryTrade } from "@/lib/product";
+import { whatsappUrl } from "@/lib/services";
 
 export interface StoryChapter {
   title: string;
@@ -62,6 +63,7 @@ export default function Story({
       <noscript dangerouslySetInnerHTML={{ __html: NO_JS_CSS }} />
       <div className="pd-wrap">
         <WordMask id="story-title" text="Votre vitrine se construit sous vos yeux." />
+        <p className="pd-body pd-story-slogan">Ouvert, même quand vous êtes fermé.</p>
       </div>
 
       <div className="pd-track">
@@ -100,6 +102,15 @@ export default function Story({
                 <Phone trade={trade} shared={shared} state={active} interacted={interacted} />
               </MotionProvider>
               <p className="pd-caption">{shared.caption}</p>
+              <a
+                className="pd-textlink pd-story-cta"
+                // The trade picked in the demo fills the message, once the visitor chose one.
+                href={whatsappUrl(interacted ? { activite: trade.label.toLowerCase() } : {})}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Parlez-moi de votre activité sur WhatsApp
+              </a>
             </div>
 
             <div className="pd-chapter-box">

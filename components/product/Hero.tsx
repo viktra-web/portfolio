@@ -1,5 +1,5 @@
 import { productHero } from "@/lib/product";
-import { SERVICES_PHONE_DISPLAY, SERVICES_PHONE_TEL } from "@/lib/services";
+import { SERVICES_PHONE_DISPLAY, SERVICES_PHONE_TEL, whatsappUrl } from "@/lib/services";
 import Logo from "./Logo";
 
 /** Jura crest (La Dôle at ~70%) and low rolling hills, drawn on a 1440×340 box. */
@@ -36,8 +36,13 @@ export default function Hero() {
           <a href={SERVICES_PHONE_TEL} className="pd-hero-bar-phone">
             {SERVICES_PHONE_DISPLAY}
           </a>
-          <a href="#contact" className="pd-btn pd-btn--primary pd-btn--sm">
-            Devis gratuit
+          <a
+            href={whatsappUrl()}
+            className="pd-btn pd-btn--primary pd-btn--sm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
           </a>
         </div>
       </div>
@@ -47,8 +52,14 @@ export default function Hero() {
         <p className="pd-hero-lead">{productHero.lead}</p>
         <div className="pd-hero-actions">
           <div className="pd-hero-cta">
-            <a href="#contact" className="pd-btn pd-btn--primary">
-              Demander un devis gratuit
+            {/* WhatsApp first: the people this page talks to answer messages, not forms. */}
+            <a
+              href={whatsappUrl()}
+              className="pd-btn pd-btn--primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Écrire à Adel sur WhatsApp
             </a>
             <p className="pd-hero-cta-note">{productHero.ctaNote}</p>
             {/* Mobile: a plumber with a leak calls, he does not fill a form. */}

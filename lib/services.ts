@@ -77,9 +77,16 @@ export const SERVICES_MAILTO = `mailto:${SERVICES_EMAIL}?subject=${encodeURIComp
 
 export const SERVICES_PHONE_DISPLAY = "06 52 33 87 13";
 export const SERVICES_PHONE_TEL = "tel:+33652338713";
-export const SERVICES_WHATSAPP_URL: string | null =
-  "https://wa.me/33652338713?text=" +
-  encodeURIComponent("Bonjour Adel, je vous contacte depuis votre site. Mon activité : ");
+/**
+ * WhatsApp link with a pre-filled message. "depuis votre site" lets Adel count
+ * the requests that come from this page (no tracker).
+ */
+export function whatsappUrl({ offre, activite }: { offre?: string; activite?: string } = {}) {
+  const parts = ["Bonjour Adel, je vous contacte depuis votre site."];
+  if (offre) parts.push(`Je suis intéressé par : ${offre}.`);
+  parts.push(`Mon activité : ${activite ?? ""}`);
+  return "https://wa.me/33652338713?text=" + encodeURIComponent(parts.join(" "));
+}
 
 export const SERVICES_AREA = [
   "Divonne-les-Bains",

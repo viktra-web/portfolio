@@ -52,9 +52,13 @@ function BoneeShots() {
 }
 
 export default function Work() {
-  // Bonee opens the list (validated order); its App Store screenshots sit in its row.
+  // Client work first, Bonee (a personal app) last; its App Store screenshots sit in its row.
+  const order = ["JSL Judo", "Globalpronet", "Bonee"];
   const bonee = serviceWork.find((work) => work.name === "Bonee");
-  const rows = bonee ? [bonee, ...serviceWork.filter((work) => work !== bonee)] : serviceWork;
+  const rows = [
+    ...order.flatMap((name) => serviceWork.filter((work) => work.name === name)),
+    ...serviceWork.filter((work) => !order.includes(work.name)),
+  ];
 
   return (
     <section id="realisations" className="pd-section pd-work" aria-labelledby="realisations-title">

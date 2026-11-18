@@ -2303,3 +2303,15 @@ html:has(.pd) {
     transition: none;
   }
 }
+
+/* Direction A « Le comptoir » : WhatsApp first. */
+.pd .pd-story-slogan {
+  margin-top: 0.75rem;
+}
+.pd .pd-story-cta {
+  display: inline-block;
+  margin-top: 1rem;
+}
+.pd .pd-call-whatsapp {
+  margin: 0.75rem 0 1.5rem;
+}

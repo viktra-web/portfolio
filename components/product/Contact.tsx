@@ -7,7 +7,7 @@ import {
   SERVICES_MAILTO,
   SERVICES_PHONE_DISPLAY,
   SERVICES_PHONE_TEL,
-  SERVICES_WHATSAPP_URL,
+  whatsappUrl,
 } from "@/lib/services";
 
 export default function Contact() {
@@ -26,22 +26,23 @@ export default function Contact() {
         <div className="pd-contact-grid">
           <aside className="pd-call" aria-labelledby="contact-side-title">
             <h3 className="pd-call-title" id="contact-side-title">
-              Vous préférez appeler ?
+              Le plus simple : WhatsApp
             </h3>
-            <a className="pd-call-phone" href={SERVICES_PHONE_TEL}>
-              {SERVICES_PHONE_DISPLAY}
+            <a
+              className="pd-btn pd-btn--primary pd-call-whatsapp"
+              href={whatsappUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Écrire à Adel sur WhatsApp
             </a>
             <dl className="pd-call-list">
-              {SERVICES_WHATSAPP_URL ? (
-                <div>
-                  <dt>WhatsApp</dt>
-                  <dd>
-                    <a href={SERVICES_WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                      Écrire sur WhatsApp
-                    </a>
-                  </dd>
-                </div>
-              ) : null}
+              <div>
+                <dt>Téléphone</dt>
+                <dd>
+                  <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>
+                </dd>
+              </div>
               <div>
                 <dt>Email</dt>
                 <dd>

@@ -1,5 +1,5 @@
 import { pricingNote } from "@/lib/product";
-import { serviceOffers, serviceSteps } from "@/lib/services";
+import { serviceOffers, serviceSteps, whatsappUrl } from "@/lib/services";
 
 /** "à partir de 25 € / mois" → { from: "à partir de", amount: "25 €", unit: "/ mois" } */
 function splitPrice(price: string) {
@@ -55,8 +55,9 @@ export default function Pricing() {
                     </div>
                     <a
                       className={`pd-btn ${main ? "pd-btn--primary" : "pd-btn--secondary"} pd-offer-cta`}
-                      href={`/services?besoin=${offer.besoin}#contact`}
-                      data-besoin={offer.besoin}
+                      href={whatsappUrl({ offre: offer.name })}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {offer.cta}
                     </a>
@@ -94,8 +95,13 @@ export default function Pricing() {
               ))}
             </ol>
           </div>
-          <a className="pd-btn pd-btn--primary pd-steps-cta" href="#contact">
-            Prendre rendez-vous
+          <a
+            className="pd-btn pd-btn--primary pd-steps-cta"
+            href={whatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Prendre rendez-vous sur WhatsApp
           </a>
         </div>
       </section>
