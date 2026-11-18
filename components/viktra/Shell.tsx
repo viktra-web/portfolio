@@ -8,7 +8,7 @@ export default function Shell({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
+      <main id="contenu">{children}</main>
       <Footer />
       <StickyBar />
     </>

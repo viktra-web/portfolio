@@ -38,7 +38,6 @@ body.v {
   color: var(--v-ink);
   background: var(--v-chalk);
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   /* Room for the mobile bar. */
   padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
 }
@@ -344,7 +343,7 @@ body.v {
 
 .v-burger a {
   display: block;
-  padding: 0.45rem 0;
+  padding: 0.6rem 0;
   font-size: 1.125rem;
 }
 
@@ -584,7 +583,7 @@ body.v {
 
 .v-pill span {
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: 0.65rem 1rem;
   border: 2px solid var(--v-ink);
   border-radius: 999px;
   font-weight: 700;
@@ -617,6 +616,8 @@ body.v {
 }
 
 .v-phone-screen {
+  min-height: 29rem;
+  align-content: start;
   padding: 0.9rem 0.9rem 1.1rem;
   display: grid;
   gap: 0.7rem;
@@ -1034,6 +1035,9 @@ textarea.v-input {
 
 .v-form-error-icon {
   flex: none;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
 }
 
 .v-honeypot {
@@ -1054,6 +1058,7 @@ textarea.v-input {
 }
 
 .v-status {
+  margin-bottom: 1rem;
   display: grid;
   gap: 0.75rem;
   justify-items: start;
@@ -1115,6 +1120,8 @@ textarea.v-input {
 }
 
 .v-footer ul a {
+  display: inline-block;
+  padding: 0.35rem 0;
   text-decoration: none;
   opacity: 0.85;
   overflow-wrap: anywhere;
@@ -1177,4 +1184,20 @@ textarea.v-input {
   .v-story {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Skip link: visible only when focused with the keyboard. */
+.v-skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 20;
+  padding: 0.6rem 1rem;
+  background: var(--v-ink);
+  color: var(--v-chalk);
+  border-radius: 0.5rem;
+}
+
+.v-skip:focus {
+  top: 1rem;
 }

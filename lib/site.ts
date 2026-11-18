@@ -27,3 +27,9 @@ export const mainNav = [
   { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
+
+/**
+ * false until the legal notice is complete (SIRET, early December 2026): every Viktra page
+ * is noindex and left out of the sitemap. Switch to true on the day of the move to viktra.fr.
+ */
+export const INDEXABLE = false;

@@ -8,12 +8,19 @@ export const workRows = [
   ...serviceWork.filter((work) => !ORDER.includes(work.name)),
 ];
 
-export default function WorkList({ shots = true }: { shots?: boolean }) {
+export default function WorkList({
+  shots = true,
+  level = 3,
+}: {
+  shots?: boolean;
+  level?: 2 | 3;
+}) {
+  const Title = level === 2 ? "h2" : "h3";
   return (
     <ul className="v-work">
       {workRows.map((work) => (
         <li key={work.name}>
-          <h3 className="v-h3">{work.name}</h3>
+          <Title className="v-h3">{work.name}</Title>
           <p className="v-small">{work.type}</p>
           <p>{work.description}</p>
           {work.href && work.linkLabel ? (

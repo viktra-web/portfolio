@@ -50,14 +50,11 @@ export async function sendContactRequest(
   prev: ContactState,
   formData: FormData
 ): Promise<ContactState> {
-  // Honeypot or form sent too fast: answer "success" so the bot learns nothing.
+  // Honeypot filled: only a bot does that, answer "success" so it learns nothing.
   if (readField(formData, "entreprise_site")) {
     return { status: "success" };
   }
   const renderedAt = Number(readField(formData, "t"));
-  if (renderedAt && Date.now() - renderedAt < MIN_FILL_MS) {
-    return { status: "success" };
-  }
 
   const values = {
     nom: readField(formData, "nom"),
@@ -115,6 +112,11 @@ export async function sendContactRequest(
   const mailto = `mailto:${SERVICES_EMAIL}?subject=${encodeURIComponent(
     "Demande de devis — site internet"
   )}&body=${encodeURIComponent(mailtoBody)}`;
+
+  // Sent too fast (checked after validation): a real person keeps the email fallback.
+  if (renderedAt && Date.now() - renderedAt < MIN_FILL_MS) {
+    return { status: "unavailable", values, mailto };
+  }
 
   const ip = (headers().get("x-forwarded-for") ?? "").split(",")[0].trim() || "inconnu";
   if (tooManyRequests(ip)) {

@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#F2CDBE",
+  viewportFit: "cover",
 };
 
 export default function ViktraLayout({ children }: { children: ReactNode }) {

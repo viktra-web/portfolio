@@ -42,7 +42,7 @@ export default function TarifsPage() {
                       ))}
                     </ul>
                     <a className="v-link" href={path(`/${slugOfOffer(offer.name)}`)}>
-                      En savoir plus sur {offer.name.toLowerCase()}
+                      Voir l&apos;offre {offer.name}
                     </a>
                   </div>
                 </li>

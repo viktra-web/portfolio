@@ -134,8 +134,8 @@ export const pageTexts = {
     metaTitle: "Adel Djahnit, développeur web à Divonne-les-Bains | Viktra",
     metaDescription:
       "Adel Djahnit, développeur web à Divonne-les-Bains. Un seul interlocuteur, du premier rendez-vous au suivi, pour les commerces du Pays de Gex et de Genève.",
-    h1: "Vous parlez à celui qui fait.",
-    lead: "Je suis Adel Djahnit, installé à Divonne-les-Bains. On se rencontre en personne, et c'est moi qui crée votre site, du premier rendez-vous à la mise en ligne.",
+    h1: "Adel Djahnit, développeur web à Divonne-les-Bains.",
+    lead: "On se rencontre en personne, et c'est moi qui crée votre site, du premier rendez-vous à la mise en ligne.",
   },
   contact: {
     metaTitle: "Contact et devis gratuit, Divonne-les-Bains | Viktra",

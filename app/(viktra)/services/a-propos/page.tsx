@@ -3,7 +3,7 @@ import CtaBand from "@/components/viktra/CtaBand";
 import PageIntro from "@/components/viktra/PageIntro";
 import Shell from "@/components/viktra/Shell";
 import { ABOUT_PHOTO, KUNAGI_QUOTE } from "@/lib/product";
-import { SERVICES_AREA, serviceGuarantees } from "@/lib/services";
+import { serviceGuarantees } from "@/lib/services";
 import { path } from "@/lib/site";
 import { pageTexts } from "@/lib/viktra-pages";
 import { PersonJsonLd } from "@/components/viktra/seo/PageJsonLd";
@@ -22,7 +22,7 @@ export default function AProposPage() {
     <Shell>
       <PageIntro h1={t.h1} lead={t.lead} />
       <section className="v-section" aria-label="Adel Djahnit">
-        <div className="v-wrap v-split">
+        <div className={ABOUT_PHOTO ? "v-wrap v-split" : "v-wrap v-narrow"}>
           {ABOUT_PHOTO ? (
             // eslint-disable-next-line @next/next/no-img-element -- static, already sized
             <img
@@ -32,9 +32,7 @@ export default function AProposPage() {
               width={ABOUT_PHOTO.width}
               height={ABOUT_PHOTO.height}
             />
-          ) : (
-            <div className="v-placeholder">Photo d&apos;Adel [à fournir]</div>
-          )}
+          ) : null}
           <div>
             <figure className="v-quote v-quote--first">
               <blockquote>
@@ -47,9 +45,6 @@ export default function AProposPage() {
                 </a>
               </figcaption>
             </figure>
-            <p className="v-lead">
-              Installé à Divonne-les-Bains, je me déplace à {SERVICES_AREA.slice(1).join(", ")}.
-            </p>
           </div>
         </div>
       </section>

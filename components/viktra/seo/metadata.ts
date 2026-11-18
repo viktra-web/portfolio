@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL, path } from "@/lib/site";
+import { INDEXABLE, SITE_URL, path } from "@/lib/site";
 import { OG_IMAGE } from "./schema";
 
 /**
@@ -24,7 +24,7 @@ export function viktraMetadata({
     title,
     description,
     alternates: { canonical },
-    ...(noindex ? { robots: { index: false, follow: true } } : {}),
+    ...(noindex || !INDEXABLE ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       type: "website",
       url: canonical,

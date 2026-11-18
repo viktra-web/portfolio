@@ -21,7 +21,7 @@ export default function RealisationsPage() {
       <PageIntro h1={t.h1} lead={t.lead} />
       <section className="v-section" aria-label="Projets">
         <div className="v-wrap v-narrow">
-          <WorkList />
+          <WorkList level={2} />
         </div>
       </section>
       <CtaBand />

@@ -33,7 +33,7 @@ function SubmitButton() {
 function FieldError({ id, children }: { id: string; children: ReactNode }) {
   return (
     <p className="v-form-error" id={id}>
-      <svg className="v-form-error-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+      <svg className="v-form-error-icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.75" />
         <path d="M8 4.25v4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
         <circle cx="8" cy="11.5" r="1" fill="currentColor" />
@@ -49,45 +49,6 @@ function describedBy(...ids: (string | false | undefined)[]) {
 }
 
 /** Offer CTAs (a[data-besoin]): pre-select the need and move to the form without a reload. */
-function useOfferLinks(besoinOptions: BesoinOption[]) {
-  useEffect(() => {
-    const onClick = (event: MouseEvent) => {
-      if (
-        event.defaultPrevented ||
-        event.button !== 0 ||
-        event.metaKey ||
-        event.ctrlKey ||
-        event.shiftKey ||
-        event.altKey
-      ) {
-        return;
-      }
-      const target = event.target;
-      if (!(target instanceof Element)) {
-        return;
-      }
-      const link = target.closest<HTMLAnchorElement>("a[data-besoin]");
-      const besoin = link?.dataset.besoin ?? "";
-      const contact = document.getElementById("contact");
-      if (!link || !contact || !isKnownBesoin(besoinOptions, besoin)) {
-        return;
-      }
-      event.preventDefault();
-      const select = document.getElementById("contact-besoin");
-      if (select instanceof HTMLSelectElement) {
-        select.value = besoin;
-      }
-      window.history.replaceState(window.history.state, "", `/services?besoin=${besoin}#contact`);
-      contact.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-        block: "start",
-      });
-      document.getElementById("contact-title")?.focus({ preventScroll: true });
-    };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, [besoinOptions]);
-}
 
 export default function ContactForm({
   action,
@@ -105,8 +66,6 @@ export default function ContactForm({
   const [renderedAt, setRenderedAt] = useState(0);
   useEffect(() => setRenderedAt(Date.now()), []);
   const statusRef = useRef<HTMLDivElement>(null);
-
-  useOfferLinks(besoinOptions);
 
   if (state !== previousState) {
     setPreviousState(state);

@@ -19,7 +19,7 @@ export default function OfferTemplate({ page }: { page: OfferPage }) {
   return (
     <>
       <Header />
-      <main>
+      <main id="contenu">
         <PageIntro h1={page.h1} lead={page.lead}>
           <div className="v-cta-row">
             <WhatsAppLink className="v-btn v-btn--primary" offre={offer.name}>
@@ -69,6 +69,8 @@ export default function OfferTemplate({ page }: { page: OfferPage }) {
           </div>
         </section>
 
+        {/* The steps describe the making of a site: only on the site vitrine page. */}
+        {page.slug === "site-vitrine" ? (
         <section className="v-section" aria-labelledby="deroulement">
           <div className="v-wrap">
             <h2 className="v-h2" id="deroulement">
@@ -84,6 +86,7 @@ export default function OfferTemplate({ page }: { page: OfferPage }) {
             </ol>
           </div>
         </section>
+        ) : null}
 
         {faq.length > 0 ? (
           <section className="v-section v-matin" aria-labelledby="questions">

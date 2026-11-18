@@ -6,6 +6,9 @@ import WhatsAppLink from "./WhatsAppLink";
 export default function Header() {
   return (
     <header className="v-top">
+      <a className="v-skip" href="#contenu">
+        Aller au contenu
+      </a>
       <div className="v-wrap v-bar">
         <a href={path("/")} className="v-brand">
           <Logo className="v-logo" />

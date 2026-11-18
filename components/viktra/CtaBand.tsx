@@ -8,10 +8,11 @@ export default function CtaBand({ offre }: { offre?: string }) {
     <section className="v-section v-dark" aria-labelledby="cta-title">
       <div className="v-wrap">
         <h2 className="v-h2" id="cta-title">
-          Parlons de votre projet.
+          Premier rendez-vous de 20 minutes, gratuit.
         </h2>
         <p className="v-lead">
-          Le premier rendez-vous dure 20 minutes, il est gratuit et sans engagement.
+          Chez vous ou par téléphone, sans engagement. Je vous réponds le jour même ou le
+          lendemain.
         </p>
         <div className="v-cta-row">
           <WhatsAppLink className="v-btn v-btn--primary" offre={offre}>

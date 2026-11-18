@@ -146,7 +146,7 @@ export const serviceOffers: ServiceOffer[] = [
 export const serviceWork: ServiceWorkItem[] = [
   {
     name: "Globalpronet",
-    type: "Entreprise de nettoyage — Genève",
+    type: "Entreprise de nettoyage, Genève",
     description:
       "Réécriture des textes du site pour qu'il soit mieux référencé sur Google. Le design et le site existants n'ont pas été modifiés.",
     href: "https://globalpronet.ch",
@@ -161,7 +161,7 @@ export const serviceWork: ServiceWorkItem[] = [
   },
   {
     name: "Bonee",
-    type: "Projet personnel — application mobile",
+    type: "Projet personnel, application mobile",
     description:
       "Application de budget que j'ai co-développée, publiée sur l'App Store et le Google Play Store.",
     href: "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
@@ -191,7 +191,7 @@ export const serviceSteps: ServiceStep[] = [
 export const serviceGuarantees: ServiceGuarantee[] = [
   {
     title: "Un prix fixe",
-    text: "Le prix du devis est celui que vous payez. Pas de frais cachés.",
+    text: "Le prix du devis est celui que vous payez.",
   },
   {
     title: "Un seul interlocuteur",
