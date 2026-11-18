@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import PageIntro from "@/components/viktra/PageIntro";
 import Shell from "@/components/viktra/Shell";
 import { SERVICES_EMAIL, SERVICES_PHONE_DISPLAY } from "@/lib/services";
-import { path } from "@/lib/site";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
 
 // Draft: completed when the micro-enterprise exists (SIRET, early December 2026).
-export const metadata: Metadata = {
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/mentions-legales",
   title: "Mentions légales | Viktra",
-  robots: { index: false },
-  alternates: { canonical: path("/mentions-legales") },
-};
+  description: "Éditeur et hébergeur du site Viktra.",
+  noindex: true,
+});
 
 const rows: [string, string][] = [
   ["Éditeur", "Adel Djahnit, entrepreneur individuel (micro-entreprise), nom commercial Viktra"],

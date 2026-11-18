@@ -6,14 +6,16 @@ import { ABOUT_PHOTO, KUNAGI_QUOTE } from "@/lib/product";
 import { SERVICES_AREA, serviceGuarantees } from "@/lib/services";
 import { path } from "@/lib/site";
 import { pageTexts } from "@/lib/viktra-pages";
+import { PersonJsonLd } from "@/components/viktra/seo/PageJsonLd";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
 
 const t = pageTexts.aPropos;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/a-propos",
   title: t.metaTitle,
   description: t.metaDescription,
-  alternates: { canonical: path("/a-propos") },
-};
+});
 
 export default function AProposPage() {
   return (
@@ -70,6 +72,7 @@ export default function AProposPage() {
         </div>
       </section>
       <CtaBand />
+      <PersonJsonLd />
     </Shell>
   );
 }

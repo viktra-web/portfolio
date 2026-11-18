@@ -1,5 +1,6 @@
 import { serviceOffers } from "@/lib/services";
-import { offerNav, path } from "@/lib/site";
+import { path } from "@/lib/site";
+import { slugOfOffer } from "@/lib/viktra-pages";
 
 /** Home: one line per offer, each leading to its own page. */
 export default function OffersSummary() {
@@ -10,9 +11,9 @@ export default function OffersSummary() {
           Ce que je fais
         </h2>
         <ul className="v-index">
-          {serviceOffers.map((offer, i) => (
+          {serviceOffers.map((offer) => (
             <li key={offer.name}>
-              <a href={path(`/${offerNav[i].slug}`)}>
+              <a href={path(`/${slugOfOffer(offer.name)}`)}>
                 <span className="v-index-name">{offer.name}</span>
                 <span className="v-index-price">{offer.price}</span>
                 <span className="v-index-desc">{offer.description}</span>

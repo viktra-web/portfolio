@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { Schibsted_Grotesk } from "next/font/google";
+import { SITE_URL } from "@/lib/site";
 import "./viktra.css";
 
 // Own root layout: the Viktra pages load neither the portfolio CSS nor its three fonts.
@@ -13,7 +14,7 @@ const font = Schibsted_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.adeldjahnit.com"),
+  metadataBase: new URL(SITE_URL),
 };
 
 export const viewport: Viewport = {

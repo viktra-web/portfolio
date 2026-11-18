@@ -14,14 +14,16 @@ import {
 } from "@/lib/services";
 import { path } from "@/lib/site";
 import { pageTexts } from "@/lib/viktra-pages";
+import { BreadcrumbJsonLd } from "@/components/viktra/seo/PageJsonLd";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
 
 const t = pageTexts.contact;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/contact",
   title: t.metaTitle,
   description: t.metaDescription,
-  alternates: { canonical: path("/contact") },
-};
+});
 
 export default function ContactPage() {
   return (
@@ -66,6 +68,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <BreadcrumbJsonLd pagePath="/contact" label="Contact" />
     </Shell>
   );
 }

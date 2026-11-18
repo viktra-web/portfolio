@@ -7,30 +7,18 @@ import FaqList from "@/components/viktra/FaqList";
 import CtaBand from "@/components/viktra/CtaBand";
 import Shell from "@/components/viktra/Shell";
 import JsonLd from "@/components/viktra/JsonLd";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
+import { HOME_DESCRIPTION } from "@/components/viktra/seo/schema";
 import { aboutCopy } from "@/lib/product";
 import { serviceFaq } from "@/lib/services";
 import { path } from "@/lib/site";
 
-const title = "Création de site internet à Divonne-les-Bains | Viktra";
-const description =
-  "Sites vitrines et fiches Google pour les commerces, artisans et indépendants du Pays de Gex, de Nyon et de Genève. Prix fixe, premier rendez-vous gratuit.";
-
-export const metadata: Metadata = {
-  title,
-  description,
-  // /services?besoin=… is the same page.
-  alternates: { canonical: "/services" },
-  // Link preview (WhatsApp, LinkedIn, iMessage). The image is opengraph-image.png in this folder.
-  openGraph: {
-    type: "website",
-    url: "/services",
-    siteName: "Viktra",
-    locale: "fr_FR",
-    title,
-    description,
-  },
-  twitter: { card: "summary_large_image" },
-};
+export const metadata: Metadata = viktraMetadata({
+  // /services?besoin=… is the same page: the canonical drops the query.
+  pagePath: "/",
+  title: "Création de site internet à Divonne-les-Bains | Viktra",
+  description: HOME_DESCRIPTION,
+});
 
 // "Une fiche Google ne suffit-elle pas ?" first: it is the first doubt of the target.
 const faq = [

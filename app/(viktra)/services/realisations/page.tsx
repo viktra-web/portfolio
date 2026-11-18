@@ -3,16 +3,17 @@ import CtaBand from "@/components/viktra/CtaBand";
 import PageIntro from "@/components/viktra/PageIntro";
 import Shell from "@/components/viktra/Shell";
 import WorkList from "@/components/viktra/WorkList";
-import { path } from "@/lib/site";
 import { pageTexts } from "@/lib/viktra-pages";
+import { BreadcrumbJsonLd } from "@/components/viktra/seo/PageJsonLd";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
 
 const t = pageTexts.realisations;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/realisations",
   title: t.metaTitle,
   description: t.metaDescription,
-  alternates: { canonical: path("/realisations") },
-};
+});
 
 export default function RealisationsPage() {
   return (
@@ -24,6 +25,7 @@ export default function RealisationsPage() {
         </div>
       </section>
       <CtaBand />
+      <BreadcrumbJsonLd pagePath="/realisations" label="Réalisations" />
     </Shell>
   );
 }

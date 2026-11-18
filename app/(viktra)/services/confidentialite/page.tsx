@@ -3,11 +3,14 @@ import type { ReactNode } from "react";
 import PageIntro from "@/components/viktra/PageIntro";
 import Shell from "@/components/viktra/Shell";
 import { SERVICES_EMAIL } from "@/lib/services";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/confidentialite",
   title: "Confidentialité | Viktra",
-  robots: { index: false },
-};
+  description: "Ce que deviennent les informations envoyées avec le formulaire de contact de Viktra.",
+  noindex: true,
+});
 
 const email = <a href={`mailto:${SERVICES_EMAIL}`}>{SERVICES_EMAIL}</a>;
 

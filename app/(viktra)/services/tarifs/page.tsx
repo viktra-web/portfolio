@@ -5,19 +5,19 @@ import PageIntro from "@/components/viktra/PageIntro";
 import Shell from "@/components/viktra/Shell";
 import { pricingNote } from "@/lib/product";
 import { serviceOffers } from "@/lib/services";
-import { offerNav, path } from "@/lib/site";
-import { pageTexts } from "@/lib/viktra-pages";
+import { path } from "@/lib/site";
+import { pageTexts, slugOfOffer } from "@/lib/viktra-pages";
+import { BreadcrumbJsonLd } from "@/components/viktra/seo/PageJsonLd";
+import { viktraMetadata } from "@/components/viktra/seo/metadata";
 
 const t = pageTexts.tarifs;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = viktraMetadata({
+  pagePath: "/tarifs",
   title: t.metaTitle,
   description: t.metaDescription,
-  alternates: { canonical: path("/tarifs") },
-};
+});
 
-const slugOf = (name: string) =>
-  offerNav[serviceOffers.findIndex((offer) => offer.name === name)]?.slug;
 
 export default function TarifsPage() {
   return (
@@ -41,7 +41,7 @@ export default function TarifsPage() {
                         <li key={item}>{item}</li>
                       ))}
                     </ul>
-                    <a className="v-link" href={path(`/${slugOf(offer.name)}`)}>
+                    <a className="v-link" href={path(`/${slugOfOffer(offer.name)}`)}>
                       En savoir plus sur {offer.name.toLowerCase()}
                     </a>
                   </div>
@@ -61,6 +61,7 @@ export default function TarifsPage() {
         </div>
       </section>
       <CtaBand />
+      <BreadcrumbJsonLd pagePath="/tarifs" label="Tarifs" />
     </Shell>
   );
 }
