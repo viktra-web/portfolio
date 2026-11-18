@@ -1,0 +1,849 @@
+/*
+ * Viktra v4 — entrée portfolio, un ordinateur qui se retourne (plan 09, 19/11/2026).
+ * Animation seulement sur ordinateur (pointeur fin, survol, mouvement autorisé, JS) :
+ * même requête que V4_MOTION_QUERY dans lib/v4.ts, plus (scripting: enabled).
+ * Partout ailleurs : section en hauteur auto, un téléphone qui montre Bonee.
+ * Aplats seulement : pas de dégradé, de halo ni d'ombre décorative.
+ */
+
+.v4 {
+  --jour: #fbfbf9;
+  --encre: #13212b;
+  --calcaire: #e6e4de;
+  --calcaire-2: #d6d3cb;
+  --craie: #f3f1ec;
+  --soleil: #c4380f;
+  --soleil-2: #a32e0b;
+  --trait: rgba(19, 33, 43, 0.14);
+  --pad: clamp(1.25rem, 5vw, 3rem);
+
+  background: var(--jour);
+  color: var(--encre);
+  font-family: var(--v-font), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+/* Resets in :where() so they never beat a component class (buttons keep their colour). */
+:where(.v4) :where(a) {
+  color: inherit;
+  text-underline-offset: 0.22em;
+}
+
+:where(.v4) :where(h1, h2, h3, p, ul, ol, dl, dd, figure, blockquote) {
+  margin: 0;
+}
+
+:where(.v4) :where(img) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.v4 ::selection {
+  background: var(--encre);
+  color: var(--craie);
+}
+
+.v4 :focus-visible {
+  outline: 3px solid var(--soleil);
+  outline-offset: 3px;
+}
+
+/* Tabular figures on prices only. */
+.v4-price {
+  font-variant-numeric: tabular-nums;
+}
+
+.v4-skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 30;
+  padding: 0.6rem 1rem;
+  background: var(--encre);
+  color: var(--craie);
+  border-radius: 0.5rem;
+}
+
+.v4-skip:focus {
+  top: 1rem;
+}
+
+.v4-wrap {
+  width: 100%;
+  max-width: 78rem;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.v4-narrow {
+  max-width: 52rem;
+}
+
+.v4-section {
+  padding: clamp(4rem, 10vw, 7rem) 0;
+  border-top: 1px solid var(--trait);
+}
+
+.v4-section--calcaire {
+  background: var(--calcaire);
+}
+
+.v4-section--dark {
+  background: var(--encre);
+  color: var(--craie);
+}
+
+.v4-split {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 940px) {
+  .v4-split {
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+}
+
+/* ---------- Type ---------- */
+
+.v4-h1 {
+  font-size: clamp(2.4rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+  max-width: 15ch;
+}
+
+.v4-h2 {
+  font-size: clamp(1.9rem, 5.5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  max-width: 24ch;
+}
+
+.v4-h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.v4-lead {
+  margin-top: 1.25rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.3rem);
+  max-width: 36rem;
+}
+
+.v4-small {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  opacity: 0.8;
+  max-width: 44rem;
+}
+
+.v4-link {
+  font-weight: 700;
+}
+
+/* ---------- Buttons ---------- */
+
+.v4-actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.v4-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease, transform 0.12s ease-out;
+}
+
+.v4-btn:active {
+  transform: translateY(1px);
+}
+
+.v4-btn--sun {
+  background: var(--soleil);
+  color: #fff;
+}
+
+.v4-btn--sun:hover {
+  background: var(--soleil-2);
+}
+
+.v4-btn--line {
+  border-color: currentColor;
+}
+
+.v4-btn--light {
+  border-color: var(--craie);
+  color: var(--craie);
+}
+
+.v4-call {
+  margin-top: 1rem;
+}
+
+.v4-call a {
+  font-weight: 700;
+}
+
+/* ---------- Header ---------- */
+
+.v4-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
+}
+
+.v4-brand {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.v4-logo {
+  display: block;
+  width: 7rem;
+  height: auto;
+}
+
+.v4-nav {
+  display: none;
+  gap: 1.5rem;
+  font-weight: 600;
+}
+
+.v4-nav a {
+  text-decoration: none;
+}
+
+.v4-nav a:hover {
+  text-decoration: underline;
+}
+
+.v4-burger {
+  position: relative;
+}
+
+.v4-burger summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.5rem 1.1rem;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.v4-burger summary::-webkit-details-marker {
+  display: none;
+}
+
+.v4-burger nav {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.6rem);
+  z-index: 20;
+  width: min(19rem, calc(100vw - 2.5rem));
+  padding: 0.5rem 1.25rem;
+  display: grid;
+  background: #fff;
+  color: var(--encre);
+  border: 1.5px solid var(--encre);
+  border-radius: 1rem;
+}
+
+.v4-burger nav a {
+  padding: 0.65rem 0;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--trait);
+}
+
+.v4-burger nav a:last-child {
+  border-bottom: 0;
+}
+
+@media (min-width: 1100px) {
+  .v4-nav {
+    display: flex;
+  }
+
+  .v4-burger {
+    display: none;
+  }
+}
+
+/* ---------- Entry: static version (default) ---------- */
+
+.v4-scene {
+  padding: clamp(1.5rem, 6vw, 4rem) 0 clamp(4rem, 9vw, 6rem);
+}
+
+.v4-stage-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 900px) {
+  .v4-stage-grid {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+}
+
+.v4-facts {
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--trait);
+  max-width: 34rem;
+}
+
+.v4-facts li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--trait);
+  font-weight: 600;
+}
+
+/* The phone: a plain ink frame around a real Bonee capture. */
+.v4-phone {
+  width: min(54vw, 13rem);
+  padding: 0.35rem;
+  border-radius: 1.6rem;
+  background: var(--encre);
+}
+
+.v4-phone img {
+  width: 100%;
+  border-radius: 1.3rem;
+}
+
+.v4-phone-fig figcaption {
+  max-width: 22rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .v4-phone-fig .v4-phone {
+    animation: v4-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both;
+  }
+}
+
+@keyframes v4-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+.v4-slot,
+.v4-cap {
+  display: none;
+}
+
+/* ---------- Entry: the laptop (computer with a mouse, motion allowed, JS) ---------- */
+
+.v4-slot {
+  --w: 34rem;
+  --h: calc(var(--w) * 0.644);
+  --d: calc(var(--h) * 0.68);
+  width: var(--w);
+  max-width: 100%;
+  justify-self: center;
+  padding-bottom: calc(var(--d) * 0.35);
+  perspective: 1600px;
+  perspective-origin: 50% 30%;
+  transform-origin: 50% 50%;
+}
+
+.v4-tilt,
+.v4-laptop,
+.v4-lid {
+  transform-style: preserve-3d;
+}
+
+.v4-tilt {
+  transform-origin: 50% 100%;
+  transform: rotateX(-16deg);
+}
+
+.v4-laptop {
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  transform-origin: 50% 100% calc(var(--d) / 2);
+  transform: rotateY(180deg);
+}
+
+.v4-lid {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  transform: rotateX(-20deg);
+}
+
+.v4-screen,
+.v4-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.9rem 0.9rem 0.3rem 0.3rem;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.v4-screen {
+  padding: calc(var(--w) * 0.025);
+  background: var(--encre);
+}
+
+.v4-display {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.2rem;
+  background: var(--calcaire);
+  overflow: hidden;
+}
+
+.v4-slide {
+  position: absolute;
+  inset: 0;
+}
+
+.v4-slide--bonee {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4%;
+  padding: 4% 0;
+}
+
+.v4-slide--bonee picture,
+.v4-slide--bonee img {
+  height: 100%;
+  width: auto;
+}
+
+.v4-slide--bonee img {
+  border-radius: 0.6rem;
+}
+
+.v4-slide--viktra {
+  opacity: 0;
+  background: var(--jour);
+}
+
+.v4-slide--viktra img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.v4-back {
+  display: grid;
+  place-items: center;
+  transform: rotateY(180deg);
+  background: var(--calcaire);
+  border: 1px solid var(--calcaire-2);
+  color: var(--encre);
+}
+
+.v4-back::after {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: 0;
+  height: 3%;
+  border-radius: 0.3rem 0.3rem 0 0;
+  background: var(--calcaire-2);
+}
+
+.v4-back-logo {
+  width: 42%;
+  height: auto;
+}
+
+.v4-base {
+  position: absolute;
+  top: 100%;
+  left: -4%;
+  width: 108%;
+  height: var(--d);
+  transform-origin: 50% 0;
+  transform: rotateX(90deg);
+  border-radius: 0.3rem 0.3rem 1rem 1rem;
+  background: var(--calcaire-2);
+}
+
+.v4-keys {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 9%;
+  height: 46%;
+  border-radius: 0.4rem;
+  background: #2b3843;
+}
+
+.v4-pad {
+  position: absolute;
+  left: 36%;
+  right: 36%;
+  top: 62%;
+  bottom: 8%;
+  border-radius: 0.4rem;
+  background: var(--calcaire);
+}
+
+.v4-cap {
+  position: absolute;
+  left: var(--pad);
+  right: var(--pad);
+  bottom: clamp(1rem, 4svh, 2.5rem);
+  margin: 0 auto;
+  max-width: 40rem;
+  text-align: center;
+  font-weight: 600;
+  visibility: hidden;
+}
+
+@media (min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  .v4-scene:not(.is-static) {
+    height: 300svh;
+    padding: 0;
+  }
+
+  .v4-scene:not(.is-static) .v4-stage {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: clip;
+  }
+
+  .v4-scene:not(.is-static) .v4-phone-fig {
+    display: none;
+  }
+
+  .v4-scene:not(.is-static) .v4-slot,
+  .v4-scene:not(.is-static) .v4-cap {
+    display: block;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+  .v4-slot {
+    --w: 26rem;
+  }
+}
+
+/* ---------- Projets choisis ---------- */
+
+.v4-project {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--encre);
+  display: grid;
+  gap: 1.75rem;
+}
+
+.v4-project-text p {
+  margin-top: 0.5rem;
+  max-width: 34rem;
+}
+
+.v4-type {
+  font-weight: 600;
+}
+
+.v4-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+}
+
+.v4-project-shots {
+  display: flex;
+  gap: 1rem;
+}
+
+.v4-phone--small {
+  width: min(40vw, 11rem);
+}
+
+.v4-frame {
+  max-width: 40rem;
+  border: 1.5px solid var(--encre);
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: #fff;
+}
+
+@media (min-width: 900px) {
+  .v4-project {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .v4-project--text {
+    grid-template-columns: 1fr;
+  }
+}
+
+.v4-others-title {
+  margin-top: 3.5rem;
+}
+
+.v4-others {
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--trait);
+}
+
+.v4-others li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--trait);
+}
+
+@media (min-width: 760px) {
+  .v4-others li {
+    grid-template-columns: 12rem 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ---------- Offres ---------- */
+
+.v4-offers {
+  margin-top: 2.5rem;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--encre);
+}
+
+.v4-offers li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--trait);
+}
+
+.v4-offers h3 a {
+  text-decoration: none;
+}
+
+.v4-offers h3 a:hover {
+  text-decoration: underline;
+}
+
+.v4-price {
+  font-weight: 700;
+  font-size: 1.125rem;
+  white-space: nowrap;
+}
+
+.v4-offer-text {
+  max-width: 40rem;
+}
+
+@media (min-width: 900px) {
+  .v4-offers li {
+    grid-template-columns: 16rem 11rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+  }
+}
+
+/* ---------- Steps ---------- */
+
+.v4-steps {
+  margin-top: 2.5rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  counter-reset: v4;
+}
+
+.v4-steps li {
+  counter-increment: v4;
+  padding-top: 1rem;
+  border-top: 2px solid var(--encre);
+}
+
+.v4-steps li::before {
+  content: counter(v4);
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.v4-steps p {
+  margin-top: 0.4rem;
+}
+
+@media (min-width: 760px) {
+  .v4-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .v4-steps {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- FAQ ---------- */
+
+.v4-faq {
+  margin-top: 2rem;
+  border-top: 2px solid var(--encre);
+}
+
+.v4-faq details {
+  border-bottom: 1px solid var(--trait);
+}
+
+.v4-faq summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.v4-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.v4-faq summary::after {
+  content: "+";
+  flex: none;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.v4-faq details[open] summary::after {
+  content: "–";
+}
+
+.v4-faq p {
+  padding-bottom: 1.3rem;
+  max-width: 44rem;
+}
+
+/* ---------- Quote ---------- */
+
+.v4-quote blockquote {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.v4-quote figcaption {
+  margin-top: 1rem;
+  font-size: 0.9375rem;
+  opacity: 0.85;
+}
+
+/* ---------- Footer ---------- */
+
+.v4-foot {
+  padding: 3.5rem 0 2rem;
+  border-top: 1px solid var(--trait);
+}
+
+.v4-foot-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.v4-foot-grid nav,
+.v4-foot-grid > div:last-child {
+  display: grid;
+  align-content: start;
+}
+
+.v4-foot a {
+  display: inline-block;
+  padding: 0.35rem 0;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.v4-foot a:hover {
+  text-decoration: underline;
+}
+
+.v4-foot-line {
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+@media (min-width: 940px) {
+  .v4-foot-grid {
+    grid-template-columns: 1.6fr 1fr 1fr;
+  }
+}
+
+/* ---------- Mobile bar ---------- */
+
+.v4-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.75rem var(--pad) calc(0.75rem + env(safe-area-inset-bottom));
+  background: var(--encre);
+}
+
+@media (min-width: 940px) {
+  .v4-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 939px) {
+  .v4-foot {
+    padding-bottom: 6rem;
+  }
+}
