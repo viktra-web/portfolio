@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import type { ContactState } from "@/lib/services";
-import BesoinSelect, { isKnownBesoin, type BesoinOption } from "@/components/product/BesoinSelect";
+import BesoinSelect, { isKnownBesoin, type BesoinOption } from "@/components/viktra/BesoinSelect";
 
 // The Server Action and the data from lib/services.ts arrive as props from the
 // server <Contact>: importing them here would share client modules with the
@@ -23,7 +23,7 @@ const initialState: ContactState = { status: "idle" };
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" className="pd-btn pd-btn--primary pd-form-submit" disabled={pending}>
+    <button type="submit" className="v-btn v-btn--primary v-form-submit" disabled={pending}>
       {pending ? "Envoi en cours…" : "Demander mon devis gratuit"}
     </button>
   );
@@ -32,8 +32,8 @@ function SubmitButton() {
 /** Field error: a drawn icon (no Unicode symbol) and the message from the action. */
 function FieldError({ id, children }: { id: string; children: ReactNode }) {
   return (
-    <p className="pd-form-error" id={id}>
-      <svg className="pd-form-error-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <p className="v-form-error" id={id}>
+      <svg className="v-form-error-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.75" />
         <path d="M8 4.25v4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
         <circle cx="8" cy="11.5" r="1" fill="currentColor" />
@@ -123,12 +123,12 @@ export default function ContactForm({
     return (
       <div
         ref={statusRef}
-        className="pd-card pd-form-card pd-status pd-status--success"
+        className="v-card v-form-card v-status v-status--success"
         role="status"
         aria-live="polite"
         tabIndex={-1}
       >
-        <h3 className="pd-status-title">Merci, c&apos;est bien reçu.</h3>
+        <h3 className="v-status-title">Merci, c&apos;est bien reçu.</h3>
         <p>
           Je vous réponds le jour même ou le lendemain, par téléphone ou par email, pour fixer un rendez-vous de
           20 minutes, chez vous ou au téléphone. Rien à préparer.
@@ -142,9 +142,9 @@ export default function ContactForm({
   const fallback = state.status === "unavailable" || state.status === "error";
 
   return (
-    <div className="pd-card pd-form-card">
+    <div className="v-card v-form-card">
       {state.status === "invalid" ? (
-        <div ref={statusRef} className="pd-status pd-status--error" role="alert" tabIndex={-1}>
+        <div ref={statusRef} className="v-status v-status--error" role="alert" tabIndex={-1}>
           <p>Il manque quelques informations, voir ci-dessous.</p>
         </div>
       ) : null}
@@ -152,7 +152,7 @@ export default function ContactForm({
       {fallback ? (
         <div
           ref={statusRef}
-          className="pd-status pd-status--error"
+          className="v-status v-status--error"
           role="status"
           aria-live="polite"
           tabIndex={-1}
@@ -164,20 +164,20 @@ export default function ContactForm({
             Vous pouvez me l&apos;envoyer par email en un clic, ou m&apos;appeler au{" "}
             <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>.
           </p>
-          <a className="pd-btn pd-btn--primary" href={state.mailto}>
+          <a className="v-btn v-btn--primary" href={state.mailto}>
             Envoyer par email
           </a>
         </div>
       ) : null}
 
-      <form key={formKey} className="pd-form" action={formAction} noValidate>
-        <div className="pd-field">
-          <label className="pd-label" htmlFor="contact-nom">
+      <form key={formKey} className="v-form" action={formAction} noValidate>
+        <div className="v-field">
+          <label className="v-label" htmlFor="contact-nom">
             Votre nom
           </label>
           <input
             id="contact-nom"
-            className="pd-input"
+            className="v-input"
             type="text"
             name="nom"
             autoComplete="name"
@@ -194,25 +194,25 @@ export default function ContactForm({
         </div>
 
         <fieldset
-          className="pd-fieldset"
+          className="v-fieldset"
           aria-describedby={describedBy("hint-contact", errors.contact && "err-contact")}
         >
-          <legend className="pd-label">Comment vous joindre ?</legend>
-          <p className="pd-form-hint" id="hint-contact">
+          <legend className="v-label">Comment vous joindre ?</legend>
+          <p className="v-form-hint" id="hint-contact">
             Un téléphone ou un email suffit.
           </p>
           {errors.contact ? (
             <FieldError id="err-contact">{errors.contact}</FieldError>
           ) : null}
 
-          <div className="pd-form-row">
-            <div className="pd-field">
-              <label className="pd-label" htmlFor="contact-telephone">
+          <div className="v-form-row">
+            <div className="v-field">
+              <label className="v-label" htmlFor="contact-telephone">
                 Téléphone
               </label>
               <input
                 id="contact-telephone"
-                className="pd-input"
+                className="v-input"
                 type="tel"
                 inputMode="tel"
                 name="telephone"
@@ -230,13 +230,13 @@ export default function ContactForm({
               ) : null}
             </div>
 
-            <div className="pd-field">
-              <label className="pd-label" htmlFor="contact-email">
+            <div className="v-field">
+              <label className="v-label" htmlFor="contact-email">
                 Email
               </label>
               <input
                 id="contact-email"
-                className="pd-input"
+                className="v-input"
                 type="email"
                 name="email"
                 autoComplete="email"
@@ -256,20 +256,20 @@ export default function ContactForm({
         </fieldset>
 
         {/* No "activité" menu here: the message asks for it. The action accepts it empty. */}
-        <div className="pd-field">
-          <label className="pd-label" htmlFor="contact-besoin">
+        <div className="v-field">
+          <label className="v-label" htmlFor="contact-besoin">
             Votre besoin (facultatif)
           </label>
           <BesoinSelect options={besoinOptions} value={values.besoin} />
         </div>
 
-        <div className="pd-field">
-          <label className="pd-label" htmlFor="contact-message">
+        <div className="v-field">
+          <label className="v-label" htmlFor="contact-message">
             En quelques mots, votre activité et ce que vous cherchez
           </label>
           <textarea
             id="contact-message"
-            className="pd-input"
+            className="v-input"
             name="message"
             rows={5}
             maxLength={3000}
@@ -285,7 +285,7 @@ export default function ContactForm({
           ) : null}
         </div>
 
-        <div className="pd-honeypot" aria-hidden="true">
+        <div className="v-honeypot" aria-hidden="true">
           <label htmlFor="contact-entreprise-site">Site de votre entreprise</label>
           <input
             id="contact-entreprise-site"
@@ -300,7 +300,7 @@ export default function ContactForm({
 
         <SubmitButton />
 
-        <p className="pd-form-notice">
+        <p className="v-form-notice">
           Vos informations servent uniquement à répondre à votre demande. Elles me sont transmises
           par email et conservées au maximum 3 ans après notre dernier échange. Vous pouvez
           demander leur suppression à <a href={`mailto:${SERVICES_EMAIL}`}>{SERVICES_EMAIL}</a>.

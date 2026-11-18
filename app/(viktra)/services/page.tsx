@@ -1,16 +1,13 @@
 import type { Metadata } from "next";
-import Hero from "@/components/product/Hero";
-import Story from "@/components/product/StoryLazy";
-import Pricing from "@/components/product/Pricing";
-import About from "@/components/product/About";
-import Work from "@/components/product/Work";
-import Faq from "@/components/product/Faq";
-import Contact from "@/components/product/Contact";
-import Footer from "@/components/product/Footer";
-import StickyBar from "@/components/product/StickyBar";
-import JsonLd from "@/components/product/JsonLd";
-import { storyShared, storyTrades } from "@/lib/product";
-import { SERVICES_PHONE_TEL, serviceStory } from "@/lib/services";
+import Hero from "@/components/viktra/Hero";
+import Demo from "@/components/viktra/Demo";
+import Offers from "@/components/viktra/Offers";
+import About from "@/components/viktra/About";
+import Faq from "@/components/viktra/Faq";
+import Contact from "@/components/viktra/Contact";
+import Footer from "@/components/viktra/Footer";
+import StickyBar from "@/components/viktra/StickyBar";
+import JsonLd from "@/components/viktra/JsonLd";
 
 const title = "Création de site internet à Divonne-les-Bains | Viktra";
 const description =
@@ -36,17 +33,16 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <main className="pd-main">
-        <Hero />
-        <Story chapters={serviceStory} trades={storyTrades} shared={storyShared} />
-        <Pricing />
+      <Hero />
+      <main>
+        <Demo />
+        <Offers />
         <About />
-        <Work />
         <Faq />
         <Contact />
       </main>
       <Footer />
-      <StickyBar phoneTel={SERVICES_PHONE_TEL} />
+      <StickyBar />
       <JsonLd />
     </>
   );
