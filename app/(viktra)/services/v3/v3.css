@@ -874,3 +874,72 @@ html[data-moment="soir"] .v3-burger nav {
   }
 }
 .v3-test-result[hidden] { display: none; }
+
+/* ---------- Hero devices: real work, real captures ---------- */
+
+.v3-facts {
+  margin-top: 2.25rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--trait);
+  max-width: 34rem;
+}
+
+.v3-facts li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--trait);
+  font-weight: 600;
+}
+
+html[data-moment="soir"] .v3-facts,
+html[data-moment="soir"] .v3-facts li {
+  border-color: rgba(243, 241, 236, 0.2);
+}
+
+.v3-hero-grid {
+  align-items: center !important;
+}
+
+.v3-devices {
+  margin: 0;
+}
+
+.v3-stage {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+
+.v3-laptop {
+  margin: 0;
+  width: 92%;
+}
+
+.v3-laptop img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.v3-phone {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  max-width: 11rem;
+  padding: 0.3rem;
+  border-radius: 1.4rem;
+  background: var(--encre);
+  box-shadow: 0 16px 32px -14px rgba(19, 33, 43, 0.5);
+}
+
+.v3-phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.15rem;
+}
+
+.v3-devices figcaption {
+  margin-top: 0.75rem;
+  max-width: 65%;
+}
