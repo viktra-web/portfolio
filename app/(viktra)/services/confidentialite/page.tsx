@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Footer from "@/components/viktra/Footer";
-import Logo from "@/components/viktra/Logo";
-import WhatsAppLink from "@/components/viktra/WhatsAppLink";
+import PageIntro from "@/components/viktra/PageIntro";
+import Shell from "@/components/viktra/Shell";
 import { SERVICES_EMAIL } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -88,30 +87,12 @@ const blocks: { title: string; body: ReactNode }[] = [
 
 export default function PrivacyPage() {
   return (
-    <>
-      <header id="top" className="v-hero v-hero--short">
-        <div className="v-wrap v-bar">
-          <a href="/services" className="v-brand">
-            <Logo className="v-logo" />
-            <span className="v-brand-by">par Adel Djahnit</span>
-          </a>
-          <div className="v-bar-actions">
-            <WhatsAppLink className="v-btn v-btn--primary v-btn--sm">WhatsApp</WhatsAppLink>
-          </div>
-        </div>
-        <div className="v-wrap v-hero-body">
-          <h1 className="v-h2">Confidentialité</h1>
-          <p className="v-lead">
-            Ce que deviennent les informations que vous m&apos;envoyez avec le formulaire de
-            contact.
-          </p>
-          <a href="/services" className="v-link">
-            Retour à la page Viktra
-          </a>
-        </div>
-      </header>
-
-      <main className="v-section">
+    <Shell>
+      <PageIntro
+        h1="Confidentialité"
+        lead="Ce que deviennent les informations que vous m'envoyez avec le formulaire de contact."
+      />
+      <section className="v-section">
         <div className="v-wrap v-narrow v-legal">
           {blocks.map((block) => (
             <section key={block.title}>
@@ -120,9 +101,7 @@ export default function PrivacyPage() {
             </section>
           ))}
         </div>
-      </main>
-
-      <Footer />
-    </>
+      </section>
+    </Shell>
   );
 }

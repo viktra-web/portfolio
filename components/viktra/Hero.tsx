@@ -5,30 +5,14 @@ import {
   whatsappUrl,
 } from "@/lib/services";
 import TradeDemo from "./TradeDemo";
-import Logo from "./Logo";
 import WhatsAppLink from "./WhatsAppLink";
 
 export default function Hero() {
   return (
-    <header id="top" className="v-hero">
-      <div className="v-wrap v-bar">
-        <a href="#top" className="v-brand">
-          <Logo className="v-logo" />
-          <span className="v-brand-by">par Adel Djahnit</span>
-        </a>
-        <div className="v-bar-actions">
-          <a href={SERVICES_PHONE_TEL} className="v-bar-phone">
-            {SERVICES_PHONE_DISPLAY}
-          </a>
-          <WhatsAppLink className="v-btn v-btn--primary v-btn--sm">
-            WhatsApp
-          </WhatsAppLink>
-        </div>
-      </div>
-
+    <section id="top" className="v-hero" aria-labelledby="hero-title">
       <div className="v-wrap v-hero-body">
         <div>
-          <h1 className="v-h1">{productHero.title}</h1>
+          <h1 className="v-h1" id="hero-title">{productHero.title}</h1>
           <p className="v-lead">{productHero.lead}</p>
           <div className="v-hero-actions">
             <WhatsAppLink className="v-btn v-btn--primary">
@@ -53,6 +37,6 @@ export default function Hero() {
           whatsappBase={whatsappUrl()}
         />
       </div>
-    </header>
+    </section>
   );
 }
