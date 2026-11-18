@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Logo from "@/components/viktra/Logo";
 import WhatsAppLink from "@/components/viktra/WhatsAppLink";
-import ClientTest from "@/components/v3/ClientTest";
 import LiveBar from "@/components/v3/LiveBar";
 import MyDay from "@/components/v3/MyDay";
 import { BONEE_SHOTS, KUNAGI_QUOTE, productHero } from "@/lib/product";
@@ -24,29 +23,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-/** What Viktra really did on each project, and its measures (to measure, never estimated). */
-const WORK = [
-  {
-    name: "JSL Judo",
-    url: "[adresse à fournir]",
-    what: "Création du site internet du club.",
-    shot: null,
-  },
-  {
-    name: "Globalpronet",
-    url: "globalpronet.ch",
-    href: "https://globalpronet.ch",
-    what: "Réécriture des textes du site pour Google. Le design n'est pas de Viktra.",
-    shot: null,
-  },
-  {
-    name: "Bonee",
-    url: "App Store · Google Play",
-    href: "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
-    what: "Application de budget co-développée, publiée sur l'App Store et Google Play.",
-    shot: "bonee",
-  },
-] as const;
+const WORK_BONEE = "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127";
 
 const faq = [
   ...serviceFaq.filter((item) => item.question.startsWith("Une fiche Google")),
@@ -208,96 +185,31 @@ export default function V3Home() {
           </div>
         </section>
 
-        {/* ---------- 2 bis. The client's test, as a second step ---------- */}
-        <section
-          className="v3-section v3-section--calcaire"
-          aria-labelledby="test"
-        >
-          <div className="v3-wrap v3-hero-grid">
-            <div>
-              <h2 className="v3-h2" id="test">
-                Vos clients vous trouvent-ils sur Google&nbsp;?
-              </h2>
-              <p className="v3-lead">
-                Faites le test, comme un client : votre métier, votre ville, et
-                vous voyez ce qu&apos;il voit.
-              </p>
-            </div>
-            <ClientTest />
-          </div>
-        </section>
-
-        {/* ---------- 3. Réalisations, avec ce qui a vraiment été fait ---------- */}
-        <section
-          className="v3-section v3-section--matin"
-          aria-labelledby="realisations"
-        >
+        {/* ---------- 3. What has really been done, said plainly ---------- */}
+        <section className="v3-section v3-section--matin" aria-labelledby="realisations">
           <div className="v3-wrap">
             <h2 className="v3-h2" id="realisations">
-              Réalisations
+              Ce que j&apos;ai déjà fait
             </h2>
-            <div className="v3-work">
-              {WORK.map((item) => (
-                <article key={item.name} className="v3-work-item">
-                  <div className="v3-browser">
-                    <div className="v3-browser-bar" aria-hidden="true">
-                      <span className="v3-browser-dots">
-                        <i />
-                        <i />
-                        <i />
-                      </span>
-                      <span className="v3-browser-url">{item.url}</span>
-                    </div>
-                    <div className="v3-browser-view">
-                      {item.shot === "bonee" ? (
-                        <div className="v3-shots">
-                          {BONEE_SHOTS.map((shot) => (
-                            <picture key={shot.src}>
-                              {shot.webp ? (
-                                <source srcSet={shot.webp} type="image/webp" />
-                              ) : null}
-                              {/* eslint-disable-next-line @next/next/no-img-element -- static, sized */}
-                              <img
-                                src={shot.src}
-                                alt={shot.alt}
-                                width={shot.width}
-                                height={shot.height}
-                                loading="lazy"
-                                decoding="async"
-                              />
-                            </picture>
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="v3-todo">Capture du site [à fournir]</p>
-                      )}
-                    </div>
-                  </div>
-                  <h3 className="v3-h3">{item.name}</h3>
-                  <p>{item.what}</p>
-                  <dl className="v3-measures">
-                    <div>
-                      <dt>Score mobile Google</dt>
-                      <dd>[à mesurer]</dd>
-                    </div>
-                    <div>
-                      <dt>Poids de la page</dt>
-                      <dd>[à mesurer]</dd>
-                    </div>
-                  </dl>
-                  {"href" in item && item.href ? (
-                    <a
-                      className="v3-link"
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Voir en ligne
-                    </a>
-                  ) : null}
-                </article>
-              ))}
-            </div>
+            <ul className="v3-done">
+              <li>
+                <h3 className="v3-h3">Bonee</h3>
+                <p>
+                  Application de budget co-développée, publiée sur l&apos;App Store et Google Play.
+                </p>
+                <a className="v3-link" href={WORK_BONEE} target="_blank" rel="noopener noreferrer">
+                  Voir sur l&apos;App Store
+                </a>
+              </li>
+              <li>
+                <h3 className="v3-h3">Globalpronet, Genève</h3>
+                <p>Visibilité Google : réécriture des textes du site pour être mieux trouvé.</p>
+              </li>
+              <li>
+                <h3 className="v3-h3">JSL Judo</h3>
+                <p>Création du site internet du club, pas encore mis en ligne par le club.</p>
+              </li>
+            </ul>
           </div>
         </section>
 
