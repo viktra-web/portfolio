@@ -27,17 +27,22 @@ Vérifié à chaque étape : `npx tsc --noEmit`, `next lint`, `next build` (avec
 - Fausses réalisations : **Globalpronet = visibilité Google seulement** (textes réécrits), pas un site créé ; **JSL Judo : site fait, pas mis en ligne par le club**, pas de lien. Pas de fenêtres de navigateur vides ni de « [à mesurer] » affichés.
 - Publier la maquette Globalpronet : interdit avant le RDV client du 05/12 (et ses photos sont des photos de banque d'images).
 
-## 3. En cours / pas tranché
-- **V3 (`/services/v3`)** : Adel trouve que ça ne va toujours pas, « il y a encore beaucoup de taff ». Corrigé à la fin de la session (commit suivant cette passation) : numéro en simple lien sous WhatsApp (plus en bouton), **mode soir retiré** (page toujours claire), bandeau horaire « Pays de Gex » au lieu de « Divonne-les-Bains ».
-- Deux versions coexistent sur la branche : `/services` (multi-pages, identité Viktra) et `/services/v3` (accueil seulement). Aucune n'est choisie. **V2 supprimée** (rejetée), ainsi que le test Google (`ClientTest`, `SearchCheck`).
-- Meta titles SEO : celui de l'accueil `/services` contient encore « Divonne-les-Bains » (choix de l'agent SEO pour la recherche locale, pas visible sur la page). À rediscuter avec Adel au regard de la règle « pas de ville imposée ».
+## 3. Mise à jour du 19/11/2026 (après-midi) : v4 retenue, site passé en v4
+- **V4 validée par Adel** et devenue le site : `/services` = accueil v4 (`app/(viktra)/services/page.tsx`, textes `lib/v4.ts`), `/services/v4` et `/services/v3` redirigent vers `/services` (308, `next.config.mjs`). V3, ancien accueil (Hero, Demo, OffersSummary, TradeDemo, WorkList) et `viktra.css` supprimés.
+- **Toutes les pages intérieures en style v4** : une seule feuille `app/(viktra)/v4.css` importée par le layout (classe `v4` sur `<body>`), composants communs `components/viktra/` (Header avec page courante, Footer, StickyBar, Shell, PageIntro, CtaBand, OfferTemplate, ProjectList, Picture). Pas d'animation au scroll sur les pages intérieures.
+- **Corrections d'Adel** : plus de stack ni de « full stack » dans les textes clients ; Kunagi = « application iPhone et Android, de l'écran jusqu'au serveur » ; Viktra = « Le site de mon agence, conçu et développé par moi. » ; aucune mention « sans traceur ». Textes des pages réécrits pour tout le monde (sites et applications), sans ville dans h1/h2 ni dans les meta titles. Réalisations = « Projets choisis ».
+- **Ordinateur** refait en CSS 3D en aplats : bord d'écran noir et caméra, tranche du capot, base en volume (face avant avec encoche, côtés, dos, charnière), 6 rangées de touches, pavé tactile, aluminium gris froid, ombre de contact très légère. Départ de trois quarts dos (rotateY 145°, inclinaison −30°, capot −12°), même timeline. Toujours réservé à l'ordinateur ; téléphone = version simple sans GSAP.
+- Capture « Ce site, Viktra » refaite sur le nouvel accueil : `public/viktra/viktra-site.jpg|webp`.
+- Mentions légales : plus de « [à fournir] » affiché ; SIRET, adresse complète, mention TVA et adresse de Vercel notés en commentaire dans la page.
 
 ## 4. Prochaine étape
-1. **Repartir de ce qu'Adel veut voir, pas d'un concept** : lui demander 2-3 sites de développeurs qu'il aime (il ne l'a pas encore fait) et ce qui cloche précisément dans la v3. Utiliser `grilling` (questions avec réponse recommandée), pas de nouvelle version avant.
-2. Ensuite seulement : une direction, validée sur une capture, puis toutes les pages dans ce style.
-3. Avant la mise en ligne (début décembre) : viktra.fr réservé, SIRET → `lib/site.ts` (`BASE`, `SITE_URL`, `INDEXABLE`), mentions légales, fusion de la PR, Search Console.
+1. **Test d'Adel sur son iPhone 16** (aperçu Vercel de la branche) : barre du bas, menu, formulaire, et sur Mac/Safari l'ordinateur 3D (rendu WebKit non vérifié dans le cloud).
+2. Trancher **Bonee** : l'accueil dit « conçue et développée » / « de A à Z », les pages Application et À propos disent « co-développée ». Une seule formulation.
+3. Questions encore ouvertes : lien Google Play de Bonee, légende « Ce site, Viktra, que j'ai développé », étape « Je crée votre site ou votre application », photo d'Adel (`ABOUT_PHOTO`).
+4. `anti-ia` + `impeccable` (critique) sur l'ensemble des pages avant la mise en ligne.
+5. Avant la mise en ligne (début décembre) : viktra.fr réservé, SIRET → `lib/site.ts` (`BASE`, `SITE_URL`, `INDEXABLE`) et mentions légales, fusion de la PR, Search Console. Relire la licence GSAP.
 
-**Attend Adel** : références visuelles, sa photo, captures/accord JSL Judo quand le site sera en ligne, viktra.fr et SIRET (début décembre). Réponses déjà données : il rédige bien les réponses aux avis Google ; Vaud et « 20 min de Genève » exacts ; Vercel Analytics gardé ; `RESEND_API_KEY` en Production seulement, pas de `RESEND_FROM`.
+**Attend Adel** : son test iPhone, Bonee, Google Play, sa photo, viktra.fr et SIRET.
 
 ## 5. Pièges appris
 - **`font-variant-numeric: tabular-nums` sur tout le texte** élargit virgules et points avec Schibsted Grotesk (« Ce soir , ») : le limiter aux nombres.
