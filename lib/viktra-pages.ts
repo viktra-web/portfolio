@@ -111,7 +111,7 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
     ],
     detailsTitle: "Des exemples",
     details: [
-      "Bonee, une application de budget que j'ai co-développée, est publiée sur l'App Store et le Google Play Store.",
+      "Bonee, une application de budget que j'ai conçue et développée de A à Z, est publiée sur l'App Store et le Google Play Store.",
       "Chez Kunagi, pendant deux ans d'alternance, j'ai travaillé sur une application iPhone et Android, de l'écran jusqu'au serveur.",
     ],
     faq: ["Vous travaillez avec des clients en Suisse"],
@@ -142,7 +142,7 @@ export const pageTexts = {
     pathTitle: "Mon parcours",
     path: [
       "Deux ans d'alternance comme développeur chez Kunagi : une application iPhone et Android, de l'écran jusqu'au serveur.",
-      "Bonee, une application de budget que j'ai co-développée, publiée sur l'App Store et Google Play.",
+      "Bonee, une application de budget que j'ai conçue et développée de A à Z, publiée sur l'App Store et Google Play.",
       "Aujourd'hui, je lance Viktra, mon agence : des sites et des applications pour les entreprises, les indépendants et les particuliers.",
     ],
   },

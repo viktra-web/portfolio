@@ -8,6 +8,6 @@ Validé par Adel le 18/11/2026 (phase 0 de la méthode client). Copie aussi dans
 - **Action principale** : WhatsApp, puis appel, puis formulaire.
 - **Succès** : augmentation nette des demandes venues de la page (départ quasi nul, pas de chiffre cible). Mesure sans traceur : message WhatsApp pré-rempli propre à la page, champ « source » dans le CRM, positions Search Console après bascule.
 - **Contraintes** : rien d'inventé, « Exemple fictif » sur la démo, pas de traceur tiers, fluidité iPhone 16, branche + PR (`main` = production), passage en `index` après les mentions légales (SIRET, début décembre 2026).
-- **Décisions du 18/11** : délai de réponse « le jour même ou le lendemain » ; Bonee « co-développée » ; viktra.fr réservé début décembre ; JSL Judo et Globalpronet d'accord pour être cités ; photo d'Adel à venir.
+- **Décisions du 18/11** : délai de réponse « le jour même ou le lendemain » ; Bonee « conçue et développée de A à Z » (Adel a refait les maquettes et développé l'app entière, 19/11) ; viktra.fr réservé début décembre ; JSL Judo et Globalpronet d'accord pour être cités ; photo d'Adel à venir.
 
 - **Décisions du 19/11** : v4 avec une entrée portfolio (bonjour, qui je suis, puis un ordinateur qui s'ouvre sur les projets au défilement), animations issues de bibliothèques éprouvées et non codées à la main, toujours fluides sur iPhone.
