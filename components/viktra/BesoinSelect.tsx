@@ -12,7 +12,7 @@ export interface BesoinOption {
 
 function Select({ options, defaultValue }: { options: BesoinOption[]; defaultValue: string }) {
   return (
-    <select id="contact-besoin" className="v-input" name="besoin" defaultValue={defaultValue}>
+    <select id="contact-besoin" className="v4-input" name="besoin" defaultValue={defaultValue}>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.label}

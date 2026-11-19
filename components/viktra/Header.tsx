@@ -1,57 +1,41 @@
 import { mainNav, offerNav, path } from "@/lib/site";
 import Logo from "./Logo";
-import WhatsAppLink from "./WhatsAppLink";
 
-/** Same header on every page. Menus are native <details>: no JavaScript. */
-export default function Header() {
+/** Same header on every page. The mobile menu is a native <details>: no JavaScript. */
+export default function Header({ current }: { current?: string }) {
+  const links = [
+    ...offerNav.map((item) => ({ href: `/${item.slug}`, label: item.label })),
+    ...mainNav,
+  ];
+  const aria = (href: string) => (href === current ? ("page" as const) : undefined);
   return (
-    <header className="v-top">
-      <a className="v-skip" href="#contenu">
+    <header className="v4-top">
+      <a className="v4-skip" href="#contenu">
         Aller au contenu
       </a>
-      <div className="v-wrap v-bar">
-        <a href={path("/")} className="v-brand">
-          <Logo className="v-logo" />
-          <span className="v-brand-by">par Adel Djahnit</span>
+      <div className="v4-wrap v4-top-row">
+        <a href={path("/")} className="v4-brand" aria-current={aria("/")}>
+          <Logo className="v4-logo" />
+          <span>par Adel Djahnit</span>
         </a>
-
-        <nav className="v-nav" aria-label="Menu principal">
-          <details className="v-drop">
-            <summary>Offres</summary>
-            <ul>
-              {offerNav.map((item) => (
-                <li key={item.slug}>
-                  <a href={path(`/${item.slug}`)}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </details>
-          {mainNav.map((item) => (
-            <a key={item.href} href={path(item.href)}>
+        <nav className="v4-nav" aria-label="Menu principal">
+          {links.map((item) => (
+            <a key={item.href} href={path(item.href)} aria-current={aria(item.href)}>
               {item.label}
             </a>
           ))}
-          <WhatsAppLink className="v-btn v-btn--primary v-btn--sm">WhatsApp</WhatsAppLink>
         </nav>
-
-        <details className="v-burger">
+        <details className="v4-burger">
           <summary>Menu</summary>
           <nav aria-label="Menu">
-            <p className="v-small">Offres</p>
-            <ul>
-              {offerNav.map((item) => (
-                <li key={item.slug}>
-                  <a href={path(`/${item.slug}`)}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-            <ul>
-              {mainNav.map((item) => (
-                <li key={item.href}>
-                  <a href={path(item.href)}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
+            <a href={path("/")} aria-current={aria("/")}>
+              Accueil
+            </a>
+            {links.map((item) => (
+              <a key={item.href} href={path(item.href)} aria-current={aria(item.href)}>
+                {item.label}
+              </a>
+            ))}
           </nav>
         </details>
       </div>

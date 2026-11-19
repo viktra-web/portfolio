@@ -23,7 +23,7 @@ const initialState: ContactState = { status: "idle" };
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" className="v-btn v-btn--primary v-form-submit" disabled={pending}>
+    <button type="submit" className="v4-btn v4-btn--sun v4-form-submit" disabled={pending}>
       {pending ? "Envoi en cours…" : "Demander mon devis gratuit"}
     </button>
   );
@@ -32,8 +32,8 @@ function SubmitButton() {
 /** Field error: a drawn icon (no Unicode symbol) and the message from the action. */
 function FieldError({ id, children }: { id: string; children: ReactNode }) {
   return (
-    <p className="v-form-error" id={id}>
-      <svg className="v-form-error-icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+    <p className="v4-form-error" id={id}>
+      <svg className="v4-form-error-icon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
         <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" strokeWidth="1.75" />
         <path d="M8 4.25v4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
         <circle cx="8" cy="11.5" r="1" fill="currentColor" />
@@ -82,12 +82,12 @@ export default function ContactForm({
     return (
       <div
         ref={statusRef}
-        className="v-card v-form-card v-status v-status--success"
+        className="v4-form-card v4-status v4-status--success"
         role="status"
         aria-live="polite"
         tabIndex={-1}
       >
-        <h3 className="v-status-title">Merci, c&apos;est bien reçu.</h3>
+        <h3 className="v4-status-title">Merci, c&apos;est bien reçu.</h3>
         <p>
           Je vous réponds le jour même ou le lendemain, par téléphone ou par email, pour fixer un rendez-vous de
           20 minutes, chez vous ou au téléphone. Rien à préparer.
@@ -101,9 +101,9 @@ export default function ContactForm({
   const fallback = state.status === "unavailable" || state.status === "error";
 
   return (
-    <div className="v-card v-form-card">
+    <div className="v4-form-card">
       {state.status === "invalid" ? (
-        <div ref={statusRef} className="v-status v-status--error" role="alert" tabIndex={-1}>
+        <div ref={statusRef} className="v4-status v4-status--error" role="alert" tabIndex={-1}>
           <p>Il manque quelques informations, voir ci-dessous.</p>
         </div>
       ) : null}
@@ -111,7 +111,7 @@ export default function ContactForm({
       {fallback ? (
         <div
           ref={statusRef}
-          className="v-status v-status--error"
+          className="v4-status v4-status--error"
           role="status"
           aria-live="polite"
           tabIndex={-1}
@@ -123,20 +123,20 @@ export default function ContactForm({
             Vous pouvez me l&apos;envoyer par email en un clic, ou m&apos;appeler au{" "}
             <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>.
           </p>
-          <a className="v-btn v-btn--primary" href={state.mailto}>
+          <a className="v4-btn v4-btn--sun" href={state.mailto}>
             Envoyer par email
           </a>
         </div>
       ) : null}
 
-      <form key={formKey} className="v-form" action={formAction} noValidate>
-        <div className="v-field">
-          <label className="v-label" htmlFor="contact-nom">
+      <form key={formKey} className="v4-form" action={formAction} noValidate>
+        <div className="v4-field">
+          <label className="v4-label" htmlFor="contact-nom">
             Votre nom
           </label>
           <input
             id="contact-nom"
-            className="v-input"
+            className="v4-input"
             type="text"
             name="nom"
             autoComplete="name"
@@ -153,25 +153,25 @@ export default function ContactForm({
         </div>
 
         <fieldset
-          className="v-fieldset"
+          className="v4-fieldset"
           aria-describedby={describedBy("hint-contact", errors.contact && "err-contact")}
         >
-          <legend className="v-label">Comment vous joindre ?</legend>
-          <p className="v-form-hint" id="hint-contact">
+          <legend className="v4-label">Comment vous joindre ?</legend>
+          <p className="v4-form-hint" id="hint-contact">
             Un téléphone ou un email suffit.
           </p>
           {errors.contact ? (
             <FieldError id="err-contact">{errors.contact}</FieldError>
           ) : null}
 
-          <div className="v-form-row">
-            <div className="v-field">
-              <label className="v-label" htmlFor="contact-telephone">
+          <div className="v4-form-row">
+            <div className="v4-field">
+              <label className="v4-label" htmlFor="contact-telephone">
                 Téléphone
               </label>
               <input
                 id="contact-telephone"
-                className="v-input"
+                className="v4-input"
                 type="tel"
                 inputMode="tel"
                 name="telephone"
@@ -189,13 +189,13 @@ export default function ContactForm({
               ) : null}
             </div>
 
-            <div className="v-field">
-              <label className="v-label" htmlFor="contact-email">
+            <div className="v4-field">
+              <label className="v4-label" htmlFor="contact-email">
                 Email
               </label>
               <input
                 id="contact-email"
-                className="v-input"
+                className="v4-input"
                 type="email"
                 name="email"
                 autoComplete="email"
@@ -215,20 +215,20 @@ export default function ContactForm({
         </fieldset>
 
         {/* No "activité" menu here: the message asks for it. The action accepts it empty. */}
-        <div className="v-field">
-          <label className="v-label" htmlFor="contact-besoin">
+        <div className="v4-field">
+          <label className="v4-label" htmlFor="contact-besoin">
             Votre besoin (facultatif)
           </label>
           <BesoinSelect options={besoinOptions} value={values.besoin} />
         </div>
 
-        <div className="v-field">
-          <label className="v-label" htmlFor="contact-message">
-            En quelques mots, votre activité et ce que vous cherchez
+        <div className="v4-field">
+          <label className="v4-label" htmlFor="contact-message">
+            En quelques mots, votre projet
           </label>
           <textarea
             id="contact-message"
-            className="v-input"
+            className="v4-input"
             name="message"
             rows={5}
             maxLength={3000}
@@ -236,7 +236,7 @@ export default function ContactForm({
             aria-required="true"
             aria-invalid={errors.message ? true : undefined}
             aria-describedby={describedBy(errors.message && "err-message")}
-            placeholder="Ex. : je tiens une boulangerie à Gex et je voudrais que mes clients trouvent mes horaires sur Google."
+            placeholder="Ex. : je voudrais un site pour présenter mon activité et recevoir des demandes de devis."
             defaultValue={values.message ?? ""}
           />
           {errors.message ? (
@@ -244,7 +244,7 @@ export default function ContactForm({
           ) : null}
         </div>
 
-        <div className="v-honeypot" aria-hidden="true">
+        <div className="v4-honeypot" aria-hidden="true">
           <label htmlFor="contact-entreprise-site">Site de votre entreprise</label>
           <input
             id="contact-entreprise-site"
@@ -259,7 +259,7 @@ export default function ContactForm({
 
         <SubmitButton />
 
-        <p className="v-form-notice">
+        <p className="v4-form-notice">
           Vos informations servent uniquement à répondre à votre demande. Elles me sont transmises
           par email et conservées au maximum 3 ans après notre dernier échange. Vous pouvez
           demander leur suppression à <a href={`mailto:${SERVICES_EMAIL}`}>{SERVICES_EMAIL}</a>.

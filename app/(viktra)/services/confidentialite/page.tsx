@@ -90,16 +90,16 @@ const blocks: { title: string; body: ReactNode }[] = [
 
 export default function PrivacyPage() {
   return (
-    <Shell>
+    <Shell current="/confidentialite">
       <PageIntro
         h1="Confidentialité"
         lead="Ce que deviennent les informations que vous m'envoyez avec le formulaire de contact."
       />
-      <section className="v-section">
-        <div className="v-wrap v-narrow v-legal">
+      <section className="v4-section">
+        <div className="v4-wrap v4-legal">
           {blocks.map((block) => (
             <section key={block.title}>
-              <h2 className="v-h3">{block.title}</h2>
+              <h2 className="v4-h3">{block.title}</h2>
               <p>{block.body}</p>
             </section>
           ))}

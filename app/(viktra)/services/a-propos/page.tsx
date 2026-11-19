@@ -19,51 +19,59 @@ export const metadata: Metadata = viktraMetadata({
 
 export default function AProposPage() {
   return (
-    <Shell>
+    <Shell current="/a-propos">
       <PageIntro h1={t.h1} lead={t.lead} />
-      <section className="v-section" aria-label="Adel Djahnit">
-        <div className={ABOUT_PHOTO ? "v-wrap v-split" : "v-wrap v-narrow"}>
-          {ABOUT_PHOTO ? (
-            // eslint-disable-next-line @next/next/no-img-element -- static, already sized
-            <img
-              className="v-photo"
-              src={ABOUT_PHOTO.src}
-              alt={ABOUT_PHOTO.alt}
-              width={ABOUT_PHOTO.width}
-              height={ABOUT_PHOTO.height}
-            />
-          ) : null}
+      <section className="v4-section" aria-labelledby="parcours">
+        <div className="v4-wrap v4-split">
           <div>
-            <figure className="v-quote v-quote--first">
-              <blockquote>
-                <p>{"« " + KUNAGI_QUOTE.text + " »"}</p>
-              </blockquote>
-              <figcaption className="v-small">
-                {KUNAGI_QUOTE.author}{" "}
-                <a href={KUNAGI_QUOTE.href} target="_blank" rel="noopener">
-                  {KUNAGI_QUOTE.linkLabel}
-                </a>
-              </figcaption>
-            </figure>
+            {ABOUT_PHOTO ? (
+              // eslint-disable-next-line @next/next/no-img-element -- static, already sized
+              <img
+                className="v4-about-photo"
+                src={ABOUT_PHOTO.src}
+                alt={ABOUT_PHOTO.alt}
+                width={ABOUT_PHOTO.width}
+                height={ABOUT_PHOTO.height}
+              />
+            ) : null}
+            <h2 className="v4-h2" id="parcours">
+              {t.pathTitle}
+            </h2>
+            <ul className="v4-list v4-list--big">
+              {t.path.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+            <a className="v4-more" href={path("/realisations")}>
+              Voir mes projets
+            </a>
           </div>
+          <figure className="v4-quote">
+            <blockquote>
+              <p>{"« " + KUNAGI_QUOTE.text + " »"}</p>
+            </blockquote>
+            <figcaption>
+              {KUNAGI_QUOTE.author}{" "}
+              <a href={KUNAGI_QUOTE.href} target="_blank" rel="noopener">
+                {KUNAGI_QUOTE.linkLabel}
+              </a>
+            </figcaption>
+          </figure>
         </div>
       </section>
-      <section className="v-section v-calcaire" aria-labelledby="engagements">
-        <div className="v-wrap">
-          <h2 className="v-h2" id="engagements">
+      <section className="v4-section v4-section--calcaire" aria-labelledby="engagements">
+        <div className="v4-wrap">
+          <h2 className="v4-h2" id="engagements">
             Mes engagements
           </h2>
-          <ul className="v-guarantees">
+          <ul className="v4-rows">
             {serviceGuarantees.map((item) => (
               <li key={item.title}>
-                <h3 className="v-h3">{item.title}</h3>
+                <h3 className="v4-h3">{item.title}</h3>
                 <p>{item.text}</p>
               </li>
             ))}
           </ul>
-          <a className="v-link" href={path("/realisations")}>
-            Voir mes réalisations
-          </a>
         </div>
       </section>
       <CtaBand />

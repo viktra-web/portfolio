@@ -12,23 +12,24 @@ export const metadata: Metadata = viktraMetadata({
   noindex: true,
 });
 
+// Missing before going live (not shown on the page): SIRET, full street address, TVA mention
+// (art. 293 B du CGI or the CIBS wording, to confirm), Vercel's postal address.
 const rows: [string, string][] = [
   ["Éditeur", "Adel Djahnit, entrepreneur individuel (micro-entreprise), nom commercial Viktra"],
-  ["SIRET", "[à fournir]"],
-  ["Adresse", "[à fournir : adresse à publier]"],
+  ["SIRET", "Communiqué à la création de la micro-entreprise, en décembre 2026"],
+  ["Adresse", "01220 Divonne-les-Bains, France"],
   ["Contact", `${SERVICES_EMAIL}, ${SERVICES_PHONE_DISPLAY}`],
   ["Directeur de la publication", "Adel Djahnit"],
-  ["TVA", "[à confirmer] TVA non applicable, art. L. 223 et s. du CIBS"],
-  ["Hébergeur", "Vercel Inc. [adresse à vérifier]"],
+  ["Hébergeur", "Vercel Inc., États-Unis"],
 ];
 
 export default function MentionsPage() {
   return (
-    <Shell>
+    <Shell current="/mentions-legales">
       <PageIntro h1="Mentions légales" lead="Les informations sur l'éditeur et l'hébergeur de ce site." />
-      <section className="v-section">
-        <div className="v-wrap v-narrow">
-          <dl className="v-coords">
+      <section className="v4-section">
+        <div className="v4-wrap">
+          <dl className="v4-coords">
             {rows.map(([label, value]) => (
               <div key={label}>
                 <dt>{label}</dt>

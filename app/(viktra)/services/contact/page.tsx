@@ -27,15 +27,18 @@ export const metadata: Metadata = viktraMetadata({
 
 export default function ContactPage() {
   return (
-    <Shell>
+    <Shell current="/contact">
       <PageIntro h1={t.h1} lead={t.lead}>
-        <div className="v-cta-row">
-          <WhatsAppLink className="v-btn v-btn--primary">Écrire à Adel sur WhatsApp</WhatsAppLink>
+        <div className="v4-actions">
+          <WhatsAppLink className="v4-btn v4-btn--sun">Écrire à Adel sur WhatsApp</WhatsAppLink>
         </div>
+        <p className="v4-call">
+          Ou appelez le <a href={SERVICES_PHONE_TEL}>{SERVICES_PHONE_DISPLAY}</a>
+        </p>
       </PageIntro>
-      <section id="contact" className="v-section" aria-label="Formulaire et coordonnées">
-        <div className="v-wrap v-split">
-          <dl className="v-coords">
+      <section id="contact" className="v4-section" aria-label="Formulaire et coordonnées">
+        <div className="v4-wrap v4-split">
+          <dl className="v4-coords">
             <div>
               <dt>Téléphone</dt>
               <dd>
@@ -49,12 +52,12 @@ export default function ContactPage() {
               </dd>
             </div>
             <div>
-              <dt>Zone</dt>
+              <dt>Déplacements</dt>
               <dd>{SERVICES_AREA.join(", ")}</dd>
             </div>
           </dl>
           <div>
-            <h2 className="v-h3 v-form-title" id="contact-title" tabIndex={-1}>
+            <h2 className="v4-h3 v4-form-title" id="contact-title" tabIndex={-1}>
               Le formulaire
             </h2>
             <ContactForm

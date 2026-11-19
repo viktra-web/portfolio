@@ -1,10 +1,27 @@
 /*
- * Viktra v4 — entrée portfolio, un ordinateur qui se retourne (plan 09, 19/11/2026).
- * Animation seulement sur ordinateur (pointeur fin, survol, mouvement autorisé, JS) :
- * même requête que V4_MOTION_QUERY dans lib/v4.ts, plus (scripting: enabled).
- * Partout ailleurs : section en hauteur auto, un téléphone qui montre Bonee.
+ * Viktra : feuille commune à toutes les pages du site (/services et ses pages), style v4.
+ * Importée par app/(viktra)/layout.tsx ; la classe .v4 est sur <body>.
  * Aplats seulement : pas de dégradé, de halo ni d'ombre décorative.
+ * Une seule animation au défilement : l'ordinateur de l'accueil, sur ordinateur seulement
+ * (pointeur fin, survol, mouvement autorisé, JS), même requête que V4_MOTION_QUERY (lib/v4.ts).
+ * Pages intérieures : rien ne bouge au défilement.
  */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: #fbfbf9;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
 
 .v4 {
   --jour: #fbfbf9;
@@ -16,6 +33,8 @@
   --soleil-2: #a32e0b;
   --trait: rgba(19, 33, 43, 0.14);
   --pad: clamp(1.25rem, 5vw, 3rem);
+  /* Used by the Logo component (dot of the i). */
+  --v-sun: var(--soleil);
 
   background: var(--jour);
   color: var(--encre);
@@ -232,7 +251,8 @@
 
 .v4-nav {
   display: none;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
@@ -286,7 +306,7 @@
   border-bottom: 0;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1280px) {
   .v4-nav {
     display: flex;
   }
@@ -364,30 +384,45 @@
   display: none;
 }
 
-/* ---------- Entry: the laptop (computer with a mouse, motion allowed, JS) ---------- */
+/* ---------- Entry: the laptop (computer with a mouse, motion allowed, JS) ----------
+ * A CSS 3D box, flat colours only. Units are fractions of --w so every size follows.
+ * Lid: screen (front), aluminium back with the logo, thin edges. Base: deck with keyboard
+ * and trackpad, front face, sides, back, hinge, and a very light contact shadow.
+ * Safari: no opacity, overflow or filter on .v4-tilt, .v4-laptop, .v4-lid, .v4-base or
+ * their faces (it would flatten the 3D). Colours with alpha are fine.
+ */
 
 .v4-slot {
-  --w: 34rem;
-  --h: calc(var(--w) * 0.644);
-  --d: calc(var(--h) * 0.68);
+  --w: 30rem;
+  --h: calc(var(--w) * 0.66);
+  --d: calc(var(--w) * 0.68);
+  --T: calc(var(--w) * 0.03);
+  --t: calc(var(--w) * 0.012);
+  --alu-top: #d9dde1;
+  --alu-lid: #d2d6db;
+  --alu-front: #b8bec5;
+  --alu-side: #c6cbd1;
+  --alu-back: #aeb4bb;
+  --key: #23282e;
   width: var(--w);
   max-width: 100%;
   justify-self: center;
-  padding-bottom: calc(var(--d) * 0.35);
-  perspective: 1600px;
-  perspective-origin: 50% 30%;
+  padding-bottom: calc(var(--d) * 0.5);
+  perspective: 2200px;
+  perspective-origin: 50% 10%;
   transform-origin: 50% 50%;
 }
 
 .v4-tilt,
 .v4-laptop,
-.v4-lid {
+.v4-lid,
+.v4-base {
   transform-style: preserve-3d;
 }
 
 .v4-tilt {
   transform-origin: 50% 100%;
-  transform: rotateX(-16deg);
+  transform: rotateX(-30deg);
 }
 
 .v4-laptop {
@@ -395,35 +430,48 @@
   width: var(--w);
   height: var(--h);
   transform-origin: 50% 100% calc(var(--d) / 2);
-  transform: rotateY(180deg);
+  transform: rotateY(145deg);
 }
 
 .v4-lid {
   position: absolute;
   inset: 0;
   transform-origin: 50% 100%;
-  transform: rotateX(-20deg);
+  transform: rotateX(-12deg);
 }
 
 .v4-screen,
 .v4-back {
   position: absolute;
   inset: 0;
-  border-radius: 0.9rem 0.9rem 0.3rem 0.3rem;
+  border-radius: calc(var(--w) * 0.028) calc(var(--w) * 0.028) calc(var(--w) * 0.01)
+    calc(var(--w) * 0.01);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
+/* Front of the lid: thin black bezel, camera at the top. */
 .v4-screen {
-  padding: calc(var(--w) * 0.025);
-  background: var(--encre);
+  padding: calc(var(--w) * 0.032) calc(var(--w) * 0.018) calc(var(--w) * 0.022);
+  background: #0f1114;
+}
+
+.v4-cam {
+  position: absolute;
+  top: calc(var(--w) * 0.012);
+  left: 50%;
+  width: calc(var(--w) * 0.008);
+  height: calc(var(--w) * 0.008);
+  margin-left: calc(var(--w) * -0.004);
+  border-radius: 50%;
+  background: #2c333b;
 }
 
 .v4-display {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 0.2rem;
+  border-radius: calc(var(--w) * 0.012) calc(var(--w) * 0.012) 2px 2px;
   background: var(--calcaire);
   overflow: hidden;
 }
@@ -463,61 +511,193 @@
   object-position: top;
 }
 
+/* Back of the lid: aluminium, the Viktra logo in the middle. */
 .v4-back {
   display: grid;
   place-items: center;
-  transform: rotateY(180deg);
-  background: var(--calcaire);
-  border: 1px solid var(--calcaire-2);
+  transform: translateZ(calc(var(--t) * -1)) rotateY(180deg);
+  background: var(--alu-lid);
   color: var(--encre);
 }
 
-.v4-back::after {
-  content: "";
-  position: absolute;
-  left: 6%;
-  right: 6%;
-  bottom: 0;
-  height: 3%;
-  border-radius: 0.3rem 0.3rem 0 0;
-  background: var(--calcaire-2);
-}
-
 .v4-back-logo {
-  width: 42%;
+  width: 34%;
   height: auto;
 }
 
+/* Edges of the lid (both sides painted: they are only a few pixels thick). */
+.v4-lid-edge {
+  position: absolute;
+  background: var(--alu-front);
+}
+
+.v4-lid-edge--top {
+  top: calc(var(--w) * 0.006);
+  left: calc(var(--w) * 0.012);
+  right: calc(var(--w) * 0.012);
+  height: var(--t);
+  transform-origin: 50% 0;
+  transform: rotateX(-90deg);
+}
+
+.v4-lid-edge--left,
+.v4-lid-edge--right {
+  top: calc(var(--w) * 0.014);
+  bottom: 0;
+  width: var(--t);
+}
+
+.v4-lid-edge--left {
+  left: 0;
+  transform-origin: 0 50%;
+  transform: rotateY(90deg);
+}
+
+.v4-lid-edge--right {
+  right: 0;
+  transform-origin: 100% 50%;
+  transform: rotateY(-90deg);
+}
+
+/* Base: a box. y = 0 is the top of the deck (hinge line), z from -t (back) to d - t (front). */
 .v4-base {
   position: absolute;
   top: 100%;
-  left: -4%;
-  width: 108%;
-  height: var(--d);
-  transform-origin: 50% 0;
-  transform: rotateX(90deg);
-  border-radius: 0.3rem 0.3rem 1rem 1rem;
-  background: var(--calcaire-2);
+  left: 0;
+  width: 100%;
+  height: 0;
 }
 
-.v4-keys {
+.v4-base > span {
   position: absolute;
-  left: 9%;
-  right: 9%;
-  top: 9%;
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.v4-deck {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--d);
+  transform-origin: 50% 0;
+  transform: translateZ(calc(var(--t) * -1)) rotateX(90deg);
+  border-radius: calc(var(--w) * 0.006) calc(var(--w) * 0.006) calc(var(--w) * 0.014)
+    calc(var(--w) * 0.014);
+  background: var(--alu-top);
+}
+
+.v4-face-front {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--T);
+  transform: translateZ(calc(var(--d) - var(--t)));
+  border-radius: 0 0 calc(var(--w) * 0.014) calc(var(--w) * 0.014);
+  background: var(--alu-front);
+}
+
+/* The notch to lift the lid. */
+.v4-face-front::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 43%;
+  width: 14%;
+  height: 38%;
+  border-radius: 0 0 0.4rem 0.4rem;
+  background: var(--alu-back);
+}
+
+.v4-face-back {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--T);
+  transform: translateZ(calc(var(--t) * -1)) rotateY(180deg);
+  background: var(--alu-back);
+}
+
+.v4-face-left,
+.v4-face-right {
+  top: 0;
+  width: var(--d);
+  height: var(--T);
+  background: var(--alu-side);
+}
+
+.v4-face-left {
+  left: 0;
+  transform-origin: 0 0;
+  transform: translateZ(calc(var(--t) * -1)) rotateY(-90deg);
+}
+
+.v4-face-right {
+  left: calc(100% - var(--d));
+  transform-origin: 100% 0;
+  transform: translateZ(calc(var(--t) * -1)) rotateY(90deg);
+}
+
+/* Hinge: a dark bar under the lid, seen from the back. */
+.v4-base > .v4-hinge {
+  top: calc(var(--T) * -0.7);
+  left: 18%;
+  width: 64%;
+  height: calc(var(--T) * 1.2);
+  transform: translateZ(calc(var(--t) * -1 - 1px)) rotateY(180deg);
+  border-radius: calc(var(--T) * 0.5);
+  background: #737a82;
+}
+
+/* Contact shadow: a flat, very light plane under the base. No blur. */
+.v4-base > .v4-shadow {
+  top: var(--T);
+  left: -1.5%;
+  width: 103%;
+  height: calc(var(--d) * 1.03);
+  transform-origin: 50% 0;
+  transform: translateZ(calc(var(--t) * -1 - var(--d) * 0.03)) rotateX(90deg);
+  border-radius: calc(var(--w) * 0.04);
+  background: rgba(19, 33, 43, 0.05);
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+/* Keyboard: real rows of keys (function row, numbers, three letter rows, space bar). */
+.v4-kb {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 6%;
   height: 46%;
-  border-radius: 0.4rem;
-  background: #2b3843;
+  display: grid;
+  grid-template-rows: 0.6fr repeat(5, 1fr);
+  gap: calc(var(--w) * 0.005);
+  padding: calc(var(--w) * 0.006);
+  border-radius: calc(var(--w) * 0.006);
+  background: #c3c8ce;
+}
+
+.v4-kb-row {
+  display: flex;
+  gap: calc(var(--w) * 0.005);
+}
+
+.v4-kb-row > i {
+  flex-basis: 0;
+  border-radius: calc(var(--w) * 0.003);
+  background: var(--key);
 }
 
 .v4-pad {
   position: absolute;
-  left: 36%;
-  right: 36%;
-  top: 62%;
-  bottom: 8%;
-  border-radius: 0.4rem;
-  background: var(--calcaire);
+  left: 31%;
+  right: 31%;
+  top: 57%;
+  bottom: 6%;
+  border: 1px solid #bcc2c9;
+  border-radius: calc(var(--w) * 0.01);
+  background: #d1d5da;
 }
 
 .v4-cap {
@@ -559,7 +739,7 @@
 
 @media (min-width: 900px) and (max-width: 1199px) {
   .v4-slot {
-    --w: 26rem;
+    --w: 24rem;
   }
 }
 
@@ -846,4 +1026,337 @@
   .v4-foot {
     padding-bottom: 6rem;
   }
+}
+
+/* ---------- Header: current page ---------- */
+
+.v4-nav a[aria-current="page"],
+.v4-burger nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Inner pages ---------- */
+
+.v4-page-intro {
+  padding: clamp(2rem, 6vw, 4.5rem) 0 clamp(3rem, 7vw, 5rem);
+}
+
+.v4-h1--page {
+  font-size: clamp(2.2rem, 6.5vw, 4rem);
+  max-width: 20ch;
+}
+
+.v4-more {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-weight: 700;
+}
+
+.v4-dark-link {
+  color: var(--craie);
+}
+
+/* Plain list with hairlines (same as the facts of the home). */
+.v4-list {
+  margin-top: 1.75rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--trait);
+  max-width: 44rem;
+}
+
+.v4-list li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--trait);
+}
+
+.v4-list--big li {
+  font-size: 1.125rem;
+}
+
+.v4-bullets {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2em;
+  list-style: disc;
+}
+
+.v4-bullets li {
+  padding: 0.15rem 0;
+}
+
+.v4-bullets li::marker {
+  color: var(--soleil);
+}
+
+/* Price of an offer: one framed box, the only frame of the page. */
+.v4-price-box {
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1.5px solid var(--encre);
+  border-radius: 1rem;
+  background: #fff;
+  align-self: start;
+}
+
+.v4-price-box .v4-price {
+  margin-top: 0.25rem;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  white-space: normal;
+}
+
+.v4-chips {
+  margin-top: 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.v4-chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.15rem;
+  border: 1.5px solid var(--encre);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.v4-chips a:hover {
+  background: var(--encre);
+  color: var(--craie);
+}
+
+/* Rows: a name on the left, its text on the right (tarifs, engagements). */
+.v4-rows {
+  margin-top: 2.5rem;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--encre);
+}
+
+.v4-rows > li {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--trait);
+}
+
+.v4-rows > li > div > p + p {
+  margin-top: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  .v4-rows > li {
+    grid-template-columns: 16rem 1fr;
+    gap: 2rem;
+    align-items: baseline;
+  }
+}
+
+.v4-note {
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+  max-width: 44rem;
+}
+
+/* Contact details and legal notice. */
+.v4-coords {
+  margin: 0;
+  border-top: 2px solid var(--encre);
+}
+
+.v4-coords > div {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--trait);
+}
+
+.v4-coords dt {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.v4-coords dd {
+  margin: 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 760px) {
+  .v4-coords > div {
+    grid-template-columns: 14rem 1fr;
+    gap: 2rem;
+  }
+}
+
+.v4-legal {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 44rem;
+}
+
+.v4-legal p {
+  margin-top: 0.4rem;
+}
+
+/* ---------- Contact form ---------- */
+
+.v4-form-title {
+  margin-bottom: 1rem;
+}
+
+.v4-form-card {
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1.5px solid var(--encre);
+  border-radius: 1rem;
+  background: #fff;
+  color: var(--encre);
+}
+
+.v4-form {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.v4-fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.v4-form-row {
+  display: grid;
+  gap: 1rem;
+}
+
+.v4-field {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.v4-label {
+  padding: 0;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.v4-form-hint {
+  font-size: 0.875rem;
+  opacity: 0.8;
+}
+
+.v4-input {
+  width: 100%;
+  min-height: 3.1rem;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--encre);
+  border-radius: 0.6rem;
+  background: #fff;
+  color: var(--encre);
+  font: inherit;
+  /* 16px minimum: iOS does not zoom on focus. */
+  font-size: 1rem;
+}
+
+select.v4-input {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2313212B' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+textarea.v4-input {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+.v4-form-error {
+  display: flex;
+  gap: 0.4rem;
+  color: var(--soleil-2);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.v4-form-error-icon {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+}
+
+.v4-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.v4-form-submit {
+  width: 100%;
+}
+
+.v4-form-notice {
+  font-size: 0.8125rem;
+  opacity: 0.8;
+}
+
+.v4-status {
+  margin-bottom: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: var(--calcaire);
+  color: var(--encre);
+}
+
+.v4-status--success {
+  background: #fff;
+}
+
+.v4-status-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+@media (min-width: 600px) {
+  .v4-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.v4-section--flush {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.v4-section--flush > .v4-wrap > .v4-project:first-child {
+  margin-top: 0;
+}
+
+.v4-about-photo {
+  width: 100%;
+  max-width: 22rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+}
+
+/* The entry lead: one sentence per line when there is room. */
+.v4-lead-line {
+  display: block;
 }
