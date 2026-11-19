@@ -1,5 +1,7 @@
 // Texts of the Viktra pages. Rule: nothing invented. Each sentence comes from a validated
-// text (lib/services.ts, lib/product.ts) or says plainly what is missing: [à demander].
+// text (lib/services.ts, lib/product.ts, lib/v4.ts).
+// Target since 19/11/2026: everyone who needs a site or an app (companies, independents,
+// individuals). No town in a heading (h1/h2), no technical jargon.
 import type { OfferSlug } from "@/lib/site";
 
 export interface OfferPage {
@@ -22,16 +24,16 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
   "site-vitrine": {
     slug: "site-vitrine",
     offerName: "Site vitrine",
-    metaTitle: "Création de site vitrine Pays de Gex, dès 690 € | Viktra",
+    metaTitle: "Création de site vitrine, dès 690 € | Viktra",
     metaDescription:
-      "Site vitrine de 1 à 5 pages pour les commerces et artisans de Divonne, Gex, Ferney, Saint-Genis, Nyon et Genève. Lisible sur téléphone, prix fixe.",
-    h1: "Un site vitrine pour votre commerce du Pays de Gex, dès 690 €.",
+      "Site vitrine de 1 à 5 pages, lisible sur téléphone, à prix fixe. Par Adel Djahnit, développeur web : Pays de Gex, Nyon et Genève.",
+    h1: "Un site vitrine pour présenter votre activité, dès 690 €.",
     lead: "Un site clair, rapide et lisible sur téléphone, qui présente votre activité et permet de vous contacter ou de demander un devis en un clic.",
     forWhomTitle: "Pour qui",
     forWhom: [
       "Vous voulez présenter vos prestations en détail, afficher vos tarifs ou recevoir des demandes de devis.",
       "Vous n'avez ni textes ni photos. Je vous aide à rédiger les textes pendant le rendez-vous, et on peut partir des photos de votre téléphone.",
-      "Vous êtes à Divonne-les-Bains, Gex, Ferney-Voltaire, Saint-Genis-Pouilly, Nyon ou Genève.",
+      "Je me déplace dans le Pays de Gex, à Nyon et à Genève. Le premier rendez-vous peut aussi se faire par téléphone.",
     ],
     detailsTitle: "Ce que vous recevez",
     details: [
@@ -52,16 +54,16 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
   "visibilite-google": {
     slug: "visibilite-google",
     offerName: "Visibilité Google",
-    metaTitle: "Fiche Google Divonne et Pays de Gex, dès 150 € | Viktra",
+    metaTitle: "Fiche Google à jour, dès 150 € | Viktra",
     metaDescription:
-      "Fiche Google complète et à jour : photos, horaires, catégories, description, réponses aux avis. Pour les commerces de Divonne, Gex, Nyon et Genève.",
-    h1: "Une fiche Google à jour pour votre commerce du Pays de Gex, dès 150 €.",
+      "Fiche Google complète et à jour : photos, horaires, catégories, description, réponses aux avis. Dès 150 €, Pays de Gex, Nyon et Genève.",
+    h1: "Une fiche Google à jour pour votre activité, dès 150 €.",
     lead: "Photos, horaires, catégories, description, réponses aux avis. C'est souvent la première chose que vos clients voient.",
     forWhomTitle: "Pour qui",
     forWhom: [
       "Vous voulez être trouvé quand on tape votre métier et votre ville sur Google.",
       "Vos horaires, vos photos ou votre description sur Google ne sont pas à jour.",
-      "Vous n'avez pas besoin d'un site pour l'instant. Pour certains commerces, une fiche Google suffit : c'est pour ça que je la propose seule.",
+      "Vous n'avez pas besoin d'un site pour l'instant. Pour certaines activités, une fiche Google suffit : c'est pour ça que je la propose seule.",
     ],
     detailsTitle: "Ce que je fais",
     details: [
@@ -74,9 +76,9 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
   "suivi-maintenance": {
     slug: "suivi-maintenance",
     offerName: "Suivi et maintenance",
-    metaTitle: "Maintenance de site internet, Pays de Gex | Viktra",
+    metaTitle: "Suivi et maintenance de site internet | Viktra",
     metaDescription:
-      "Hébergement, mises à jour et petites modifications de votre site (horaires, tarifs, photos, carte). Dès 50 €/mois, sans engagement, Pays de Gex.",
+      "Hébergement, mises à jour et petites modifications de votre site (horaires, tarifs, photos, carte). Dès 50 €/mois, sans engagement.",
     h1: "Suivi et maintenance de votre site, dès 50 € par mois.",
     lead: "Hébergement, mises à jour et petites modifications (horaires, carte, tarifs, photos). Vous m'envoyez un message, je m'en occupe.",
     forWhomTitle: "Pour qui",
@@ -97,9 +99,9 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
   application: {
     slug: "application",
     offerName: "Création d'application",
-    metaTitle: "Création d'application mobile et web, Pays de Gex | Viktra",
+    metaTitle: "Création d'application iPhone, Android et web | Viktra",
     metaDescription:
-      "Application iPhone, Android ou web pour un commerce : réservation, fidélité, outil pour votre équipe. Publication sur les stores. Sur devis.",
+      "Application iPhone, Android ou web : réservation, fidélité, outil pour votre équipe. Publication sur l'App Store et Google Play. Sur devis.",
     h1: "Création d'application mobile ou web, quand un site ne suffit plus.",
     lead: "Réservation, fidélité, outil pour votre équipe. Chaque projet est différent, le prix aussi : on en parle, puis vous recevez un devis.",
     forWhomTitle: "Pour qui",
@@ -107,9 +109,10 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
       "Vous voulez proposer à vos clients une réservation ou une carte de fidélité, ou donner un outil à votre équipe.",
       "Un site vitrine ne suffit pas pour ce que vous voulez faire.",
     ],
-    detailsTitle: "Un exemple",
+    detailsTitle: "Des exemples",
     details: [
       "Bonee, une application de budget que j'ai co-développée, est publiée sur l'App Store et le Google Play Store.",
+      "Chez Kunagi, pendant deux ans d'alternance, j'ai travaillé sur une application iPhone et Android, de l'écran jusqu'au serveur.",
     ],
     faq: ["Vous travaillez avec des clients en Suisse"],
   },
@@ -117,31 +120,37 @@ export const offerPages: Record<OfferSlug, OfferPage> = {
 
 export const pageTexts = {
   tarifs: {
-    metaTitle: "Tarifs site vitrine et fiche Google, Pays de Gex | Viktra",
+    metaTitle: "Tarifs : site vitrine, application, fiche Google et suivi | Viktra",
     metaDescription:
-      "Site vitrine dès 690 €, fiche Google dès 150 €, suivi dès 50 €/mois sans engagement. Devis à prix fixe après un premier rendez-vous gratuit.",
-    h1: "Tarifs : site vitrine, fiche Google et suivi",
+      "Site vitrine dès 690 €, fiche Google dès 150 €, suivi dès 50 €/mois sans engagement, application sur devis. Devis à prix fixe après un premier rendez-vous gratuit.",
+    h1: "Tarifs",
     lead: "Ce sont des prix de départ. Le prix exact est écrit dans votre devis, après notre rendez-vous.",
   },
   realisations: {
-    metaTitle: "Réalisations d'Adel Djahnit, Divonne-les-Bains | Viktra",
+    metaTitle: "Projets choisis d'Adel Djahnit | Viktra",
     metaDescription:
-      "Site du club JSL Judo, textes du site Globalpronet à Genève, application Bonee : les projets d'Adel Djahnit, développeur web à Divonne-les-Bains.",
-    h1: "Réalisations",
-    lead: "Trois projets, et ce que j'ai fait sur chacun.",
+      "L'application Bonee, le site de Viktra, deux ans d'alternance chez Kunagi, puis Globalpronet et JSL Judo : les projets d'Adel Djahnit, développeur web et mobile.",
+    h1: "Projets choisis",
+    lead: "Je démarre mon activité : voici ce que j'ai déjà construit, et comment je travaille.",
   },
   aPropos: {
-    metaTitle: "Adel Djahnit, développeur web à Divonne-les-Bains | Viktra",
+    metaTitle: "Adel Djahnit, développeur web et mobile | Viktra",
     metaDescription:
-      "Adel Djahnit, développeur web à Divonne-les-Bains. Un seul interlocuteur, du premier rendez-vous au suivi, pour les commerces du Pays de Gex et de Genève.",
-    h1: "Adel Djahnit, développeur web à Divonne-les-Bains.",
-    lead: "On se rencontre en personne, et c'est moi qui crée votre site, du premier rendez-vous à la mise en ligne.",
+      "Adel Djahnit, développeur web et mobile installé à Divonne-les-Bains. Un seul interlocuteur, du premier rendez-vous au suivi de votre site ou de votre application.",
+    h1: "Adel Djahnit, développeur web et mobile.",
+    lead: "On se rencontre en personne, et c'est moi qui crée votre site ou votre application, du premier rendez-vous à la mise en ligne.",
+    pathTitle: "Mon parcours",
+    path: [
+      "Deux ans d'alternance comme développeur chez Kunagi : une application iPhone et Android, de l'écran jusqu'au serveur.",
+      "Bonee, une application de budget que j'ai co-développée, publiée sur l'App Store et Google Play.",
+      "Aujourd'hui, je lance Viktra, mon agence : des sites et des applications pour les entreprises, les indépendants et les particuliers.",
+    ],
   },
   contact: {
-    metaTitle: "Contact et devis gratuit, Divonne-les-Bains | Viktra",
+    metaTitle: "Contact et devis gratuit | Viktra",
     metaDescription:
       "Écrivez à Adel sur WhatsApp ou appelez le 06 52 33 87 13. Réponse le jour même ou le lendemain. Premier rendez-vous de 20 minutes, gratuit.",
-    h1: "Dites-moi ce que vous faites.",
+    h1: "Racontez-moi votre projet.",
     lead: "Écrivez-moi sur WhatsApp, appelez-moi ou remplissez le formulaire. Je vous réponds le jour même ou le lendemain. Le premier rendez-vous est gratuit et sans engagement.",
   },
 };

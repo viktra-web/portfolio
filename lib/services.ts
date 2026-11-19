@@ -38,14 +38,6 @@ export interface ServiceOffer {
   cta: string;
 }
 
-export interface ServiceWorkItem {
-  name: string;
-  type: string;
-  description: string;
-  href: string | null;
-  linkLabel: string | null;
-}
-
 export interface ServiceStep {
   title: string;
   text: string;
@@ -79,12 +71,12 @@ export const SERVICES_PHONE_DISPLAY = "06 52 33 87 13";
 export const SERVICES_PHONE_TEL = "tel:+33652338713";
 /**
  * WhatsApp link with a pre-filled message. "depuis votre site" lets Adel count
- * the requests that come from this page (no tracker).
+ * the requests that come from the site.
  */
 export function whatsappUrl({ offre, activite }: { offre?: string; activite?: string } = {}) {
   const parts = ["Bonjour Adel, je vous contacte depuis votre site."];
   if (offre) parts.push(`Je suis intéressé par : ${offre}.`);
-  parts.push(`Mon activité : ${activite ?? ""}`);
+  parts.push(`Mon projet : ${activite ?? ""}`);
   return "https://wa.me/33652338713?text=" + encodeURIComponent(parts.join(" "));
 }
 
@@ -143,36 +135,10 @@ export const serviceOffers: ServiceOffer[] = [
   },
 ];
 
-export const serviceWork: ServiceWorkItem[] = [
-  {
-    name: "Globalpronet",
-    type: "Entreprise de nettoyage, Genève",
-    description:
-      "Réécriture des textes du site pour qu'il soit mieux référencé sur Google. Le design et le site existants n'ont pas été modifiés.",
-    href: "https://globalpronet.ch",
-    linkLabel: "Voir le site →",
-  },
-  {
-    name: "JSL Judo",
-    type: "Club de judo",
-    description: "Création du site internet du club.",
-    href: null,
-    linkLabel: null,
-  },
-  {
-    name: "Bonee",
-    type: "Projet personnel, application mobile",
-    description:
-      "Application de budget que j'ai co-développée, publiée sur l'App Store et le Google Play Store.",
-    href: "https://apps.apple.com/fr/app/bonee-budget-%C3%A9pargne/id6762883127",
-    linkLabel: "Voir sur l'App Store →",
-  },
-];
-
 export const serviceSteps: ServiceStep[] = [
   {
     title: "On se rencontre",
-    text: "Chez vous ou par téléphone, 20 minutes pour comprendre votre activité et vos besoins.",
+    text: "Chez vous ou par téléphone, 20 minutes pour comprendre votre projet et vos besoins.",
   },
   {
     title: "Je vous envoie un devis",
@@ -195,7 +161,7 @@ export const serviceGuarantees: ServiceGuarantee[] = [
   },
   {
     title: "Un seul interlocuteur",
-    text: "C'est moi qui vous rencontre, qui crée votre site et qui le suis ensuite.",
+    text: "C'est moi qui vous rencontre, qui crée votre site ou votre application, et qui le suis ensuite.",
   },
   {
     title: "Près de chez vous",
@@ -220,7 +186,7 @@ export const serviceFaq: ServiceFaqItem[] = [
   {
     question: "Et ensuite, qu'est-ce que je paie chaque mois ou chaque année ?",
     answer:
-      "Le suivi, à partir de 50 € par mois, comprend l'hébergement du site, les mises à jour et les petites modifications (horaires, tarifs, photos, carte). Il est sans engagement. Le nom de domaine (votre adresse, par exemple votre-commerce.fr) est payé à part, une fois par an : son prix exact figure dans le devis.",
+      "Le suivi, à partir de 50 € par mois, comprend l'hébergement du site, les mises à jour et les petites modifications (horaires, tarifs, photos, carte). Il est sans engagement. Le nom de domaine (votre adresse, par exemple votre-nom.fr) est payé à part, une fois par an : son prix exact figure dans le devis.",
   },
   {
     question: "En combien de temps mon site est-il en ligne ?",
@@ -230,12 +196,12 @@ export const serviceFaq: ServiceFaqItem[] = [
   {
     question: "Je n'ai ni textes ni photos, et je ne suis pas à l'aise avec l'informatique.",
     answer:
-      "Ce n'est pas un problème. Pendant le rendez-vous, vous me parlez de votre activité et je vous aide à rédiger les textes ; vous les relisez avant la mise en ligne. Pour les photos, on peut partir de celles de votre téléphone.",
+      "Ce n'est pas un problème. Pendant le rendez-vous, vous me parlez de votre projet et je vous aide à rédiger les textes ; vous les relisez avant la mise en ligne. Pour les photos, on peut partir de celles de votre téléphone.",
   },
   {
     question: "Une fiche Google ne suffit-elle pas ?",
     answer:
-      "Pour certains commerces, si : c'est pour ça que je la propose seule. Un site devient utile quand vous voulez présenter vos prestations en détail, afficher vos tarifs ou recevoir des demandes de devis.",
+      "Pour certaines activités, si : c'est pour ça que je la propose seule. Un site devient utile quand vous voulez présenter vos prestations en détail, afficher vos tarifs ou recevoir des demandes de devis.",
   },
   {
     question: "Est-ce que je serai premier sur Google ?",
@@ -248,72 +214,3 @@ export const serviceFaq: ServiceFaqItem[] = [
       "Oui. Je suis à 20 minutes de Genève et je me déplace aussi à Nyon et dans le canton de Vaud. Le devis est établi en euros ; si vous préférez un montant en francs suisses, dites-le-moi. Une version anglaise du site est possible en option.",
   },
 ];
-
-export const SERVICES_TRADES = [
-  "Boulangerie",
-  "Plombier",
-  "Coiffeuse",
-  "Restaurant",
-  "Électricien",
-  "Fleuriste",
-  "Institut de beauté",
-  "Garage",
-  "Café",
-  "Menuisier",
-];
-
-export const SERVICES_TOWNS = [
-  "Divonne-les-Bains",
-  "Gex",
-  "Ferney-Voltaire",
-  "Saint-Genis-Pouilly",
-  "Pays de Gex",
-  "Nyon",
-  "Genève",
-];
-
-export const SERVICES_TOWNS_SENTENCE =
-  "Pour les commerces, artisans et indépendants de Divonne-les-Bains, Gex, Ferney-Voltaire, Saint-Genis-Pouilly, Nyon et Genève.";
-
-export interface StoryStep {
-  title: string;
-  text: string;
-}
-
-export const serviceStory: StoryStep[] = [
-  {
-    title: "On vous cherche sur un téléphone.",
-    text: "Vos futurs clients tapent votre métier et votre ville sur Google. Votre activité doit apparaître, clairement.",
-  },
-  {
-    title: "Ils trouvent l'essentiel en un coup d'œil.",
-    text: "Horaires, adresse, prestations : tout est lisible sur un petit écran, sans zoomer.",
-  },
-  {
-    title: "Et ils vous contactent en un geste.",
-    text: "Un bouton pour appeler, un formulaire pour demander un devis. Les demandes arrivent directement chez vous.",
-  },
-];
-
-export const storyMockup = {
-  ariaLabel:
-    "Exemple fictif : le site d'une boulangerie sur un téléphone, avec horaires, adresse et bouton Appeler",
-  caption: "Exemple fictif · La Mie du Matin",
-  time: "8:15",
-  search: "boulangerie près de moi",
-  name: "La Mie du Matin",
-  monogram: "M",
-  meta: "Boulangerie · Ouvert",
-  chip: "Site web",
-  headline: "Pain au levain et viennoiseries maison",
-  call: "Appeler",
-  directions: "Itinéraire",
-  hoursTitle: "Ouvert aujourd'hui",
-  hours: "6 h 30 – 19 h 00",
-  mapCaption: "Grand-Rue · Votre ville",
-  chips: ["Baguette tradition", "Croissants", "Gâteaux sur commande"],
-  formTitle: "Commander un gâteau",
-  send: "Envoyer",
-  notifTitle: "Nouveau message · maintenant",
-  notifText: "« Bonjour, vous faites des gâteaux d'anniversaire ? »",
-};

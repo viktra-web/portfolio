@@ -25,7 +25,7 @@ export const OG_IMAGE = {
 };
 
 export const HOME_DESCRIPTION =
-  "Sites vitrines et fiches Google pour les commerces, artisans et indépendants du Pays de Gex, de Nyon et de Genève. Prix fixe, premier rendez-vous gratuit.";
+  "Sites internet et applications pour les entreprises, les indépendants et les particuliers, par Adel Djahnit, développeur web et mobile. Prix fixe, premier rendez-vous gratuit.";
 
 export const areaServed = [
   ...SERVICES_AREA.map((name) => ({ "@type": "City", name })),

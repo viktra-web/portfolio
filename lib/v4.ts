@@ -1,15 +1,15 @@
-// Copy for /services/v4 (test, noindex): plan in docs/research/09-decision-v4.md.
+// Copy of the Viktra home (/services, v4 since 19/11/2026): plan in docs/research/09-decision-v4.md.
 // Offers, steps, FAQ and the Kunagi quote stay in lib/services.ts and lib/product.ts:
-// this file only holds what is new, plus the choice of what the page shows.
+// this file only holds what is new, plus the choice of what the home shows.
+// Rule (Adel, 19/11/2026): the visitors are not developers, no technical jargon.
 import { BONEE_SHOTS, type ProductImage } from "@/lib/product";
 import { serviceFaq, serviceSteps } from "@/lib/services";
 
 export const v4Hero = {
   title: "Bonjour, je suis Adel, développeur web et mobile.",
-  lead: "Vous avez besoin d'un site ou d'une application ? Racontez-moi votre projet.",
+  /** One sentence per line when there is room. */
+  lead: ["Vous avez besoin d'un site ou d'une application ?", "Racontez-moi votre projet."],
   facts: [
-    "Développeur full stack, deux ans en alternance chez Kunagi.",
-    "React, Next.js, React Native, .NET, Laravel.",
     "Je vous réponds le jour même ou le lendemain.",
     "Je me déplace dans le Pays de Gex, à Nyon et à Genève.",
   ],
@@ -22,11 +22,11 @@ export const v4Captions = {
 };
 
 export const VIKTRA_SHOT: ProductImage = {
-  src: "/v3/viktra-site.jpg",
-  webp: "/v3/viktra-site.webp",
+  src: "/viktra/viktra-site.jpg",
+  webp: "/viktra/viktra-site.webp",
   width: 1200,
   height: 750,
-  alt: "Le site Viktra sur un ordinateur : titre, présentation d'Adel et bouton WhatsApp.",
+  alt: "Accueil du site Viktra : « Bonjour, je suis Adel, développeur web et mobile. », bouton WhatsApp et ordinateur au logo Viktra.",
 };
 
 export { BONEE_SHOTS };
@@ -45,13 +45,13 @@ export const v4Work = {
   },
   viktra: {
     name: "Viktra",
-    text: "Le site de mon agence : Next.js, sans traceur publicitaire.",
+    text: "Le site de mon agence, conçu et développé par moi.",
   },
   /** Store links [à demander]: nothing shown until Adel gives them. */
   kunagi: {
     name: "Kunagi",
     type: "Application iPhone et Android.",
-    text: "Développeur full stack pendant deux ans d'alternance : application React Native, back-end Laravel.",
+    text: "Deux ans d'alternance comme développeur : une application iPhone et Android, de l'écran jusqu'au serveur.",
   },
   othersTitle: "Autres travaux",
   others: [
